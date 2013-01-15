@@ -1,0 +1,230 @@
+body
+{
+    background-color:grey;
+	background-image:url('backgroundrepeat.jpg');
+	background-repeat:repeat;
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	text-align:left;
+	font-size:12px;
+}
+
+#topspace
+{
+    height: 16px    
+}
+
+#header
+{
+    border-top-left-radius: 10px 10px;
+    border-top-right-radius: 10px 10px;
+    position: relative;
+    width: 1000px;
+    height: 188px;
+    padding: 0px;
+    border: 0px;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: right;
+    background-size:101% auto;
+    background-image: url('RSF.jpg');
+    background-repeat: no-repeat;
+}
+
+#menu
+{
+    position: relative;
+    height: 30px;
+    width: 1000px;
+    padding:0px;
+    border:0px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #333;
+}
+
+#content
+{
+    position: relative;
+    margin-left:auto;
+    margin-right:auto;
+    height: 300px;
+    width: 960px;
+    padding-left: 20px;
+	padding-right: 20px;
+    border: 0px;
+    background-color:#333;
+	color:#FFF;
+	font-family:Verdana, Geneva, sans-serif;
+	text-align:left;
+	font-size:12px;
+}
+
+#footer
+{
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    position: relative;
+    width: 980px;
+    height: 20px;
+    border:0px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color: #333;
+	font-family:Verdana, Geneva, sans-serif;
+	text-align:left;
+	font-size:10px;
+	padding-left:20px;
+	color: #999
+}
+
+.headertext
+{
+    position: relative;
+    top: 170px;
+    text-align: right
+}
+
+#registrationcontent
+{
+	position: relative;
+    margin-left:auto;
+    margin-right:auto;
+    height: 300px;
+    width: 100%;
+    padding:0px;
+    border: 0px;
+    margin-left:auto;
+    margin-right:auto;
+    background-color:#333;
+	text-align: left;
+}
+
+.registration
+{
+	text-align: left;
+	margin:5px;
+}
+
+.leftcolum
+{
+	text-align: left;
+	height:20px;
+	margin:20px;
+}
+
+table.registration
+{
+	margin:5px;
+}
+
+
+#menucontainer{
+	position:relative;
+	height:56px;
+	color:#E0E0E0;
+	background:#333;
+	width:100%;
+	font-family:Helvetica,Arial,Verdana,sans-serif;
+	}
+
+#nav{
+	position:relative;
+	height:33px;
+	font-size:12px;
+	text-transform:uppercase;
+	font-weight:bold;
+	background:#fff url('menu_bg.gif') repeat-x bottom left;
+	padding:0 0 0 20px;
+	}
+
+#nav ul{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+	width:auto;
+	float:left;
+	}
+
+#nav ul li{
+	display:block;
+	float:left;
+	margin:0 1px;
+	}
+
+#nav ul li a{
+	display:block;
+	float:left;
+	color:#EAF3F8;
+	text-decoration:none;
+	padding:0 0 0 20px;
+	height:33px;
+	}
+
+#nav ul li a span{
+	padding:12px 20px 0 0;
+	height:21px;
+	float:left;
+	}
+
+#nav ul li a:hover{
+	color:#fff;
+	background:transparent url('menu_bg-OVER.gif') repeat-x bottom left;
+	}
+
+#nav ul li a:hover span{
+	display:block;
+	width:auto;
+	cursor:pointer;
+	}
+
+#nav ul li a.current,#nav ul li a.current:hover{
+	color:#fff;
+	background:#1D6893 url('menu_left-ON.gif') no-repeat top left;
+	line-height:275%;
+	}
+
+#nav ul li a.current span{
+	display:block;
+	padding:0 20px 0 0;
+	width:auto;
+	background:#1D6893 url('menu_right-ON.gif') no-repeat top right;
+	height:33px;
+	}
+
+p.h1 
+{
+	color: #CCC;
+	font-family: Tahoma, Geneva, sans-serif;
+	text-align: left;
+	font-size: 14px;
+	font-weight:bold;
+    margin:20px
+}
+
+a:link 
+{
+    color:#CCC;
+    text-decoration:none;
+}
+
+a:visited 
+{
+    color:#CCC;
+    text-decoration:none;
+}
+
+a:hover 
+{
+    color:#FFF;
+    text-decoration:none;
+}
+
+p.logintext 
+{
+	color: #CCC;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	margin:10px;
+}
+
