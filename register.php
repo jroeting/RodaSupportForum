@@ -1,4 +1,3 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
 	<div id="registrationcontent">
         <p class="registration">&nbsp;</p>
         <p class="registration">Please fill in the form to register to this forum</p>
@@ -34,4 +33,3 @@
             </table>
         </form>
     </div>
-</html>

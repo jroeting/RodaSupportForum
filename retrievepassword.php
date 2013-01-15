@@ -1,4 +1,3 @@
-<html xmlns="http://www.w3.org/1999/xhtml">
 	<p style="h1">Recover password</p>
     <p style="margin: 6px";>If you've forgotten your login data, don't worry, they can be retrieved. To start this process please enter your username or e-mail address below.</p>
     <form style="margin: 5px";>
@@ -9,5 +8,4 @@
 			</tr>
 		</table>
 		<input type="submit" value="Proceed" style="margin:5px";>
-	</form>	
-</html>
+	</form>
