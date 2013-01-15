@@ -7,11 +7,16 @@
         <title>Roda Support Forum</title>
         <link rel="stylesheet" type="text/css" href="stylesheetbasis.css" />
 		<?php
-			$content =  $_GET["content"];
-				if ( $content == null)
-				{
-					$content = "home";
-				}				
+			$content = null;
+			
+			try {
+				$content =  $_GET["content"];
+			} catch ( Exception $e)
+			
+			if ( $content == null)
+			{
+				$content = "home";
+			}				
 		?>
 	</head>
     <body>
