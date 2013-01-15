@@ -40,7 +40,7 @@
 			include $content . '.php';
 			?>
         </div>
-        <div id="footer">Copyright © 2013 Disclaimer <a href="mailto:123@abc.nl">Contact</a>
+        <div id="footer">Copyright &#169 2013 Disclaimer <a href="mailto:123@abc.nl">Contact</a>
 			<a href="http://validator.w3.org/check?uri=referer">
 				<img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="15px" width="auto" />
 			</a>
