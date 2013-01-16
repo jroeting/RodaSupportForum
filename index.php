@@ -41,7 +41,14 @@
 		</div>
         <div id="content">
             <?php
-			include $content . '.php';
+			if(file_exists($content . '.php'))
+			{
+				include $content . '.php';
+			}
+			else
+			{
+				echo "<p>Sorry page not found</p>";
+			}
 			?>
         </div>
         <div id="footer">Copyright &#169 2013 Disclaimer <a href="mailto:123@abc.nl">Contact</a>
