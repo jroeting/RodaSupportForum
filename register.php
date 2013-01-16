@@ -23,7 +23,7 @@
 				
 				function checkName()
 				{
-					if ($_POST["name"] == "" || !(filter_var($_POST["name"], FILTER_SANITIZE_STRING) == $_POST["name"] && str_replace(" ", "", $_POST["name"]) == $_POST["name"]))
+					if ($_POST["name"] == "" || !(filter_var($_POST["name"], FILTER_SANITIZE_STRING) == $_POST["name"] && str_replace(" ", "", $_POST["name"]) == $_POST["name"] && preg_match('/[^A-Za-z]/', $_POST["name"])))
 					{
 						$GLOBALS['errorName'] = "invalid name";	
 					}
@@ -31,7 +31,7 @@
 				
 				function checkSurname()
 				{
-					if ($_POST["surname"] == "" || !(filter_var($_POST["surname"], FILTER_SANITIZE_STRING) == $_POST["surname"] && str_replace(" ", "", $_POST["surname"]) == $_POST["surname"]))
+					if ($_POST["surname"] == "" || !(filter_var($_POST["surname"], FILTER_SANITIZE_STRING) == $_POST["surname"] && str_replace(" ", "", $_POST["surname"]) == $_POST["surname"] && preg_match('/[^A-Za-z]/', $_POST["surname"]))
 					{
 						$GLOBALS['errorSurname'] = "invalid surname";	
 					} 
@@ -67,7 +67,10 @@
 				{
 					if (!($_POST["password"] == $_POST["passwordcheck"]))
 					{
-						$GLOBALS['errorPassword'] = "passwords don't match"
+						$GLOBALS['errorPassword'] = "passwords don't match";
+					}else if ($_POST["password"] == "" || !(str_replace(" ", "", $_POST["password"]) == $_POST["password"]))
+					{
+						$GLOBALS['errorPassword'] = "invalid password";
 					}
 				}
 			?>
