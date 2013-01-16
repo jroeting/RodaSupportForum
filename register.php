@@ -1,6 +1,6 @@
 	<div id="registrationcontent">
-        <p class="registration">&nbsp;</p>
-        <p class="registration">Please fill in the form to register to this forum</p>
+        <h2>Register</h2>
+		<p class="registration">Please fill in the form to register to this forum</p>
         <form action="index.php?content=register" method="post">
 			<?php
 				$errorName = "";
