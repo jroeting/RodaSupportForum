@@ -1,7 +1,7 @@
 body
 {
     background-color:grey;
-	background-image:url('backgroundrepeat.jpg');
+	background-image:url('images/backgroundrepeat.jpg');
 	background-repeat:repeat;
 	color:#FFF;
 	font-family:Verdana, Geneva, sans-serif;
@@ -27,7 +27,7 @@ body
     margin-right:auto;
     text-align: right;
     background-size:101% auto;
-    background-image: url('RSF.jpg');
+    background-image: url('images/header.jpg');
     background-repeat: no-repeat;
 }
 
@@ -50,8 +50,7 @@ body
     margin-right:auto;
     height: 300px;
     width: 960px;
-    padding-left: 20px;
-	padding-right: 20px;
+    padding:20px;
     border: 0px;
     background-color:#333;
 	color:#FFF;
@@ -134,7 +133,7 @@ table.registration
 	font-size:12px;
 	text-transform:uppercase;
 	font-weight:bold;
-	background:#fff url('menu_bg.gif') repeat-x bottom left;
+	background:#fff url('images/menu_bg.gif') repeat-x bottom left;
 	padding:0 0 0 20px;
 	}
 
@@ -169,7 +168,7 @@ table.registration
 
 #nav ul li a:hover{
 	color:#fff;
-	background:transparent url('menu_bg-OVER.gif') repeat-x bottom left;
+	background:transparent url('images/menu_bg-OVER.gif') repeat-x bottom left;
 	}
 
 #nav ul li a:hover span{
@@ -180,7 +179,7 @@ table.registration
 
 #nav ul li a.current,#nav ul li a.current:hover{
 	color:#fff;
-	background:#1D6893 url('menu_left-ON.gif') no-repeat top left;
+	background:#1D6893 url('images/menu_left-ON.gif') no-repeat top left;
 	line-height:275%;
 	}
 
@@ -188,7 +187,7 @@ table.registration
 	display:block;
 	padding:0 20px 0 0;
 	width:auto;
-	background:#1D6893 url('menu_right-ON.gif') no-repeat top right;
+	background:#1D6893 url('images/menu_right-ON.gif') no-repeat top right;
 	height:33px;
 	}
 
@@ -228,3 +227,39 @@ p.logintext
 	margin:10px;
 }
 
+table.forumcontent
+{
+	width:100%;
+	align:center;
+	margin:5px;
+	border:0px;
+	border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+	/* IE10 Consumer Preview */
+	background: -ms-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* Mozilla Firefox */
+	background: -moz-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* Opera */
+	background: -o-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* Webkit (Safari/Chrome 10) */
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #A4190C), color-stop(1, #FA807F));
+	/* Webkit (Chrome 11+) */
+	background: -webkit-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* W3C Markup, IE10 Release Preview */
+	background: linear-gradient(to top, #A4190C 0%, #FA807F 100%);
+}
+
+#newestposts
+{
+	position:relative;
+	height:auto;
+	width:400px;
+}
+
+#popularposts
+{
+	position:relative;
+	left:450px;
+	height:auto;
+	width:400px;
+}
