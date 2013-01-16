@@ -7,7 +7,7 @@
         <title>Roda Support Forum</title>
         <link rel="stylesheet" type="text/css" href="stylesheetbasis.css" />
 		<?php
-			$content = null;
+			$content = "";
 			
 			if (isset($_GET["content"]))
 			{
