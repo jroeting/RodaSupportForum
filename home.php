@@ -21,6 +21,8 @@
   			echo "<td>" . $row['subject_name'] . "</td>";
   			echo "</tr>";
   		}
+		
+		mysql_close();
   	?>
 	</table>
   	<table class="forumcontent" align="center">
