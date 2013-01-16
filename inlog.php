@@ -12,8 +12,8 @@
 				<td><input type="password" name="password"></td>
 			</tr>
 		</table>
-		<a href="retrievepassword.html">password forgotten?</a><br /> 
-		<a href="register.html"> register for an account</a><br /><br />
+		<a href="index.php?content=retrievepassword">password forgotten?</a><br /> 
+		<a href="index.php?content=register"> register for an account</a><br /><br />
         <input type="checkbox" name="remember" value="me"> Remember me <br />
 		<input type="submit" value="Sign in" style="margin:5px";>
 	</form>
