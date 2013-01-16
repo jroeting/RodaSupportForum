@@ -263,3 +263,8 @@ table.forumcontent
 	height:auto;
 	width:400px;
 }
+
+.registerError
+{
+	color: red;
+}
