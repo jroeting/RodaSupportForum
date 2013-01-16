@@ -1,7 +1,7 @@
 	<div id="registrationcontent">
         <p class="registration">&nbsp;</p>
         <p class="registration">Please fill in the form to register to this forum</p>
-        <form>
+        <form >
 			<table class="registration">
                 <tr>
                     <td class="leftcolum">Name</td>

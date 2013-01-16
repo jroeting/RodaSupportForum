@@ -9,12 +9,11 @@
 		<?php
 			$content = null;
 			
-			try {
-				$content =  $_GET["content"];
-			} catch ( Exception $e) {}
-			
-			if ( $content == null)
+			if (isset($_GET["content"]))
 			{
+				$content =  $_GET["content"];
+			} else
+			{		
 				$content = "home";
 			}				
 		?>
