@@ -31,10 +31,10 @@
 			<div id="menucontainer">
 			    <div id="nav">
 				  <ul>
-					<li><a href="index.php?content=home" <?php if($content == home) echo "class=\"current\"" ?>><span>Home</span></a></li>
-					<li><a href="index.php?content=members" <?php if($content == members) echo "class=\"current\"" ?>><span>Members</span></a></li>
-					<li><a href="index.php?content=forum" <?php if($content == forum) echo "class=\"current\"" ?>><span>Forum</span></a></li>
-					<li><a href="index.php?content=faq" <?php if($content == faq) echo "class=\"current\"" ?>><span>FAQ</span></a></li>
+					<li><a href="index.php?content=home" <?php if($content == "home") echo "class=\"current\"" ?>><span>Home</span></a></li>
+					<li><a href="index.php?content=members" <?php if($content == "members") echo "class=\"current\"" ?>><span>Members</span></a></li>
+					<li><a href="index.php?content=forum" <?php if($content == "forum") echo "class=\"current\"" ?>><span>Forum</span></a></li>
+					<li><a href="index.php?content=faq" <?php if($content == "faq") echo "class=\"current\"" ?>><span>FAQ</span></a></li>
 				  </ul>
 			    </div>
 			</div>
