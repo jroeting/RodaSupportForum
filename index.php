@@ -22,7 +22,7 @@
         <div id="topspace"></div>
 		<div id="header">
 			<div class="headertext">
-				<p style="logintext">
+				<p class="logintext">
 					<a href="index.php?content=inlog">Login</a> | <a href="index.php?content=register">Register</a>&nbsp;
 				</p>
 			</div>
