@@ -11,7 +11,7 @@
 			
 			try {
 				$content =  $_GET["content"];
-			} catch ( Exception $e)
+			} catch ( Exception $e) {}
 			
 			if ( $content == null)
 			{
