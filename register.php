@@ -8,10 +8,10 @@
 				$errorInfix = "";
 				$errorEmail = "";
 				$errorPassword = "";
+				$errorUsername = "";
 				
 				if (isset($_POST["submit"])) 
-				{
-					$quote = $_POST["quote"];
+				{	$quote = $_POST["quote"];
 					
 					checkName();
 					checkSurname();
@@ -19,11 +19,13 @@
 					checkEmail();
 					checkUsername();
 					checkPassword();
+					checkQuote();
+					inputForm();
 				}
 				
 				function checkName()
 				{
-					if ($_POST["name"] == "" || !(filter_var($_POST["name"], FILTER_SANITIZE_STRING) == $_POST["name"] && str_replace(" ", "", $_POST["name"]) == $_POST["name"] && preg_match('/[^A-Za-z]/', $_POST["name"])))
+					if ($_POST["name"] == "" || !(filter_var($_POST["name"], FILTER_SANITIZE_STRING) == $_POST["name"] && str_replace(" ", "", $_POST["name"]) == $_POST["name"] && preg_match('/^[a-z-]+$/i', $_POST["name"])))
 					{
 						$GLOBALS['errorName'] = "invalid name";	
 					}
@@ -31,7 +33,7 @@
 				
 				function checkSurname()
 				{
-					if ($_POST["surname"] == "" || !(filter_var($_POST["surname"], FILTER_SANITIZE_STRING) == $_POST["surname"] && str_replace(" ", "", $_POST["surname"]) == $_POST["surname"] && preg_match('/[^A-Za-z]/', $_POST["surname"]))
+					if ($_POST["surname"] == "" || !(filter_var($_POST["surname"], FILTER_SANITIZE_STRING) == $_POST["surname"] && str_replace(" ", "", $_POST["surname"]) == $_POST["surname"] && preg_match('/^[a-z-]+$/i', $_POST["surname"])))
 					{
 						$GLOBALS['errorSurname'] = "invalid surname";	
 					} 
@@ -55,6 +57,33 @@
 				
 				function checkUsername()
 				{
+					$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
+					$usernames;
+						
+					if(!$con)
+					{
+						die('Could not connect ' . mysql_error());
+					}
+					
+					$selected_db = mysql_select_db("webdb13KIC1",$con);
+					$selection = mysql_query("SELECT username FROM user_data");
+					
+					if ($_POST["username"] == "" || !(filter_var($_POST["username"], FILTER_SANITIZE_EMAIL)))
+					{
+						$GLOBALS['errorUsername'] = "invalid username";
+					}else
+					{
+						while($row = mysql_fetch_array($selection))
+						{
+							if ($_POST["username"] == $row['username'])
+							{
+								$GLOBALS['errorUsername'] = "username already taken";
+								break;
+							}
+						}
+					}
+					
+					mysql_close();
 				}
 				
 				function checkQuote()
@@ -71,6 +100,25 @@
 					}else if ($_POST["password"] == "" || !(str_replace(" ", "", $_POST["password"]) == $_POST["password"]))
 					{
 						$GLOBALS['errorPassword'] = "invalid password";
+					}
+				}
+				
+				function inputForm()
+				{
+					if($GLOBALS['errorName'] == "" && $GLOBALS['errorSurname'] == "" && $GLOBALS['errorInfix'] == "" && $GLOBALS['errorEmail'] == "" && $GLOBALS['errorPassword'] == "" && $GLOBALS['errorUsername'] == "")
+					{
+						$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
+						$usernames;
+					
+						if(!$con)
+						{
+							die('Could not connect ' . mysql_error());
+						}
+					
+						$selected_db = mysql_select_db("webdb13KIC1",$con);
+						$selection = mysql_query("INSERT INTO user_data (username, password, email, name, surname, quote, infix) VALUES ('$_POST[username]','$_POST[password]','$_POST[mail]','$_POST[name]','$_POST[surname]','$_POST[quote]','$_POST[infix]')");
+						
+						echo "<script language=\"javascript\">window.replace(\"index.php\");</script>";
 					}
 				}
 			?>
@@ -117,7 +165,13 @@
                 </tr>
                 <tr>
                     <td class="leftcolum">Username*</td>
-                    <td class="rightcolum"><input type="text" name="username" maxlength="20" /></td>
+                    <td class="rightcolum"><input type="text" name="username" maxlength="20" />
+						<span class="registerError">
+							<?php
+								echo $GLOBALS['errorUsername'];
+							?>
+						</span>
+					</td>
                 </tr>
 				<tr>
                     <td class="leftcolum">Quote</td>
