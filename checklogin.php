@@ -1,6 +1,6 @@
 <?php
 
-$host="localhost"; // Host name 
+$host="localhost:3306"; // Host name 
 $username="webdb13KIC1"; // Mysql username 
 $password="busteqec"; // Mysql password 
 $db_name="webdb13KIC1"; // Database name 
@@ -11,16 +11,12 @@ $tbl_name="user_data"; // Table name
  mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
  mysql_select_db("$db_name")or die("cannot select DB");
 
-
 // username and password sent from form 
  $myusername=$_POST['myusername']; 
  $mypassword=$_POST['mypassword'];
 
-// encrypt password 
-$encrypted_mypassword=md5($mypassword);
-$sql="SELECT * FROM $tbl_name WHERE username='$myusername' and password='$encrypted_mypassword'";
-$result=mysql_query($sql);
-
+// encrypt password
+$mypassword = hash('sha256', $mypassword);
 
 // To protect MySQL injection
  $myusername = stripslashes($myusername);
@@ -40,8 +36,8 @@ $sql="SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypass
 if($count==1){
 
 // Register $myusername, $mypassword and redirect to file "login_success.php"
- session_register("myusername");
- session_register("mypassword"); 
+ $session_register("myusername");
+ $session_register("mypassword"); 
  header("location:login_success.php");
  }
  else {
