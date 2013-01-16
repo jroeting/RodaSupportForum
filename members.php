@@ -8,12 +8,13 @@
 	{
 		die('Could not connect: ' . mysql_error());
 	}
-	//echo "Connected";
-	$selected_db = mysql_select_db('user_data', $link);
+	echo "Connected";
+	$selected_db = mysql_select_db('webdb13KIC1', $link);
 	if (!$selected_db)
 	{
-		die('Cannot use user_data:' . mysql_error());
+		die('Cannot use database:' . mysql_error());
 	}
+	echo "database selected";
 	
 	$result = mysql_query("SELECT * FROM user_data ORDER BY username LIMIT 0, 10"); 
 	if (!$result) 
@@ -24,7 +25,7 @@
 
 	$num=mysql_fetch_row($result); 
 
-	$i=0; 
+	$i=0; /*
 	while ($i < $num) { 
 		$username=mysql_result($result,$i,"username"); 
 		$email=mysql_result($result,$i,"email"); 
@@ -33,7 +34,7 @@
 		echo "<b>$username</b>E-mail: $email1<br>Account Type: $account_type<br><hr><br>"; 
 
 		$i++; 
-	} 
+	} */
 	mysql_close($link);
 ?>	
 	
