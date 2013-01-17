@@ -1,15 +1,7 @@
 <?php
-
-$host="localhost:3306"; // Host name 
-$username="webdb13KIC1"; // Mysql username 
-$password="busteqec"; // Mysql password 
-$db_name="webdb13KIC1"; // Database name 
-$tbl_name="user_data"; // Table name 
-
-
 // Connect to server and select databse.
- mysql_connect("$host", "$username", "$password")or die("cannot connect"); 
- mysql_select_db("$db_name")or die("cannot select DB");
+ mysql_connect("localhost:3306", "webdb13KIC1", "busteqec")or die("cannot connect"); 
+ mysql_select_db("webdb13KIC1")or die("cannot select DB");
 
 // username and password sent from form 
  $myusername=$_POST['myusername']; 
