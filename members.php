@@ -1,43 +1,51 @@
 	<h1>
 		Members of Roda
 	</h1>
-
-<?php
-	$link = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
-	if (!$link)
-	{
-		die('Could not connect: ' . mysql_error());
-	}
-	echo "Connected";
-	$selected_db = mysql_select_db('webdb13KIC1', $link);
-	if (!$selected_db)
-	{
-		die('Cannot use database:' . mysql_error());
-	}
-	echo "database selected";
-	
-	$result = mysql_query("SELECT * FROM user_data ORDER BY username LIMIT 0, 10"); 
-	if (!$result) 
-	{
-		echo 'Could not run query: ' . mysql_error();
-		exit;
-	}
-
-	$num=mysql_fetch_row($result); 
-
-	$i=0; /*
-	while ($i < $num) { 
-		$username=mysql_result($result,$i,"username"); 
-		$email=mysql_result($result,$i,"email"); 
-		$account_type=mysql_result($result,$i,"account_type"); 
+	 
+	<table class="tablemember" align="center">
+  		<tr>
+			<th class="tablehead"><strong> Status </strong></th>
+			<th class="tablehead"><strong> Username </strong></th>
+			<th class="tablehead"><strong> Email </strong> </th>
+			<th class="tablehead"><strong> Posts </strong> </th>
+			<th class="tablehead"><strong> Account Type </strong></th>
+        </tr>
+		<?php
+			$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec"); 
+			if(!$con)
+			{
+				die('Could not connect ' . mysql_error());
+			}
+			$selected_db = mysql_select_db("webdb13KIC1",$con);
+			if (!$selected_db)
+			{
+				die('Cannot use database:' . mysql_error());
+			}
+			$selection = mysql_query("SELECT * FROM user_data ORDER BY username LIMIT 0,10");
+			if (!$selection) 
+			{
+				echo 'Could not run query: ' . mysql_error();
+				exit;
+			}
+			while($row = mysql_fetch_array($selection))
+			{
+				echo "<tr>";
+				echo "<td>" . /*$row[''] .*/ "</td>";
+				echo "<td>" . $row['username'] . "</td>";
+				echo "<td>" . $row['email'] . "</td>";
+				echo "<td>" . /*$row[''] .*/ "</td>";
+				echo "<td>" . $row['account_type'] . "</td>";		
+				echo "</tr>";
+			}
 		
-		echo "<b>$username</b>E-mail: $email1<br>Account Type: $account_type<br><hr><br>"; 
-
-		$i++; 
-	} */
-	mysql_close($link);
-?>	
+			mysql_close();	
+		?>	
 	
+    </table>
+        
+
+
+
 	
 	
 		
