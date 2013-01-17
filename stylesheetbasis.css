@@ -258,7 +258,9 @@ table.forumcontent
 
 .tablebody
 {
-	background-color:#CCC;
+	background-color:#333;
+	border:1px;
+	border-color:#CCC;
 }
 
 .registerError

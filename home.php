@@ -31,7 +31,7 @@
   		</tr>
 	</table>
     <table border="0px" bgcolor="#333333">
-        <?php
+     <?php
 	$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
 	if(!$con)
 	{
