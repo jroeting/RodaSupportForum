@@ -1,7 +1,7 @@
 
 <table class="forumcontent">
   <tr class="tablehead">
-    <td><strong>
+    <td class="tablehead"><strong>
     <p style="h1">&nbsp; &nbsp; Categories</p></strong></td>
   </tr>
   <tr class="tablebody">

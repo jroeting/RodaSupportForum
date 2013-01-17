@@ -224,14 +224,25 @@ p.logintext
 	margin:10px;
 }
 
+p.blacktext
+{
+	color:#000;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:12px;
+}
+
 table.forumcontent
 {
 	width:100%;
 	margin:5px;
 	border:0px;
+}
+
+.tablehead
+{
 	border-top-left-radius: 5px 5px;
     border-top-right-radius: 5px 5px;
-	/* IE10 Consumer Preview */
+		/* IE10 Consumer Preview */
 	background: -ms-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
 	/* Mozilla Firefox */
 	background: -moz-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
@@ -243,6 +254,11 @@ table.forumcontent
 	background: -webkit-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
 	/* W3C Markup, IE10 Release Preview */
 	background: linear-gradient(to top, #A4190C 0%, #FA807F 100%);
+}
+
+.tablebody
+{
+	background-color:#CCC;
 }
 
 #newestposts
