@@ -2,7 +2,7 @@
 <table class="forumcontent">
   <tr class="tablehead">
     <td class="tablehead"><strong>
-    <p style="h1">&nbsp; &nbsp; Categories</p></strong></td>
+    <strong>&nbsp; &nbsp; Categories</strong></td>
   </tr>
   <tr class="tablebody">
   	<td><p class="blacktext"><a href="index.php?content=technical_issues" <?php if($content == technical_issues) echo "class=\"current\"" ?>><span>Technical Issues</span></a></p></td>
