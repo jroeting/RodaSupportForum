@@ -267,3 +267,12 @@ table.forumcontent
 {
 	color: red;
 }
+
+table.tablemember
+{
+	overflow-y:scroll;
+	width:100%;
+	padding:5px;
+	border:1px;
+	border-color: white;
+}
