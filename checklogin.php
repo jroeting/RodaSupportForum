@@ -24,25 +24,14 @@ if(!$select)
 	exit;
 }
 
-// To protect MySQL injection
-$myusername = stripslashes($myusername);
-$mypassword = stripslashes($mypassword);
-$myusername = mysql_real_escape_string($myusername);
-$mypassword = mysql_real_escape_string($mypassword);
-
-// Mysql_num_row is counting table row
-$count=mysql_num_rows($select);
-
-// If result matched $myusername and $mypassword, table row must be 1 row
-if($count==1)
+while($row = mysql_fetch_array($select))
 {
-	// Register $myusername, $mypassword and redirect to file "login_success.php"
-	$session_register("myusername");
-	$session_register("mypassword"); 
-	header("location:login_success.php");
- }
- else
- {
-	echo "Wrong Username or Password";
- }
+	if($mypassword == $row['password'] && $myusername == $row['username'])
+	{
+		$session_register("myusername");
+		$session_register("mypassword"); 
+		header("location:login_success.php");
+	}
+}
+echo 'Invalid username/password' 
  ?>
