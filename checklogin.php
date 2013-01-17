@@ -28,10 +28,10 @@ while($row = mysql_fetch_array($select))
 {
 	if($mypassword == $row['password'] && $myusername == $row['username'])
 	{
-		$session_register("myusername");
-		$session_register("mypassword"); 
+		session_register("myusername");
+		session_register("mypassword"); 
 		header("location:login_success.php");
 	}
 }
-echo 'Invalid username/password' 
+echo ''Invalid username/password''; 
  ?>
