@@ -5,7 +5,7 @@
     <p style="h1">&nbsp; &nbsp; Categories</p></strong></td>
   </tr>
   <tr class="tablebody">
-  	<td bgcolor="#CCCCCC"><p class="blacktext">Technical Issues</p></td>
+  	<td bgcolor="#CCCCCC"><p class="blacktext"><a href="index.php?content=technical_issues" <?php if($content == home) echo "class=\"current\"" ?>><span>Technical Issues</span></a></p></td>
   </tr>
   <tr class="tablebody">
   	<td bgcolor="#CCCCCC"><p class="blacktext">Cartalk</p></td>

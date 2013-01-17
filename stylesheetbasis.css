@@ -261,21 +261,6 @@ table.forumcontent
 	background-color:#CCC;
 }
 
-#newestposts
-{
-	position:relative;
-	height:auto;
-	width:400px;
-}
-
-#popularposts
-{
-	position:relative;
-	left:450px;
-	height:auto;
-	width:400px;
-}
-
 .registerError
 {
 	color: red;
