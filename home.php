@@ -3,7 +3,7 @@
 <div id="newestposts">
 	<table class="forumcontent" align="center">
   		<tr>
-    		<td><strong>10 most recent subjects</strong></td>
+    		<td class="tablehead"><strong>10 most recent subjects</strong></td>
         </tr>
         </table>
         <table border="0px" bgcolor="#333333">
@@ -27,11 +27,11 @@
 	</table>
   	<table class="forumcontent" align="center">
 	  	<tr>
-   			<td><strong>10 most popular subjects</strong></td>
+   			<td class="tablehead"><strong>10 most popular subjects</strong></td>
   		</tr>
 	</table>
     <table border="0px" bgcolor="#333333">
-     <?php
+        <?php
 	$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
 	if(!$con)
 	{
