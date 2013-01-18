@@ -1,5 +1,4 @@
 
-
 <div id="newestposts">
 	<table class="forumcontent" align="center">
   		<tr>
@@ -38,11 +37,9 @@
 		die('Could not connect ' . mysql_error());
 	}
 	$selected_db = mysql_select_db("webdb13KIC1",$con);
-	$selection = mysql_query("SELECT * FROM posts WHERE highlight=1");
+	$selection = mysql_query("SELECT posts.highlight, posts.subject_id, subjects.subject_name FROM posts INNER JOIN subjects WHERE posts.highlight=1 ORDER BY subject_id DESC LIMIT 0,10");
 	while($row = mysql_fetch_array($selection))
 	{
-		$subject_id = $row['subject_id'];
-		$subject_selection = mysql_query("SELECT subject_name FROM subjects WHERE subject_id=$subject_id");
 		echo "<tr>";
 		echo "<td>" . $subject_selection['subject_name'];
 		echo "</tr>";
