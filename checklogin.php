@@ -18,6 +18,7 @@ if(!select_db)
 	die('Could not connect ' . mysql_error());
 }
 $select = mysql_query("SELECT * FROM $user_data WHERE username='$myusername' and password='$mypassword'");
+echo $select;
 if(!$select)
 {
 	echo 'Could not run query: ' . mysql_error();

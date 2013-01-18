@@ -17,6 +17,6 @@
 		<a href="index.php?content=retrievepassword">password forgotten?</a><br /> 
 		<a href="index.php?content=register"> register for an account</a><br /><br />
         <input type="checkbox" name="remember" value="me"> Remember me <br />
-		<input type="submit" value="Sign in" name="submit" style="margin:5px";>
+		<input type="submit" value="Sign in" name="submit" style="margin:5px">
 	</form>
 </div>
