@@ -40,7 +40,7 @@
         die('Could not connect ' . mysql_error());
       }
       $selection_db = mysql_select_db("webdb13KIC1",$con);
-      $selection = mysql_query("SELECT COUNT() FROM subjects WHERE category = 'car_unrelated'");
+      $selection = mysql_query("SELECT COUNT(*) FROM subjects WHERE category = 'car_unrelated'");
       echo "<td>" . $selection . "</td>";
       mysql_close();
     ?>
