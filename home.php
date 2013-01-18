@@ -1,4 +1,3 @@
-
 <div id="newestposts">
 	<table class="forumcontent" align="center">
   		<tr>
@@ -41,7 +40,7 @@
 	while($row = mysql_fetch_array($selection))
 	{
 		echo "<tr>";
-		echo "<td>" . $subject_selection['subject_name'];
+		echo "<td>" . $selection['subject_name'];
 		echo "</tr>";
 	}
 	mysql_close();
