@@ -2,7 +2,8 @@
 		Members of Roda
 	</h1>
 	 
-	<table class="tablemember" align="center">
+	<table class="tablemember" border="1" 
+	cellpadding="10">
   		<tr>
 			<th class="tablehead"><strong> Status </strong></th>
 			<th class="tablehead"><strong> Username </strong></th>
@@ -22,6 +23,7 @@
 				die('Cannot use database:' . mysql_error());
 			}
 			$selection = mysql_query("SELECT * FROM user_data ORDER BY username LIMIT 0,10");
+			
 			if (!$selection) 
 			{
 				echo 'Could not run query: ' . mysql_error();
@@ -31,7 +33,7 @@
 			{
 				echo "<tr>";
 				echo "<td>" . /*$row[''] .*/ "</td>";
-				echo "<td>" . $row['username'] . "</td>";
+				echo "<td>" . "<a href=index.php?content=profile>". $row["username"] . "</a>" . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . /*$row[''] .*/ "</td>";
 				echo "<td>" . $row['account_type'] . "</td>";		
