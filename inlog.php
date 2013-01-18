@@ -4,7 +4,7 @@
     <form>
 		<table>
 			<tr>
-				<form name="login_form" method="post" action="checklogin.php">
+				<form name="login_form" method="post" action="index.php?content=checklogin">
 				<td>Username:</td>
 				<td><input type="text" name="username" id="myusername"></td>
 			</tr>
