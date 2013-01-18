@@ -5,6 +5,7 @@
 	$errorEmail = "";
 	$errorPassword = "";
 	$errorUsername = "";
+	$errorFile = "";
 	
 	if (isset($_POST["submit"])) 
 	{	$quote = $_POST["quote"];
@@ -16,6 +17,7 @@
 		checkUsername();
 		checkPassword();
 		checkQuote();
+		checkFile();
 		inputForm();
 	}else
 	{
@@ -117,9 +119,32 @@
 		}
 	}
 	
+	function checkFile()
+	{
+		$allowedExts = array("jpg", "jpeg", "gif", "png");
+		$extension = end(explode(".", $_FILES["file"]["name"]));
+		
+		if ((($_FILES["file"]["type"] == "image/gif")
+		|| ($_FILES["file"]["type"] == "image/jpeg")
+		|| ($_FILES["file"]["type"] == "image/png")
+		|| ($_FILES["file"]["type"] == "image/pjpeg"))
+		&& ($_FILES["file"]["size"] < 200000)
+		&& in_array($extension, $allowedExts))
+		{
+			if ($_FILES["file"]["error"] > 0)
+			{
+				$GLOBALS['errorFile'] = "file error";
+			}			
+		}
+		else
+		{
+			$GLOBALS['errorFile'] = "invalid file, only .gif, .jpg, .jpg or .png and less then 200kb ";
+		}
+	}
+	
 	function inputForm()
 	{
-		if($GLOBALS['errorName'] == "" && $GLOBALS['errorSurname'] == "" && $GLOBALS['errorInfix'] == "" && $GLOBALS['errorEmail'] == "" && $GLOBALS['errorPassword'] == "" && $GLOBALS['errorUsername'] == "")
+		if($GLOBALS['errorName'] == "" && $GLOBALS['errorSurname'] == "" && $GLOBALS['errorInfix'] == "" && $GLOBALS['errorEmail'] == "" && $GLOBALS['errorPassword'] == "" && $GLOBALS['errorUsername'] == "" && $GLOBALS['errorFile'] == "")
 		{
 			$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
 				
@@ -127,11 +152,15 @@
 			{
 				die('Could not connect ' . mysql_error());
 			}
-		
+			
+			$filename = $_POST["username"] . end(explode(".", $_FILES["file"]["name"]));
+			move_uploaded_file($_FILES["file"]["tmp_name"], "avatars/" . $filename);
+	  
 			$password = hash('sha256', $_POST["password"]);
 			$selected_db = mysql_select_db("webdb13KIC1",$con);
-			$selection = mysql_query("INSERT INTO user_data (username, password, email, name, surname, quote, infix) VALUES ('$_POST[username]','$password','$_POST[mail]','$_POST[name]','$_POST[surname]','$_POST[quote]','$_POST[infix]')");
-				$to = $_POST["mail"];
+			$selection = mysql_query("INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES ('$_POST[username]','$password','$_POST[mail]','$_POST[name]','$_POST[surname]','$filename','$_POST[quote]','$_POST[infix]')");
+			
+			$to = $_POST["mail"];
 			$subject = "Welcome to Roda support forum";
 			$message = "You have succesfully registered to Roda support forum!<br/>Now that you are a member you can post subjects and respond to other subjects.";
 			$from = "noreply@roda.com";

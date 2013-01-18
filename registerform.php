@@ -26,7 +26,7 @@
             </tr>
 			<tr>
                 <td class="leftcolum">Infix</td>
-                <td class="rightcolum"><input type="text" name="infix" maxlength="10" value="<?php if ($GLOBALS['errorInfix'] == "" && isset($_POST["infix"])) { echo $_POST["infix"];} ?>" />
+                <td class="rightcolum"><input type="text" name="infix" maxlength="10" size="10" value="<?php if ($GLOBALS['errorInfix'] == "" && isset($_POST["infix"])) { echo $_POST["infix"];} ?>" />
 					<span class="registerError">
 						<?php
 							echo $GLOBALS['errorInfix'];
@@ -55,8 +55,12 @@
 				</td>
             </tr>
 			<tr>
+                <td class="leftcolum">Avatar</td>
+                <td class="rightcolum"><input type="file" name="file" id="file" accept="image/*"></td>
+            </tr>
+			<tr>
                 <td class="leftcolum">Quote</td>
-                <td class="rightcolum"><input type="text" name="quote" maxlength="100" value="<?php if (isset($_POST["quote"])) { echo $_POST["quote"];} ?>" /></td>
+                <td class="rightcolum"><input type="text" name="quote" maxlength="100" size="34" value="<?php if (isset($_POST["quote"])) { echo $_POST["quote"];} ?>" /></td>
             </tr>
             <tr>
                 <td class="leftcolum">Password*</td>
