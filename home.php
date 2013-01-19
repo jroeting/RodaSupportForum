@@ -36,8 +36,8 @@
 				die('Could not connect ' . mysql_error());
 			}
 			$selected_db = mysql_select_db("webdb13KIC1",$con);
-			$selection = mysql_query("SELECT posts.highlight, posts.subject_id, subjects.subject_name, subjects.subject_id FROM posts 
-			FULL JOIN subjects ON posts.subject_id=subjects.subject_id WHERE posts.highlight=1 LIMIT 0,10");
+			$selection = mysql_query("SELECT posts.highlight, subjects.subject_name FROM posts 
+			WHERE posts.highlight=1 FULL JOIN subjects ON posts.subject_id=subjects.subject_id LIMIT 0,10");
 			while($row = mysql_fetch_array($selection))
 			{
 				echo "<tr>";
