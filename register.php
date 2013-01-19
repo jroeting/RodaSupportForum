@@ -6,7 +6,7 @@
 	$errorPassword = "";
 	$errorUsername = "";
 	$errorFile = "";
-	$imgData = addslashes (file_get_contents("avatars/avatar.png"));
+	$imgData = addslashes (file_get_contents("images/avatar.png"));
 	
 	if (isset($_POST["submit"])) 
 	{	$quote = $_POST["quote"];
