@@ -174,7 +174,7 @@
 			$selected_db = mysql_select_db("webdb13KIC1",$con);
 			$selection = mysql_query("INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES ('$_POST[username]','$password','$_POST[mail]','$_POST[name]','$_POST[surname]','$GLOBALS[imgData]','$_POST[quote]','$_POST[infix]')");
 			
-			if ($_POST[infix] == "")
+			if ($_POST["infix"] == "")
 			{
 				$name = $_POST["name"] . " " . $_POST["surname"];
 			}else
