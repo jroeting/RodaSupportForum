@@ -9,7 +9,8 @@
 	$imgData = addslashes (file_get_contents("images/avatar.png"));
 	
 	if (isset($_POST["submit"])) 
-	{	$quote = $_POST["quote"];
+	{	
+		$quote = $_POST["quote"];
 		
 		checkName();
 		checkSurname();
@@ -110,6 +111,7 @@
 	
 	function checkQuote()
 	{
+		$GLOBALS['quote'] = trim($GLOBALS['quote']);
 		$GLOBALS['quote'] = filter_var($GLOBALS['quote'], FILTER_SANITIZE_STRING);
 		$GLOBALS['quote'] = htmlentities($GLOBALS['quote'], ENT_QUOTES);
 	}
