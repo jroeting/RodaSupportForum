@@ -31,14 +31,18 @@
 				die('Could not connect ' . mysql_error());
 			}
 			$selected_db = mysql_select_db("webdb13KIC1",$con);
-			$selection = mysql_query("SELECT posts.highlight, subjects.subject_name FROM subjects FULL JOIN posts ON posts.subject_id=subjects.subject_id WHERE posts.highlight=1");
+			$selection = mysql_query("SELECT posts.highlight, subjects.subject_name FROM posts, subjects WHERE posts.subject_id=subjects.subject_id");
 			while($row = mysql_fetch_array($selection))
 			{
-				echo "<tr>";
-				echo "<td>" . $row['subject_name']. "</td>" ;
-				echo "</tr>";
+				if($row['highlight'] == 1) 
+				{
+					echo "<tr>";
+					echo "<td>" . $row['subject_name']. "</td>" ;
+					echo "</tr>";
+				}
 			}
 			mysql_close($con);
 		?>
     </table>
 </div>
+
