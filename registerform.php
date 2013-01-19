@@ -55,10 +55,15 @@
 				</td>
             </tr>
 			<tr>
-                <td class="leftcolum">Avatar</td>
+                <td class="leftcolum">Avatar &#60;200kB</td>
                 <td class="rightcolum">
 					<input type="hidden" name="MAX_FILE_SIZE" value="200000" />
-					<input type="file" name="file" id="file" accept="image/*">
+					<input type="file" name="file" id="file" accept="image/*" />
+					<span class="registerError">
+						<?php
+							echo $GLOBALS['errorFile'];
+						?>
+					</span>
 					</td>
             </tr>
 			<tr>
