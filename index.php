@@ -52,14 +52,14 @@
 			?>
         </div>
         <div id="footer">
-        	<table>
+        	<table width="998">
         		<tr>
-                	<td width="190">Copyright &#169; 2013</td>
-                    	<td width="190">Disclaimer</td>
-                    	<td width="400"><a href="mailto:123@abc.nl">Contact</a></td>
-                    	<td width="170"><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="15px" width="auto" /></a>
-			<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" height="15px" width="auto"/></a></td>
-		</table>
+                	<td width="150">Copyright &#169; 2013</td>
+                    <td width="150">Disclaimer</td>
+                   	<td width="550"><a href="mailto:123@abc.nl">Contact</a></td>
+                   	<td><a href="http://validator.w3.org/check?uri=referer"><img src="http://www.w3.org/Icons/valid-xhtml11" alt="Valid XHTML 1.1" height="15px" width="auto" /></a>
+					<a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="http://jigsaw.w3.org/css-validator/images/vcss" alt="Valid CSS!" height="15px" width="auto"/></a></td>
+			</table>
         </div>
     
     </body>
