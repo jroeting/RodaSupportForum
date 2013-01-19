@@ -1,7 +1,7 @@
 <div id="registrationcontent">
     <h2>Register</h2>
 	<p class="registration">Please fill in the form to register to this forum</p>
-       <form action="index.php?content=register" method="post">
+       <form action="index.php?content=register" method="post" enctype="multipart/form-data">
 		
 		<table class="registration">
             <tr>
@@ -56,7 +56,10 @@
             </tr>
 			<tr>
                 <td class="leftcolum">Avatar</td>
-                <td class="rightcolum"><input type="file" name="file" id="file" accept="image/*"></td>
+                <td class="rightcolum">
+					<input type="hidden" name="MAX_FILE_SIZE" value="200000" />
+					<input type="file" name="file" id="file" accept="image/*">
+					</td>
             </tr>
 			<tr>
                 <td class="leftcolum">Quote</td>
