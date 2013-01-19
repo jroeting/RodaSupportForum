@@ -20,7 +20,7 @@
 			mysql_close($con);
   		?>
 	</table>
-  	<table class="tablemember">
+  	<table class="tablemember" celpadding="10">
 	  	<tr>
    			<td class="tablehead"><strong>10 most popular subjects</strong></td>
   		</tr>

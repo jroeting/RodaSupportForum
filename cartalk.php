@@ -5,22 +5,22 @@
             <td class="tablehead">Subject</td>
             <td class="tablehead">Last post</td>
         </tr>
-     <?php
-	$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
-	if(!$con)
-	{
-		die('Could not connect ' . mysql_error());
-	}
-	$selected_db = mysql_select_db("webdb13KIC1",$con);
-	$selection = mysql_query("SELECT * FROM subjects WHERE category='cartalk'");
-	while($row = mysql_fetch_array($selection))
-	{
-		echo "<tr>";
-		echo "<td>" . $selection['subject_name'] ."</td>";
-		echo "<td></td>";
-		echo "</tr>";
-	}
-	mysql_close();
-	?>
+     		<?php
+				$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
+				if(!$con)
+				{
+					die('Could not connect ' . mysql_error());
+				}
+				$selected_db = mysql_select_db("webdb13KIC1",$con);
+				$selection = mysql_query("SELECT subject_name FROM subjects WHERE category='cartalk' ORDER BY subject_id");
+				while($row = mysql_fetch_array($selection))
+				{
+					echo "<tr>";
+					echo "<td>" . $row['subject_name'] ."</td>";
+					echo "<td></td>";
+					echo "</tr>";
+				}
+				mysql_close($con);
+			?>
     </table>
 </html>
