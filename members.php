@@ -2,8 +2,7 @@
 		Members of Roda
 	</h1>
 	 
-	<table class="tablemember" border="1" 
-	cellpadding="10">
+	<table class="tablemember" border="1" cellpadding="10">
   		<tr>
 			<th class="tablehead"><strong> Status </strong></th>
 			<th class="tablehead"><strong> Username </strong></th>
@@ -22,7 +21,7 @@
 			{
 				die('Cannot use database:' . mysql_error());
 			}
-			$selection = mysql_query("SELECT * FROM user_data ORDER BY username LIMIT 0,10");
+			$selection = mysql_query("SELECT * FROM user_data ORDER BY username LIMIT 0,1000");
 			
 			if (!$selection) 
 			{
@@ -39,10 +38,9 @@
 				echo "<td>" . $row['account_type'] . "</td>";		
 				echo "</tr>";
 			}
-		
+	
 			mysql_close();	
 		?>	
-	
     </table>
         
 
