@@ -242,6 +242,7 @@ table.forumcontent
 {
 	border-top-left-radius: 5px 5px;
     border-top-right-radius: 5px 5px;
+	padding:5px;
 		/* IE10 Consumer Preview */
 	background: -ms-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
 	/* Mozilla Firefox */
