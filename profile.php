@@ -1,8 +1,12 @@
 <div class="tablehead"> <strong> Profile </strong></div>
 
 	<?php
+		$errorFile = "";
+		$imgData = addslashes (file_get_contents("images/avatar.png"));
+		
 		if (isset($_POST["submit"])) 
 		{	
+			quote = $_POST["quote"];
 			checkFile();
 			//checkPersonalText();
 			//checkAge();
