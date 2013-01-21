@@ -1,54 +1,66 @@
+<!-- forum.php shows an overview of the different categories of the forum. The user can see how many subjects are already posted in a category. The category names are linked to a page with the different subjects in that category -->
 <table class="forumcontent">
 	<tr class="tablehead">
+    	<!-- A table showing the forum categories and the number of subjects in each category -->
     	<td class="tablehead"><strong>&nbsp; &nbsp; Categories</strong></td>
-    	<td class="tablehead"><strong>Number of subjects</td>	
+    	<td class="tablehead" width="200"><strong>Number of subjects</td>	
     </tr>
   	<tr class="tablebody">
+    	<!-- Link to subjects belonging to category -->
   		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=technical_issues"><span>Technical Issues</span></a></p></td>
     	<td>
 			<?php
+				// open database
                 $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
-                $sql = "SELECT * FROM subjects WHERE category='technical_issues'";
-                $count = mysql_num_rows($sql);
-                $results = $db->query($count);
-                echo "$results";
-                $db = NULL;
-
-  	  			/*$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec"); 
-	   			if(!$con)
-		  		{	
-		    		die('Could not connect ' . mysql_error());
-		  		}
-      			$selected_db = mysql_select_db("webdb13KIC1",$con);
-  	  			$selection = mysql_query("SELECT * FROM subjects WHERE category='technical_issues'");
-	  			$count = mysql_num_rows($selection);
-      			echo "$count";
-	  			mysql_close($con);*/
+				// selection of number of subjects.
+                $sql = "SELECT COUNT(subject_id) FROM subjects WHERE category = 'technical_issues'";
+                $result = $db->query($sql);
+				// shows the number of subjects.
+				foreach($result as $row) 
+				{
+					echo $row[0];
+				}
+				// close database
+				$db = NULL;
   			?>
         </td>
 	</tr>
   	<tr class="tablebody">
+    	<!-- link to subjects belonging to category -->
   		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=cartalk"><span>Cartalk</span></a></p></td>
     	<td>
 			<?php
+				// open database
                 $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
-                $sql = "SELECT * FROM subjects WHERE category='cartalk'";
-                $count = mysql_num_rows($sql);
-                $results = $db->query($count);
-                echo "$results";
+				// selection of number of subjects
+                $sql = "SELECT COUNT(*) FROM subjects WHERE category = 'cartalk'";
+                $result = $db->query($sql);
+				// shows the number of subjects
+				foreach($result as $row) 
+				{
+					echo $row[0];
+				}
+				// close database
                 $db = NULL;
             ?>
 		</td>
 	</tr>
   	<tr class="tablebody" >
+    	<!-- link to subjects belonging to category -->
   		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=car_unrelated"><span>Car-unrelated</span></a></p></td>
     	<td>
 			<?php
+				// open database
                 $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
-                $sql = "SELECT * FROM subjects WHERE category='car_unrelated'";
-                $count = mysql_num_rows($sql);
-                $results = $db->query($count);
-                echo "$results";
+				// selection of number of subjects
+                $sql = "SELECT COUNT(*) FROM subjects WHERE category = 'car_unrelated'";
+                $result = $db->query($sql);
+				// shows the number of subjects
+				foreach($result as $row) 
+				{
+					echo $row[0];
+				}
+				// close database
                 $db = NULL;
     		?>
         </td>
