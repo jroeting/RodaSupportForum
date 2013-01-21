@@ -8,6 +8,7 @@
 		<?php
 			$content = "";
 			
+			
 			if (isset($_GET["content"]))
 			{
 				$content =  $_GET["content"];
@@ -22,7 +23,17 @@
 		<div id="header">
 			<div class="headertext">
 				<p class="logintext">
-					<a href="index.php?content=inlog">Login</a> | <a href="index.php?content=register">Register</a>&nbsp;
+					<?php
+					if(isset($_SESSION['username']))
+					{
+						Print "<a href='index.php?content=logout'>Log out</a>";
+					}
+					if(!isset($_SESSION['username']))
+					{
+						Print "<a href='index.php?content=inlog'>Login</a>";
+					}
+					?>
+					| <a href="index.php?content=register">Register</a>&nbsp
 				</p>
 			</div>
 		</div>

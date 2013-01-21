@@ -1,4 +1,7 @@
 <?php
+// starts the session
+session_start();
+
 // username and password sent from form 
 $myusername = $_POST['username']; 
 $mypassword = $_POST['password'];
@@ -18,7 +21,6 @@ if(!$select_db)
 	die('Could not connect ' . mysql_error());
 }
 $select = mysql_query("SELECT * FROM user_data WHERE username='$myusername' and password='$mypassword'");
-//echo $select;
 if(!$select)
 {
 	echo 'Could not run query: ' . mysql_error();
@@ -29,10 +31,22 @@ while($row = mysql_fetch_array($select))
 {
 	if($mypassword == $row['password'] && $myusername == $row['username'])
 	{
-		session_register("myusername");
-		session_register("mypassword"); 
-		header("location:login_success.php");
+		$_SESSION['username'] = $row['username'];
+		/* $account_type = $row['account_type'];
+		if($account_type == adm)
+		{
+			$_SESSION['account_type'] = 1;
+		}
+		echo($_SESSION['username']);
+		*/
+		if(isset($_SESSION['username']))
+		{
+			echo "Login successful, you will be redirected in 5 seconds.";
+			//sleep(5);
+			header("location:index.php?content=home");
+		}
 	}
 }
-echo "Invalid username/password"; 
+echo "Invalid username/password";
+echo "<a href=index.php?content=inlog><br />Go back</a>";
  ?>
