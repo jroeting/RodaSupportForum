@@ -4,7 +4,7 @@
     	<td class="tablehead"><strong>Number of subjects</td>	
     </tr>
   	<tr class="tablebody">
-  		<td><p class="blacktext"><a href="index.php?content=technical_issues"><span>Technical Issues</span></a></p></td>
+  		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=technical_issues"><span>Technical Issues</span></a></p></td>
     	<td>
 			<?php
                 $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
@@ -28,7 +28,7 @@
         </td>
 	</tr>
   	<tr class="tablebody">
-  		<td><p class="blacktext"><a href="index.php?content=cartalk" <?php if($content == cartalk) echo "class=\"current\"" ?>><span>Cartalk</span></a></p></td>
+  		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=cartalk"><span>Cartalk</span></a></p></td>
     	<td>
 			<?php
                 $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
@@ -41,7 +41,7 @@
 		</td>
 	</tr>
   	<tr class="tablebody" >
-  		<td><p class="blacktext"><a href="index.php?content=car_unrelated" <?php if($content == car_unrelated) echo "class=\"current\"" ?>><span>Car-unrelated</span></a></p></td>
+  		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=car_unrelated"><span>Car-unrelated</span></a></p></td>
     	<td>
 			<?php
                 $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
