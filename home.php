@@ -11,7 +11,7 @@
             foreach($results as $row)
             {
                 echo "<tr>";
-                echo "<td><a href="index.php?content=topic&subject"='.$row['subject_id'].'>" . $row['subject_name']. "</a></td>";
+                echo "<td><a href="index.php?content=topic&subject='.$row['subject_id'].'">" . $row['subject_name']. "</a></td>";
                 echo "</tr>";
             }
             $db = NULL;
