@@ -32,7 +32,7 @@
 			{
 				echo "<tr>";
 				echo "<td>" . /*$row[''] .*/ "</td>";
-				echo "<td>" . "<a href=index.php?content=profile>". $row["username"] . "</a>" . "</td>";
+				echo "<td>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . /*$row[''] .*/ "</td>";
 				echo "<td>" . $row['account_type'] . "</td>";		

@@ -1,13 +1,14 @@
 <div>
         <div class="tablehead"> <strong> Edit Your Profile </strong></div>
 		
-        <form action="index.php?content=editprofile" method="post">
+		<form action="index.php?content=profile&user_id=2" method="post"> <!-- action klopt niet -->
+        <!--<form action="index.php?content=profile&user_id=" method="post">-->
 			<table cellpadding="10">
 				<tr>
 					<td> Avatar: </td> <td> <input type="file" name="avatar" size="100" value="Browse"></td>
 				</tr>
 				<tr>
-					<td>Personal Text: </td> <td><textarea cols="50" rows="5" name="perstxt">Type here your personal text for your profile visiters.</textarea></td>	
+					<td>Personal Text: </td> <td><textarea cols="50" rows="5" name="perstxt" value="<?php if ($GLOBALS['errorPersonalText'] == "" && isset($_POST["personal_text"])) { echo $_POST["personal_text"];} ?>">Type here your personal text for your profile visiters.</textarea></td>	
 				</tr>
 				<tr>
 					<td> Age: </td> 

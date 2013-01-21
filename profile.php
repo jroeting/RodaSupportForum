@@ -2,13 +2,16 @@
 
 	<?php
 		$errorFile = "";
+		$errorPersonalText = "";
+		$errorAge = "";
+		$errorCountry = "";
 		$imgData = addslashes (file_get_contents("images/avatar.png"));
 		
 		if (isset($_POST["submit"])) 
 		{	
-			quote = $_POST["quote"];
+			$quote = $_POST["quote"];
 			checkFile();
-			//checkPersonalText();
+			checkPersonalText();
 			//checkAge();
 			//checkGender();
 			//checkCountry();
@@ -44,23 +47,27 @@
 				}		
 			}
 		}
-		/*
-		checkPersonalText()
+		
+		function checkPersonalText()
+		{
+			if ($_POST["personal_text"] == "" || !(filter_var($_POST["personal_text"], FILTER_SANITIZE_STRING) == $_POST["personal_text"] && str_replace(" ", "", $_POST["personal_text"]) == $_POST["personal_text"] && preg_match('/^[a-z-]+$/i', $_POST["personal_text"])))
+			{
+				$GLOBALS['errorPersonalText'] = "invalid personal_text";	
+			}
+		}
+		
+		/*	
+		function checkAge()
 		{
 			
 		}
 			
-		checkAge()
+		function checkGender()
 		{
 			
 		}
 			
-		checkGender()
-		{
-			
-		}
-			
-		checkCountry()
+		function checkCountry()
 		{
 			
 		}
@@ -75,7 +82,7 @@
 			
 		function inputForm()
 		{
-			if($GLOBALS['errorFile'] == "")
+			if($GLOBALS['errorFile'] == "" && $GLOBALS['errorPersonalText'] == "")
 			{
 				$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
 				
@@ -99,7 +106,21 @@
 		}
 			
 //////////////////////Output Layout Profile////////////////////////////////////////////////////////////////////
-
+		/*	$host = localhost;
+			$dbname = webdb13KIC1;
+			$username = webdb13KIC1;
+			$password = busteqec;
+			
+			$db = new PDO("mysql:host=$host;dbname=$dbname;charset=UTF-8", $username, $password);
+			
+			$stmt = $db->prepare('SELECT * FROM user_data WHERE user_id=?');
+			$stmt-> bindValue(1, 2, PDO::PARAM_INT);
+			$stmt->execute();
+		*/
+		
+			
+			
+		
 			$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec"); 
 			if(!$con)
 			{
@@ -110,8 +131,8 @@
 			{
 				die('Cannot use database:' . mysql_error());
 			}
-			//$userID = $_POST["user_id"];
-			$selection = mysql_query("SELECT * FROM user_data WHERE user_id= 2 " ); // query klopt niet.
+			$userID = $_GET["user_id"];
+			$selection = mysql_query("SELECT * FROM user_data WHERE user_id= $userID" ); 
 			
 			if (!$selection) 
 			{
@@ -127,18 +148,17 @@
 					{ 
 				?>
 						<div class="avatar"> <?php $row["avatar"]; ?> </div> 
-						<br /><br />
+						
 						<?php
+							echo "<br />";
+							echo "<br />";
 							echo "Username: " . $row["username"];  
 							echo "<br />";
 							echo "<br />";
 							echo "Account Type: " . $row["account_type"]; 
 							echo "<br />";
 							echo "<br />";
-						?>
-						<a href="mailto: <?php $row["email"]; ?> "> Send Mail</a> <!-- werkt niet -->
-				<?php
-						break;
+							break;
 					}				
 				?>	
 			</div>
@@ -193,8 +213,11 @@
 		
 					echo "<br />";
 					echo "<br />";
-				?>	 
-				<a href="index.php?content=editprofile"> <i> <strong> Edit Profile </strong> </i> </a> 
+					
+					echo "<a href=\"index.php?content=editprofile&user_id=" . $row["user_id"] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a>" ;
+				?>	
+					
+				
 			</div>	
 		</div> 
 
