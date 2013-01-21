@@ -7,11 +7,10 @@
             $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
             $sql = "SELECT * FROM subjects WHERE open=1 ORDER BY subject_id DESC LIMIT 0,10";
             $results = $db->query($sql);
-
             foreach($results as $row)
             {
                 echo "<tr>";
-                echo "<td><a href="index.php?content=topic&subject='.$row['subject_id'].'">" . $row['subject_name']. "</a></td>";
+                echo "<td><a href=\"index.php?content=topic&subject=".$row['subject_id']."\">" . $row['subject_name']. "</a></td>";
                 echo "</tr>";
             }
             $db = NULL;
