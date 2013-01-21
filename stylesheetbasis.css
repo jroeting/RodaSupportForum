@@ -316,4 +316,18 @@ table.tablemember
 	padding-top:10px;
 }
 
+.footersmall
+{
+	width: 150px;
+}
 
+.footerwide
+{
+	width: 450px;
+}
+
+.footerrest
+{
+	text-align: right;
+	width: 188px;
+}
