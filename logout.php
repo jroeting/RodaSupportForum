@@ -1,10 +1,9 @@
 <?php 
-session_start();
 if(isset($_SESSION['username']))
 {
    unset($_SESSION['username']);
 }
-if(isset($_SESSION['account_type']);
+if(isset($_SESSION['account_type']))
 {
 	unset($_SESSION['account_type']);
 }

@@ -1,7 +1,4 @@
 <?php
-// starts the session
-session_start();
-
 // username and password sent from form 
 $myusername = $_POST['username']; 
 $mypassword = $_POST['password'];
@@ -27,26 +24,25 @@ if(!$select)
 	exit;
 }
 
-while($row = mysql_fetch_array($select))
+$row = mysql_fetch_array($select)
+
+if($mypassword == $row['password'] && $myusername == $row['username'])
 {
-	if($mypassword == $row['password'] && $myusername == $row['username'])
+	$_SESSION['username'] = $row['username'];
+	$account_type = $row['account_type'];
+	if($account_type == "adm")
 	{
-		$_SESSION['username'] = $row['username'];
-		$account_type = $row['account_type'];
-		if($account_type == "adm")
-		{
-			$_SESSION['account_type'] = 1;
-		}
-		echo($_SESSION['username']);
-		
-		if(isset($_SESSION['username']))
-		{
-			echo "Login successful, you will be redirected in 5 seconds.";
-			sleep(5);
-			header("location:index.php?content=home");
-		}
+		$_SESSION['account_type'] = 1;
 	}
+		
+	if(isset($_SESSION['username']))
+	{
+		echo "Login successful, you will be redirected in 5 seconds.";
+		header("location:index.php?content=home");
+	}
+}else
+{
+	echo "Invalid username/password";
+	echo "<a href=index.php?content=inlog><br />Go back</a>";
 }
-echo "Invalid username/password";
-echo "<a href=index.php?content=inlog><br />Go back</a>";
  ?>
