@@ -26,14 +26,12 @@
 					<?php
 					if(isset($_SESSION['username']))
 					{
-						Print "<a href='index.php?content=logout'>Log out</a>";
-					}
-					if(!isset($_SESSION['username']))
+						echo "<a href='index.php?content=logout'>Log out</a>";
+					}else
 					{
-						Print "<a href='index.php?content=inlog'>Login</a>";
+						echo "<a href='index.php?content=inlog'>Login</a> | <a href='index.php?content=register'>Register</a>&nbsp";
 					}
 					?>
-					| <a href="index.php?content=register">Register</a>&nbsp
 				</p>
 			</div>
 		</div>

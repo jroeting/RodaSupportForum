@@ -32,17 +32,17 @@ while($row = mysql_fetch_array($select))
 	if($mypassword == $row['password'] && $myusername == $row['username'])
 	{
 		$_SESSION['username'] = $row['username'];
-		/* $account_type = $row['account_type'];
-		if($account_type == adm)
+		$account_type = $row['account_type'];
+		if($account_type == "adm")
 		{
 			$_SESSION['account_type'] = 1;
 		}
 		echo($_SESSION['username']);
-		*/
+		
 		if(isset($_SESSION['username']))
 		{
 			echo "Login successful, you will be redirected in 5 seconds.";
-			//sleep(5);
+			sleep(5);
 			header("location:index.php?content=home");
 		}
 	}
