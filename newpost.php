@@ -13,20 +13,33 @@
 		$_POST["post"] = filter_var($_POST["post"], FILTER_SANITIZE_STRING);
 	}
 	
+	function inputPost()
+	{
+		$title = $_POST['title'];
+		$category = $_POST['category'];
+		$post = $_POST['post'];
+	}
+	
 	if(isset($_SESSION['username'])) :
 		$errorTitle = "";
+		$username = $_SESSION['username'];
 		
 		if (isset($_POST["submit"])) 
 		{	
 			checkTitle();
-			checkMessage();			
-		}		
+			checkMessage();
+			inputPost();
+		}
 ?>
 	<form name="new_subject" method="post" action="index.php?content=newpost">
 	<table>
 		<tr>
 				<td class="left">Subject Title:</td>
-			<td><input type="text" name="title" id="subject_title" /></td>
+			<td><input type="text" name="title" id="subject_title" />
+				<?php
+					echo $GLOBALS['errorTitle'];
+				?>
+			</td>
 		</tr>
 		<tr>
 			<td class="left">Category:</td>
