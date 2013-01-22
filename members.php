@@ -1,3 +1,6 @@
+<?php
+	if(!isset($_SESSION['username'])) :
+?>
 	<h1>
 		Members of Roda
 	</h1>
@@ -32,7 +35,7 @@
 			{
 				echo "<tr>";
 				echo "<td>" . /*$row[''] .*/ "</td>";
-				echo "<td>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
+				echo "<td>" . "<a href=index.php?content=profile>". $row["username"] . "</a>" . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . /*$row[''] .*/ "</td>";
 				echo "<td>" . $row['account_type'] . "</td>";		
@@ -42,11 +45,8 @@
 			mysql_close();	
 		?>	
     </table>
-        
-
-
-
-	
-	
-		
-
+<?php
+	else :
+		header("location:index.php?content=home");
+	endif;
+?>
