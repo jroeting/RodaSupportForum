@@ -24,7 +24,7 @@ if(!$select)
 	exit;
 }
 
-$row = mysql_fetch_array($select)
+$row = mysql_fetch_array($select);
 
 if($mypassword == $row['password'] && $myusername == $row['username'])
 {
