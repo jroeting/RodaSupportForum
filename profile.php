@@ -122,6 +122,15 @@
 			$stmt->execute();
 		*/
 			// New query for db
+			$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
+				
+				if(!$con)
+				{
+					die('Could not connect ' . mysql_error());
+				}
+			
+				$selected_db = mysql_select_db("webdb13KIC1",$con);	
+				
 			$userID = $_GET["user_id"];
 			$selection2 = mysql_query("SELECT * FROM user_data WHERE user_id= $userID" ); 
 			
