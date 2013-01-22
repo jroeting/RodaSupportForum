@@ -77,13 +77,6 @@ body
 	color: #999
 }
 
-.headertext
-{
-    position: relative;
-    top: 170px;
-    text-align: right
-}
-
 #registrationcontent
 {
 	position: relative;
@@ -218,10 +211,12 @@ a:hover
 
 p.logintext 
 {
+	position: absolute;
 	color: #CCC;
 	font-family: Verdana, Geneva, sans-serif;
 	font-size: 12px;
-	margin:10px;
+	bottom: -10px;
+	right: 0px
 }
 
 p.blacktext
@@ -330,4 +325,9 @@ table.tablemember
 {
 	text-align: right;
 	width: 188px;
+}
+
+.left
+{
+	width: 50px;
 }
