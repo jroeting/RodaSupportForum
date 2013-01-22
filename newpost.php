@@ -1,6 +1,18 @@
 <?php
 	function checkTitle()
 	{
+		$db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
+		// selection of all subjects, ordered by subject_id (so most recent is on top)
+        $sql= "SELECT subject_name FROM user_data WHERE subject_name='$_POST[title]'";
+		$results = $db->query($sql);
+		foreach($results as $row)
+        {
+            $GLOBALS['errorTitle'] = "invalid title";
+        }
+		
+		// close database
+        $db = NULL;
+		
 		if ($_POST["title"] == "" || !(filter_var($_POST["title"], FILTER_SANITIZE_STRING) == $_POST["title"] && preg_match('/^[a-z0-9]+$/i', $_POST["name"])))
 		{
 			$GLOBALS['errorTitle'] = "invalid title";	
@@ -24,10 +36,25 @@
 			// connect with database
             $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
 			// selection of all subjects, ordered by subject_id (so most recent is on top)
-            $sqlselect = "SELECT user_data.user_id, subjects.subject_id FROM user_data, subjects WHERE user_data.username=$GLOBALS[username]";
-            $results = $db->query($sql);
-			$sqlinsert = "INSERT INTO posts (subject_id, user_id, content) VALUES ()";
-            $input = $db->query($sql);
+            $sqlSelectUserId = "SELECT user_id FROM user_data WHERE username='$GLOBALS[username]'";
+			$results = $db->query($sqlSelectUserId);
+			foreach($results as $row)
+            {
+                $userId = $row['user_id'];
+            }
+			$sqlinsert = "INSERT INTO subjects (user_id, subject_name, category) VALUES ('$userId','$title','$category')";
+            $input = $db->query($sqlinsert);
+			
+			$sqlSelectSubjectId = "SELECT subject_id FROM subjects WHERE user_id='$userID' AND subject_name='$title'";
+			$results = $db->query($sqlSelectSubjectId);
+			foreach($results as $row)
+            {
+                $subjectId = $row['subject_id'];
+            }
+			
+			$sqlinsert = "INSERT INTO posts (subject_id, user_id, content) VALUES ('$subjectId','$userId','$post')";
+			$input = $db->query($sqlinsert);
+			
 			// close database
             $db = NULL;
 		}
