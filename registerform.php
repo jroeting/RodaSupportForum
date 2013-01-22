@@ -14,22 +14,22 @@
 				</span>
 				</td>
             </tr>
-            <tr>
-                <td class="leftcolum">Surname*</td>
-                <td class="rightcolum"><input type="text" name="surname" maxlength="50" value="<?php if ($GLOBALS['errorSurname'] == "" && isset($_POST["surname"])) { echo $_POST["surname"];} ?>" />
-					<span class="registerError">
-						<?php
-							echo $GLOBALS['errorSurname'];
-						?>
-					</span>
-				</td>
-            </tr>
 			<tr>
                 <td class="leftcolum">Infix</td>
                 <td class="rightcolum"><input type="text" name="infix" maxlength="10" size="10" value="<?php if ($GLOBALS['errorInfix'] == "" && isset($_POST["infix"])) { echo $_POST["infix"];} ?>" />
 					<span class="registerError">
 						<?php
 							echo $GLOBALS['errorInfix'];
+						?>
+					</span>
+				</td>
+            </tr>
+            <tr>
+                <td class="leftcolum">Surname*</td>
+                <td class="rightcolum"><input type="text" name="surname" maxlength="50" value="<?php if ($GLOBALS['errorSurname'] == "" && isset($_POST["surname"])) { echo $_POST["surname"];} ?>" />
+					<span class="registerError">
+						<?php
+							echo $GLOBALS['errorSurname'];
 						?>
 					</span>
 				</td>

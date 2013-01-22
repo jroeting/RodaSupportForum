@@ -47,6 +47,6 @@
     </table>
 <?php
 	else :
-		header("location:index.php?content=home");
+		header("location:index.php?content=inlog");
 	endif;
 ?>

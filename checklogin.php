@@ -37,7 +37,6 @@ if($mypassword == $row['password'] && $myusername == $row['username'])
 		
 	if(isset($_SESSION['username']))
 	{
-		echo "Login successful, you will be redirected in 5 seconds.";
 		header("location:index.php?content=home");
 	}
 }else
