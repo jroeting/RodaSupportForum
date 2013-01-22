@@ -15,9 +15,22 @@
 	
 	function inputPost()
 	{
-		$title = $_POST['title'];
-		$category = $_POST['category'];
-		$post = $_POST['post'];
+		if ($GLOBALS['errorTitle'] != "")
+		{
+			$title = $_POST['title'];
+			$category = $_POST['category'];
+			$post = $_POST['post'];
+			
+			// connect with database
+            $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
+			// selection of all subjects, ordered by subject_id (so most recent is on top)
+            $sqlselect = "SELECT user_data.user_id, subjects.subject_id FROM user_data, subjects WHERE user_data.username=$GLOBALS[username]";
+            $results = $db->query($sql);
+			$sqlinsert = "INSERT INTO posts (subject_id, user_id, content) VALUES ()";
+            $input = $db->query($sql);
+			// close database
+            $db = NULL;
+		}
 	}
 	
 	if(isset($_SESSION['username'])) :
