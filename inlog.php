@@ -1,4 +1,7 @@
-<div id="registrationcontent">
+<?php
+	if(!isset($_SESSION['username'])) :
+?>
+	<div id="registrationcontent">
     <p class="registration">&nbsp;</p>
    	<p class="registration">Log in to your account.</p>
     <form name="login_form" method="post" action="index.php?content=checklogin">
@@ -18,3 +21,8 @@
 		<input type="submit" value="Sign in" name="submit" style="margin:5px">
 	</form>
 </div>
+<?php
+	else :
+		header("location:index.php?content=home");
+	endif;
+?>
