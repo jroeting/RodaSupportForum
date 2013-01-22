@@ -14,7 +14,7 @@
   		<tr>
         	<!-- gives an overview of all subjects and the last post made in each subject -->
             <td class="tablehead"><strong>Subject</strong></td>
-            <td class="tablehead"><strong>Last post</strong></td>
+            <td class="tablehead" width="200"><strong>Last post</strong></td>
         </tr>
      		<?php
 				// get category
@@ -28,7 +28,7 @@
                 foreach($results as $row)
                 {
                     echo "<tr>";
-                    echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] . "\">" . $row['subject_name'] . "</a></td>";
+                    echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" . $row['subject_name'] . "</a></td>";
                     echo "</tr>";
                 }
 				// close databae

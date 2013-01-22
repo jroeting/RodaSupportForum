@@ -9,24 +9,38 @@
             echo "<a href=\"index.php?content=newpost&subject='$subject'\">Place a reaction</a>";
         }
 		// shows subject name
-		echo "<table class=\"forumcontent\" align=\"center\">";
-		echo "<tr class=\"tablehead\">" . $subjectname . "</tr>";
+		
+		echo '<table align="center">';
+		echo '<tr>';
+		echo '<td class="tablehead" colspan="2"><strong>' . $subjectname . '</strong></td>';
+		echo '</tr>';
 		// open database
 		$db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
 		// select user data and post concent as a reaction on selected subject
-        $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content FROM user_data, posts 
-		WHERE posts.user_id = user_data.user_id AND posts.subject_id = $subject";
+        $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, user_data.user_id FROM 
+		user_data, posts WHERE posts.user_id = user_data.user_id AND posts.subject_id = $subject ORDER BY posts.date_time ASC";
         $results = $db->query($sql);
 		// shows user data and post content
         foreach($results as $row)
         {
-        	echo "<tr>";
-        	echo "<td>" . $row['username']. "</td>";
-			echo "<td>" . $row['avatar']. "</td>";
-			echo "<td>" . $row['quote'] . "</td>";
-			echo "<td>" . $row['content'] . "</td>";
-        	echo "</tr>";
+			echo '<tr border="1px">';
+			echo '<td width="100"></td>';
+			echo '<td width="850"> Reaction placed at &nbsp;' . date("d-m-Y H:i:s", $row['date_time']) . '</td>';
+			echo '</tr>';
+			echo '<tr border="1px">';
+			echo '<td><strong><a href="index.php?content=profile&user_id=' . $row['user_id'] . '">' . $row['username'] . '</a></strong></td>';
+			echo '<td rowspan="2">' . $row['content'] .'</td>';
+			echo '</tr>';
+			echo '<tr border="1px">';
+			echo '<td height="110" width="100">'. $row['account_type'] . '</br><img src="images/avatar.png" width="100" height="100"></img></td>';
+			echo '</tr>';
+			echo '<tr border="1px">';
+			echo '<td></td>';
+			echo '<td></br>' . $row['quote'] . '</td>';
+			echo '</tr>';
+			echo '<tr><td colspan="2" height="10px"></td></tr>';
         }
 		// close database
         $db = NULL;
+		echo "</table>";
     ?>
