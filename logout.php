@@ -7,4 +7,5 @@ if(isset($_SESSION['account_type']))
 {
 	unset($_SESSION['account_type']);
 }
+header("location:index.php?content=home");
 ?>
