@@ -33,7 +33,7 @@
 			}
 			echo '<tr border="1px">';
 			echo '<td width="100"></td>';
-			echo '<td width="850"> Reaction placed at &nbsp;' . date('d-m-Y H:i:s', $row['date_time']) . '</td>';
+			echo '<td width="850"> Reaction placed at &nbsp;' . $row['date_time'] . '</td>';
 			echo '</tr>';
 			echo '<tr border="1px">';
 			echo '<td><strong><a href="index.php?content=profile&user_id=' . $row['user_id'] . '">' . $row['username'] . '</a></strong></td>';
@@ -44,9 +44,9 @@
 			echo '</tr>';
 			echo '<tr border="1px">';
 			echo '<td></td>';
-			echo '<td></br>' . $row['quote'] . '</td>';
+			echo '<td></br><p class="quote">' . $row['quote'] . '</p></td>';
 			echo '</tr>';
-			echo '<tr><td colspan="2" height="10px"></td></tr>';
+			echo '<tr><td></td><td height="2px" class="bar"></td></tr>';
         }
 		// close database
         $db = NULL;
