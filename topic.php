@@ -17,7 +17,8 @@
 		// open database
 		include 'db_con.php';
 		// select user data and post concent as a reaction on selected subject
-        $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, user_data.user_id 
+        $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, posts.post_id, 	
+				user_data.user_id 
 				FROM user_data, posts 
 				WHERE posts.user_id = user_data.user_id 
 				AND posts.subject_id = $subject 
@@ -40,14 +41,17 @@
 			echo '<td rowspan="2">' . $row['content'] .'</td>';
 			echo '</tr>';
 			echo '<tr>';
-			echo '<td class="button">klik</td>';
 			echo '<tr>';
-			echo '<td height="110" width="100">' . $user . '</br><img src="images/avatar.png" width="100" height="100"></img></td>';
+			echo '<td height="110" width="110">' . $user . '</br><img src="images/avatar.png" width="100" height="100"></img></td>';
 			echo '</tr>';
 			echo '<tr>';
 			echo '<td></td>';
 			echo '<td></br><p class="quote">' . $row['quote'] . '</p></td>';
 			echo '</tr>';
+			if($_SESSION['username'] == $row['username'] || $_SESSION['account_type'] == 1) 
+			{
+				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'"><img src="images/removebutton.png" width="157" height="23"></img></a></td></tr>';
+			}
 			echo '<tr><td></td><td height="2px" class="bar"></td></tr>';
         }
 		// close database
