@@ -234,6 +234,13 @@ p.quote
 	font-style:italic;
 }
 
+p.datetime
+{
+	color:#FFF;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size:10px;
+}
+
 table.forumcontent
 {
 	width:100%;

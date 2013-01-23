@@ -33,7 +33,7 @@
 			}
 			echo '<tr border="1px">';
 			echo '<td width="100"></td>';
-			echo '<td width="850"> Reaction placed at &nbsp;' . $row['date_time'] . '</td>';
+			echo '<td width="850"><p class="datetime"> Reaction placed at &nbsp;' . $row['date_time'] . '</p></td>';
 			echo '</tr>';
 			echo '<tr border="1px">';
 			echo '<td><strong><a href="index.php?content=profile&user_id=' . $row['user_id'] . '">' . $row['username'] . '</a></strong></td>';
