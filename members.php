@@ -7,42 +7,30 @@
 	 
 	<table class="tablemember" border="1" cellpadding="10">
   		<tr>
-			<th class="tablehead"><strong> Status </strong></th>
 			<th class="tablehead"><strong> Username </strong></th>
 			<th class="tablehead"><strong> Email </strong> </th>
 			<th class="tablehead"><strong> Posts </strong> </th>
 			<th class="tablehead"><strong> Account Type </strong></th>
+			<th class="tablehead"><strong> Date Registered </strong></th>
         </tr>
 		<?php
-			$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec"); 
-			if(!$con)
-			{
-				die('Could not connect ' . mysql_error());
-			}
-			$selected_db = mysql_select_db("webdb13KIC1",$con);
-			if (!$selected_db)
-			{
-				die('Cannot use database:' . mysql_error());
-			}
-			$selection = mysql_query("SELECT * FROM user_data ORDER BY username LIMIT 0,1000");
+			include "db_con.php";
 			
-			if (!$selection) 
-			{
-				echo 'Could not run query: ' . mysql_error();
-				exit;
-			}
-			while($row = mysql_fetch_array($selection))
+			$sql = "SELECT * FROM user_data ORDER BY username LIMIT 0,1000";
+            $result = $db->query($sql);
+				// shows the memberlist
+			foreach($result as $row) 
 			{
 				echo "<tr>";
-				echo "<td>" . /*$row[''] .*/ "</td>";
 				echo "<td>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
 				echo "<td>" . /*$row[''] .*/ "</td>";
-				echo "<td>" . $row['account_type'] . "</td>";		
+				echo "<td>" . $row['account_type'] . "</td>";	
+				echo "<td>" . /*$row[''] .*/ "</td>";
 				echo "</tr>";
 			}
 	
-			mysql_close();	
+			$db=NULL; // closing database	
 		?>	
     </table>
 <?php
