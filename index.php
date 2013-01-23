@@ -28,7 +28,7 @@
 				<?php
 				if(isset($_SESSION['username']))
 				{
-					echo "<a href='index.php?content=logout'>Log out</a> | <a href='index.php?content=profile'>" . $_SESSION['username'] . "&nbsp;<img src=\"images/avatar.png\" height=\"30px\" width=\"auto\" /></a>&nbsp;";
+					echo "<a href='index.php?content=logout'>Log out</a> | <a href='index.php?content=profile'>" . $_SESSION['username'] . "&nbsp;<img src=\"getavatar.php\" height=\"30px\" width=\"auto\" /></a>&nbsp;";
 				}else
 				{
 					echo "<a href='index.php?content=inlog'>Login</a> | <a href='index.php?content=register'>Register</a>&nbsp;";

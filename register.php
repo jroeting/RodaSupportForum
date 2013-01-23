@@ -137,18 +137,22 @@ function checkName()
 	{
 		if($GLOBALS['errorName'] == "" && $GLOBALS['errorSurname'] == "" && $GLOBALS['errorInfix'] == "" && $GLOBALS['errorEmail'] == "" && $GLOBALS['errorPassword'] == "" && $GLOBALS['errorUsername'] == "" && $GLOBALS['errorFile'] == "")
 		{
+			$password = hash('sha256', $_POST["password"]);
+			
 			// connect with database
 			include 'db_con.php';
 			// selection of all subjects, ordered by subject_id (so most recent is on top)
 			$sql= "INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES ('$_POST[username]','$password','$_POST[mail]','$_POST[name]','$_POST[surname]','$GLOBALS[imgData]','$_POST[quote]','$_POST[infix]')";
 			$results = $db->query($sql);
+			// close database
+            $db = NULL;
 			
 			if ($_POST["infix"] == "")
 			{
 				$name = $_POST["name"] . " " . $_POST["surname"];
 			}else
 			{
-				$name = $_POST["name"] . " " . $_POST[infix] . " " . $_POST["surname"];
+				$name = $_POST["name"] . " " . $_POST["infix"] . " " . $_POST["surname"];
 			}
 			
 			$to = $_POST["mail"];
