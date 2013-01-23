@@ -6,8 +6,11 @@
 		// if the user is logged in, the user can place a new reaction in this subject
         if(isset($_SESSION['username'])) 
 		{
-            echo "<a href=\"index.php?content=newpost&subject='$subject'\">Place a reaction</a>";
-        }
+            echo "<a href=\"index.php?content=newpost&subject='$subject'\">Place a reaction</a></br>";
+        } 
+		if($_SESSION['account_type'] == 1) {
+			echo "<a href=\"index.php?content=removesubject&subject=$subject&action=0\">Remove this subject</a></br>";
+		}
 		// shows subject name
 		
 		echo '<table align="center">';
@@ -50,11 +53,11 @@
 			echo '</tr>';
 			if($_SESSION['username'] == $row['username'] || $_SESSION['account_type'] == 1) 
 			{
-				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'"><img src="images/removebutton.png" width="157" height="23"></img></a></td></tr>';
+				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'&action=0">Remove this post</a></td></tr>';
 			}
 			echo '<tr><td></td><td height="2px" class="bar"></td></tr>';
         }
-		// close database
+		// close database <img src="images/removebutton.png" width="157" height="23"></img>
         $db = NULL;
 		echo "</table>";
     ?>
