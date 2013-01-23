@@ -31,18 +31,20 @@
 			} else {
 				$user = 'administrator';
 			}
-			echo '<tr border="1px">';
+			echo '<tr>';
 			echo '<td width="100"></td>';
 			echo '<td width="850"><p class="datetime"> Reaction placed at &nbsp;' . $row['date_time'] . '</p></td>';
 			echo '</tr>';
-			echo '<tr border="1px">';
+			echo '<tr>';
 			echo '<td><strong><a href="index.php?content=profile&user_id=' . $row['user_id'] . '">' . $row['username'] . '</a></strong></td>';
 			echo '<td rowspan="2">' . $row['content'] .'</td>';
 			echo '</tr>';
-			echo '<tr border="1px">';
+			echo '<tr>';
+			echo '<td class="button">klik</td>';
+			echo '<tr>';
 			echo '<td height="110" width="100">' . $user . '</br><img src="images/avatar.png" width="100" height="100"></img></td>';
 			echo '</tr>';
-			echo '<tr border="1px">';
+			echo '<tr>';
 			echo '<td></td>';
 			echo '<td></br><p class="quote">' . $row['quote'] . '</p></td>';
 			echo '</tr>';
