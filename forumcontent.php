@@ -4,7 +4,7 @@
 		// gets the category that is given in the link
         $category = $_GET['category'];
 		// if user is logged in, the user has the ability to make a new subject
-        if(isset($_SESSION['myusername'])) 
+        if(isset($_SESSION['username'])) 
 		{
 			// link to page where the user can make a new subject in the selected category
             echo "<a href=\"index.php?content=newsubject&category='$category'\">Make new subject</a>";
@@ -17,22 +17,24 @@
             <td class="tablehead" width="200"><strong>Last post</strong></td>
         </tr>
      		<?php
-				// get category
-                $category = $_GET['category'];
 				// open database
-                $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
+                include 'db_con.php';
 				// select subjects from given category
-                $sql = "SELECT * FROM subjects WHERE category='$category' ORDER BY subject_id";
+                $sql = "SELECT *
+						FROM subjects
+						WHERE category='$category'
+						ORDER BY subject_id";
                 $results = $db->query($sql);
 				// show subject name with a link to the reaction overview
                 foreach($results as $row)
                 {
                     echo "<tr>";
                     echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" . $row['subject_name'] . "</a></td>";
-                    echo "</tr>";
+					echo "</tr>";
                 }
 				// close databae
                 $db = NULL;
 			?>
+            
     </table>
 </html>
