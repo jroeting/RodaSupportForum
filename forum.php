@@ -11,7 +11,7 @@
     	<td>
 			<?php
 				// open database
-                $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
+                include 'db_con.php';
 				// selection of number of subjects.
                 $sql = "SELECT COUNT(subject_id) FROM subjects WHERE category = 'technical_issues'";
                 $result = $db->query($sql);
@@ -20,8 +20,6 @@
 				{
 					echo $row[0];
 				}
-				// close database
-				$db = NULL;
   			?>
         </td>
 	</tr>
@@ -30,8 +28,6 @@
   		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=cartalk"><span>Cartalk</span></a></p></td>
     	<td>
 			<?php
-				// open database
-                $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
 				// selection of number of subjects
                 $sql = "SELECT COUNT(*) FROM subjects WHERE category = 'cartalk'";
                 $result = $db->query($sql);
@@ -40,8 +36,6 @@
 				{
 					echo $row[0];
 				}
-				// close database
-                $db = NULL;
             ?>
 		</td>
 	</tr>
@@ -50,8 +44,6 @@
   		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=car_unrelated"><span>Car-unrelated</span></a></p></td>
     	<td>
 			<?php
-				// open database
-                $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
 				// selection of number of subjects
                 $sql = "SELECT COUNT(*) FROM subjects WHERE category = 'car_unrelated'";
                 $result = $db->query($sql);
