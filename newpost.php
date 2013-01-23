@@ -1,19 +1,26 @@
 <?php
+	$errorTitle = "";
+	$username = $_SESSION['username'];
+	
 	function checkTitle()
 	{
-		$db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
+		// connect with database
+        include 'db_con.php';
 		// selection of all subjects, ordered by subject_id (so most recent is on top)
-        $sql= "SELECT subject_name FROM user_data WHERE subject_name='$_POST[title]'";
+        $sql= "SELECT subject_name FROM subjects WHERE subject_name='$_POST[title]'";
 		$results = $db->query($sql);
 		foreach($results as $row)
         {
-            $GLOBALS['errorTitle'] = "invalid title";
-        }
+            if ($row['subject_name'] == $_POST['title'])
+			{
+				$GLOBALS['errorTitle'] = "invalid title";
+			}	
+		}
 		
 		// close database
         $db = NULL;
 		
-		if ($_POST["title"] == "" || !(filter_var($_POST["title"], FILTER_SANITIZE_STRING) == $_POST["title"] && preg_match('/^[a-z0-9]+$/i', $_POST["name"])))
+		if ($_POST["title"] == "" || !(filter_var($_POST["title"], FILTER_SANITIZE_STRING) == $_POST["title"] && preg_match('/^[a-z0-9]+$/i', $_POST["title"])))
 		{
 			$GLOBALS['errorTitle'] = "invalid title";	
 		}
@@ -27,14 +34,16 @@
 	
 	function inputPost()
 	{
-		if ($GLOBALS['errorTitle'] != "")
+		if ($GLOBALS['errorTitle'] == "")
 		{
 			$title = $_POST['title'];
 			$category = $_POST['category'];
 			$post = $_POST['post'];
+			$userId;
+			$subjectId;
 			
 			// connect with database
-            $db = new PDO('mysql:host=localhost;dbname=webdb13KIC1', 'webdb13KIC1', 'busteqec');
+            include 'db_con.php';
 			// selection of all subjects, ordered by subject_id (so most recent is on top)
             $sqlSelectUserId = "SELECT user_id FROM user_data WHERE username='$GLOBALS[username]'";
 			$results = $db->query($sqlSelectUserId);
@@ -45,7 +54,7 @@
 			$sqlinsert = "INSERT INTO subjects (user_id, subject_name, category) VALUES ('$userId','$title','$category')";
             $input = $db->query($sqlinsert);
 			
-			$sqlSelectSubjectId = "SELECT subject_id FROM subjects WHERE user_id='$userID' AND subject_name='$title'";
+			$sqlSelectSubjectId = "SELECT subject_id FROM subjects WHERE (user_id='$userId' AND subject_name='$title')";
 			$results = $db->query($sqlSelectSubjectId);
 			foreach($results as $row)
             {
@@ -57,50 +66,28 @@
 			
 			// close database
             $db = NULL;
+			
+			header("location:index.php?content=topic&subject=" . $subjectId . "&subjectname=" . $title);
+		}else
+		{
+			include 'newpostform.php';
 		}
 	}
 	
-	if(isset($_SESSION['username'])) :
-		$errorTitle = "";
-		$username = $_SESSION['username'];
-		
-		if (isset($_POST["submit"])) 
-		{	
+	if(isset($_SESSION['username']))
+	{
+		if (isset($_POST["submit"]))
+		{
 			checkTitle();
 			checkMessage();
 			inputPost();
+		}else
+		{
+			include 'newpostform.php';
 		}
-?>
-	<form name="new_subject" method="post" action="index.php?content=newpost">
-	<table>
-		<tr>
-				<td class="left">Subject Title:</td>
-			<td><input type="text" name="title" id="subject_title" />
-				<?php
-					echo $GLOBALS['errorTitle'];
-				?>
-			</td>
-		</tr>
-		<tr>
-			<td class="left">Category:</td>
-			<td>
-				<select name="category" size="3" id="category">
-					<option id="technical_issues" selected="selected">technical issues</option>
-					<option id="cartalk">cartalk</option>
-					<option id="car_unrelated">car unrelated</option>
-				</select>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2">
-				Write your message in the following textbox<br />
-				<textarea name="post" rows="4" cols="50">Write message here...</textarea>
-				<input type="submit" value="post" name="submit" />
-			</td>
-		</tr>
-	</table>
-<?php
-	else :
+		
+	}else
+	{
 		header("location:index.php?content=inlog");
-	endif;
+	}
 ?>

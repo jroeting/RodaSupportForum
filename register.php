@@ -36,50 +36,52 @@ function checkName()
 		}else
 		{
 			$mail = $_POST["mail"];
-			$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
 			
-			if(!$con)
-			{
-				die('Could not connect ' . mysql_error());
-			}
-		
-			$selected_db = mysql_select_db("webdb13KIC1",$con);
-			$selection = mysql_query("SELECT email FROM user_data WHERE email='$mail'");
-	
-			if ($row = mysql_fetch_array($selection))
-			{
-				$GLOBALS['errorEmail'] = "e-mail already in use";
-			}
+			// connect with database
+			include 'db_con.php';
+			// selection of all subjects, ordered by subject_id (so most recent is on top)
+			$sql= "SELECT email FROM user_data WHERE email='$mail'";
+			$results = $db->query($sql);
 				
-			mysql_close();
+			foreach($results as $row)
+			{
+				if ($row['email'] == $mail)
+				{
+					$GLOBALS['errorEmail'] = "e-mail already in use";
+				}
+			}
+			
+			// close database
+			$db = NULL;
 		}
 	}
 	
 	function checkUsername()
 	{
 		$username = $_POST["username"];
-		$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
-			
-		if(!$con)
-		{
-			die('Could not connect ' . mysql_error());
-		}
 		
-		$selected_db = mysql_select_db("webdb13KIC1",$con);
-		$selection = mysql_query("SELECT username FROM user_data WHERE username='$username'");
-			
+		// connect with database
+		include 'db_con.php';
+		// selection of all subjects, ordered by subject_id (so most recent is on top)
+		$sql= "SELECT username FROM user_data WHERE username='$username'";
+		$results = $db->query($sql);
+					
 		if ($_POST["username"] == "" || !(filter_var($_POST["username"], FILTER_SANITIZE_EMAIL)))
 		{
 			$GLOBALS['errorUsername'] = "invalid username";
 		}else
 		{
-			if ($row = mysql_fetch_array($selection))
+			foreach($results as $row)
 			{
-				$GLOBALS['errorUsername'] = "username already taken";
+				if ($row['username'] == $username)
+				{
+					$GLOBALS['errorUsername'] = "username already taken";
+				}
 			}
 		}
 		
-		mysql_close();
+		// close database
+		$db = NULL;
 	}
 	
 	function checkQuote()
@@ -135,17 +137,11 @@ function checkName()
 	{
 		if($GLOBALS['errorName'] == "" && $GLOBALS['errorSurname'] == "" && $GLOBALS['errorInfix'] == "" && $GLOBALS['errorEmail'] == "" && $GLOBALS['errorPassword'] == "" && $GLOBALS['errorUsername'] == "" && $GLOBALS['errorFile'] == "")
 		{
-			$con = mysql_connect("localhost:3306","webdb13KIC1","busteqec");
-				
-			if(!$con)
-			{
-				die('Could not connect ' . mysql_error());
-			}
-			
-			$password = hash('sha256', $_POST["password"]);
-			
-			$selected_db = mysql_select_db("webdb13KIC1",$con);
-			$selection = mysql_query("INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES ('$_POST[username]','$password','$_POST[mail]','$_POST[name]','$_POST[surname]','$GLOBALS[imgData]','$_POST[quote]','$_POST[infix]')");
+			// connect with database
+			include 'db_con.php';
+			// selection of all subjects, ordered by subject_id (so most recent is on top)
+			$sql= "INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES ('$_POST[username]','$password','$_POST[mail]','$_POST[name]','$_POST[surname]','$GLOBALS[imgData]','$_POST[quote]','$_POST[infix]')";
+			$results = $db->query($sql);
 			
 			if ($_POST["infix"] == "")
 			{
