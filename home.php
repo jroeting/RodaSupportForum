@@ -1,6 +1,12 @@
 <!-- home.php displays the 10 most recent subjects and the 10 most popular subjects -->
 <!-- Display's the 10 most recent subjects -->
 	<table class="tablemember" celpadding="10">
+    	<tr>
+        	<td>Welcome at Roda's supportforum. Do you have a question about Roda, cars, or do you just want to come in touch with other Roda fans? Please register or login.
+            </br>
+            </br>
+       		</td>
+        </tr>
   		<tr>
     		<th class="tablehead"><strong>10 most recent subjects</strong></th>
         </tr>
