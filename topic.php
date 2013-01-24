@@ -4,10 +4,6 @@
         $subject = $_GET['subject'];
 		$subjectname = $_GET['subjectname'];
 		// if the user is logged in, the user can place a new reaction in this subject
-        if(isset($_SESSION['username'])) 
-		{
-            echo "<a href=\"index.php?content=newreaction&subject=$subject\">Place a reaction</a></br>";
-        } 
 		if(isset($_SESSION['account_type']) == 1) {
 			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Remove this subject</a></br>";
 		}
@@ -60,4 +56,10 @@
 		// close database <img src="images/removebutton.png" width="157" height="23"></img>
         $db = NULL;
 		echo "</table>";
+		
+		if(isset($_SESSION['username'])) 
+		{
+            echo 'Write a new reaction in this subject';
+			include 'newreactionform.php';
+        } 
     ?>
