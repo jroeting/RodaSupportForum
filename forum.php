@@ -7,7 +7,7 @@
     </tr>
   	<tr class="tablebody">
     	<!-- Link to subjects belonging to category -->
-  		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=technical_issues"><span>Technical Issues</span></a></p></td>
+  		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=technical issues"><span>Technical Issues</span></a></p></td>
     	<td>
 			<?php
 				// open database
@@ -15,7 +15,7 @@
 				// selection of number of subjects.
                 $sql = "SELECT COUNT(subject_id) 
 						FROM subjects 
-						WHERE category = 'technical_issues'";
+						WHERE category = 'technical issues'";
                 $result = $db->query($sql);
 				// shows the number of subjects.
 				foreach($result as $row) 
@@ -45,13 +45,13 @@
 	</tr>
   	<tr class="tablebody" >
     	<!-- link to subjects belonging to category -->
-  		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=car_unrelated"><span>Car-unrelated</span></a></p></td>
+  		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=car unrelated"><span>Car-unrelated</span></a></p></td>
     	<td>
 			<?php
 				// selection of number of subjects
                 $sql = "SELECT COUNT(*) 
 						FROM subjects 
-						WHERE category = 'car_unrelated'";
+						WHERE category = 'car unrelated'";
                 $result = $db->query($sql);
 				// shows the number of subjects
 				foreach($result as $row) 
