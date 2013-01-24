@@ -1,10 +1,11 @@
-<?php
-	if(isset($_SESSION['username'])) :
-?>
+	<!-- member page can only be viewed if the user is logged in -->
+	<?php
+		if(isset($_SESSION['username'])) :
+	?>
 	<h1>
 		Members of Roda
 	</h1>
-	 
+	<!-- layout of memberlist --> 
 	<table class="tablemember" border="1" cellpadding="10">
   		<tr>
 			<th class="tablehead"><strong> Username </strong></th>
@@ -14,28 +15,28 @@
 			<th class="tablehead"><strong> Date Registered </strong></th>
         </tr>
 		<?php
-			include "db_con.php";
+			include "db_con.php"; // connection with database
 			
 			$sql = "SELECT * FROM user_data ORDER BY username LIMIT 0,1000";
             $result = $db->query($sql);
-				// shows the memberlist
+				// outputs the memberlist
 			foreach($result as $row) 
 			{
 				echo "<tr>";
 				echo "<td>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
-				$userId = $row['user_id'];
 				echo "<td>" . /*$row[''] .*/ "</td>";
 				echo "<td>" . $row['account_type'] . "</td>";	
 				echo "<td>" . /*$row[''] .*/ "</td>";
 				echo "</tr>";
 			}
 	
-			$db=NULL; // closing database	
+			$db=NULL; // closes database	
 		?>	
     </table>
-<?php
-	else :
-		header("location:index.php?content=inlog");
-	endif;
-?>
+	<!-- if the user is not logged in, the user will be redirected to the inlog page
+	<?php
+		else :
+			header("location:index.php?content=inlog");
+		endif;
+	?>
