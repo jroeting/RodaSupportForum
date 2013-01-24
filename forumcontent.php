@@ -26,12 +26,14 @@
 						ORDER BY subject_id";
                 $results = $db->query($sql);
 				// show subject name with a link to the reaction overview
+				
                 foreach($results as $row)
                 {
                     echo "<tr>";
                     echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" . $row['subject_name'] . "</a></td>";
 					echo "</tr>";
                 }
+				
 				// close databae
                 $db = NULL;
 			?>

@@ -4,7 +4,7 @@ echo "<form name=\"new_reaction\" method=\"post\" action=\"index.php?content=new
 	<table>
 		<tr>
         	<td>
-				<textarea name="post" id="new_reaction" rows="4" cols="50">Write reaction here...</textarea></br>
+				<textarea name="post" rows="4" cols="50">Write reaction here...</textarea></br>
 				<input type="submit" value="post" name="submit" />
             </td>
 		</tr>
