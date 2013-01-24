@@ -14,9 +14,9 @@
 			<td class="left">Category:</td>
 			<td>
 				<select name="category" size="3" id="category">
-					<option id="technical_issues" selected="selected">technical issues</option>
-					<option id="cartalk">cartalk</option>
-					<option id="car_unrelated">car unrelated</option>
+					<option id="technical_issues" <?php if ($_GET["category"] == "technical_issues") echo "selected=\"selected\"";?>>technical issues</option>
+					<option id="cartalk" <?php if ($_GET["category"] == "cartalk") echo "selected=\"selected\"";?>>cartalk</option>
+					<option id="car_unrelated" <?php if ($_GET["category"] == "car_unrelated") echo "selected=\"selected\"";?>>car unrelated</option>
 				</select>
 			</td>
 		</tr>

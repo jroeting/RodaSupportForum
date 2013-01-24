@@ -3,18 +3,15 @@
 $myusername = $_POST['username']; 
 $mypassword = $_POST['password'];
 
-// encrypt password
-$mypassword = hash('sha256', $mypassword);
-
 // Connect to server and select databse.
 include "db_con.php";
 
-$sql = "SELECT * FROM user_data WHERE username='$myusername' and password='$mypassword'";
+$sql = "SELECT * FROM user_data WHERE username='$myusername'";
 $result = $db->query($sql);
 
 foreach($result as $row)
 {
-	if($mypassword == $row['password'] && $myusername == $row['username'])
+	if( crypt($mypassword, $row['password']) == $row['password'] && $myusername == $row['username'])
 	{
 		$_SESSION['username'] = $row['username'];
 		$account_type = $row['account_type'];

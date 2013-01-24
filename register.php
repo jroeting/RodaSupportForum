@@ -137,7 +137,7 @@ function checkName()
 	{
 		if($GLOBALS['errorName'] == "" && $GLOBALS['errorSurname'] == "" && $GLOBALS['errorInfix'] == "" && $GLOBALS['errorEmail'] == "" && $GLOBALS['errorPassword'] == "" && $GLOBALS['errorUsername'] == "" && $GLOBALS['errorFile'] == "")
 		{
-			$password = hash('sha256', $_POST["password"]);
+			$password = crypt($_POST["password"]);
 			
 			// connect with database
 			include 'db_con.php';
