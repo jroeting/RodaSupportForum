@@ -59,7 +59,17 @@
 		
 		if(isset($_SESSION['username'])) 
 		{
-            echo 'Write a new reaction in this subject';
+			echo '</br>';
+			echo '<table>';
+			echo '<tr>';
+			echo '<td width="100"></td>';
+			echo '<td>';
+            echo '&nbsp;Write a new reaction in this subject';
+			echo '</td>';
+			echo '<tr>';
+			echo '<td></td>';
+			echo '<td>';
 			include 'newreactionform.php';
+			echo '</td></tr></table';
         } 
     ?>
