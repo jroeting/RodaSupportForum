@@ -18,7 +18,12 @@
 			} else
 			{		
 				$content = "home";
-			}				
+			}	
+
+			$homepages = array("home");
+			$memberspages = array("members", "profile");
+			$forumpages = array("forum", "forumcontent", "newpost", "topic", "newreaction");
+			$faqpages = array("faq", "rules", "faq1",  "faq2", "faq3", "faq4", "faq5", "faq6", "faq7", "faq8", "faq9", "faq10", "faq11");
 		?>
 	</head>
     <body>
@@ -40,10 +45,10 @@
 			<div id="menucontainer">
 			    <div id="nav">
 				  <ul>
-					<li><a href="index.php?content=home" <?php if($content == "home") echo "class=\"current\"" ?>><span>Home</span></a></li>
-					<li><a href="index.php?content=members" <?php if($content == "members") echo "class=\"current\"" ?>><span>Members</span></a></li>
-					<li><a href="index.php?content=forum" <?php if($content == "forum") echo "class=\"current\"" ?>><span>Forum</span></a></li>
-					<li><a href="index.php?content=faq" <?php if($content == "faq") echo "class=\"current\"" ?>><span>FAQ</span></a></li>
+					<li><a href="index.php?content=home" <?php if(in_array($content, $homepages)) echo "class=\"current\"" ?>><span>Home</span></a></li>
+					<li><a href="index.php?content=members" <?php if(in_array($content, $memberspages)) echo "class=\"current\"" ?>><span>Members</span></a></li>
+					<li><a href="index.php?content=forum" <?php if(in_array($content, $forumpages)) echo "class=\"current\"" ?>><span>Forum</span></a></li>
+					<li><a href="index.php?content=faq" <?php if(in_array($content, $faqpages)) echo "class=\"current\"" ?>><span>FAQ</span></a></li>
 				  </ul>
 			    </div>
 			</div>
