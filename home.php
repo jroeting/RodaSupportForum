@@ -37,7 +37,8 @@
             $sql = "SELECT posts.highlight, subjects.subject_name, subjects.subject_id 
 					FROM posts, subjects 
 					WHERE posts.subject_id=subjects.subject_id 
-					AND posts.highlight=1";
+					AND posts.highlight=1
+					AND subjects.open=1";
             $results = $db->query($sql);
 			// makes a table out of the query results, with a link to the posts in that subject
             foreach($results as $row)

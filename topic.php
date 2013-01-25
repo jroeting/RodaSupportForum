@@ -5,7 +5,7 @@
 		$subjectname = $_GET['subjectname'];
 		// if the user is logged in, the user can place a new reaction in this subject
 		if(isset($_SESSION['account_type']) == 1) {
-			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Remove this subject</a></br>";
+			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Close this subject</a></br>";
 		}
 		// shows subject name
 		
@@ -17,10 +17,10 @@
 		include 'db_con.php';
 		// select user data and post concent as a reaction on selected subject
         $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, posts.post_id, 	
-				user_data.user_id 
+				user_data.user_id
 				FROM user_data, posts 
-				WHERE posts.user_id = user_data.user_id 
-				AND posts.subject_id = $subject 
+				WHERE posts.user_id = user_data.user_id
+				AND posts.subject_id = $subject
 				ORDER BY posts.date_time ASC";
         $results = $db->query($sql);
 		// shows user data and post content
@@ -53,10 +53,9 @@
 			}
 			echo '<tr><td></td><td height="2px" class="bar"></td></tr>';
         }
-		// close database <img src="images/removebutton.png" width="157" height="23"></img>
-        $db = NULL;
+		// close database 
 		echo "</table>";
-		
+
 		if(isset($_SESSION['username'])) 
 		{
 			echo '</br>';
@@ -71,5 +70,5 @@
 			echo '<td>';
 			include 'newreactionform.php';
 			echo '</td></tr></table';
-        } 
-    ?>
+        }
+		?>

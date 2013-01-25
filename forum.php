@@ -15,7 +15,8 @@
 				// selection of number of subjects.
                 $sql = "SELECT COUNT(subject_id) 
 						FROM subjects 
-						WHERE category = 'technical issues'";
+						WHERE category = 'technical issues'
+						AND open=1";
                 $result = $db->query($sql);
 				// shows the number of subjects.
 				foreach($result as $row) 
@@ -33,7 +34,8 @@
 				// selection of number of subjects
                 $sql = "SELECT COUNT(*) 
 						FROM subjects 
-						WHERE category = 'cartalk'";
+						WHERE category = 'cartalk'
+						AND open=1";
                 $result = $db->query($sql);
 				// shows the number of subjects
 				foreach($result as $row) 
@@ -51,7 +53,8 @@
 				// selection of number of subjects
                 $sql = "SELECT COUNT(*) 
 						FROM subjects 
-						WHERE category = 'car unrelated'";
+						WHERE category = 'car unrelated'
+						AND open=1";
                 $result = $db->query($sql);
 				// shows the number of subjects
 				foreach($result as $row) 

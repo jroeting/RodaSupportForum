@@ -23,6 +23,7 @@
                 $sql = "SELECT *
 						FROM subjects
 						WHERE category='$category'
+						AND open = 1
 						ORDER BY subject_id";
                 $results = $db->query($sql);
 				// show subject name with a link to the reaction overview
