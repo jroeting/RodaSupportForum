@@ -20,7 +20,7 @@
 		// close database
         $db = NULL;
 		
-		if ($_POST["title"] == "" || !(filter_var($_POST["title"], FILTER_SANITIZE_STRING) == $_POST["title"] && preg_match('/^[a-z0-9]+$/i', $_POST["title"])))
+		if ($_POST["title"] == "" || !(filter_var($_POST["title"], FILTER_SANITIZE_STRING) == $_POST["title"] && preg_match('/^[a-z0-9_\s]+$/i', $_POST["title"])))
 		{
 			$GLOBALS['errorTitle'] = "invalid title";	
 		}
