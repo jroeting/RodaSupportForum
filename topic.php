@@ -4,7 +4,7 @@
         $subject = $_GET['subject'];
 		$subjectname = $_GET['subjectname'];
 		// if the user is logged in, the user can place a new reaction in this subject
-		if(isset($_SESSION['account_type']) == 1) {
+		if($_SESSION['account_type'] == 1) {
 			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Close this subject</a></br>";
 		}
 		// shows subject name
@@ -47,7 +47,7 @@
 			echo '<td></td>';
 			echo '<td></br><p class="quote">' . $row['quote'] . '</p></td>';
 			echo '</tr>';
-			if(isset($_SESSION['username']) && ($_SESSION['username'] == $row['username'] || $_SESSION['account_type'] == 1)) 
+			if((isset($_SESSION['username']) && $_SESSION['username'] == $row['username']) || $_SESSION['account_type'] == 1) 
 			{
 				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove this post</a></td></tr>';
 			}
