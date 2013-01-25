@@ -1,0 +1,34 @@
+Dit is een lijst van alle taken die nog gedaan moeten worden voor de website.
+Als je bezig ben met een taak zet dan je naam erachter.
+Ga niet gelijk heel veel taken op je nemen maar doe liever één taak en rond die af en ga dan naar een volgende.
+Als je een taak af heb zet er dan achter dat het af is.
+
+Taken:
+-documentatie van de website (algemene taak)
+-comments in de php code (algemene taak)
+-elkaars code nakijken zodat het alemaal netjes en goed in elkaar zit (algemene taak)
+-errors oplossen (algemene taak)
+-javascript/ajax waar en wat? (elgemene taak)
+-overal juiste connectie met database (algemene taak)
+-overal juiste connectie met database (algemene taak)
+-alle stijl in css (algemene taak)
+-als alles af is alle tabellen leeg en opnieuw met goede dingen vullen voor presentatie (algemene taak)
+-zoekfunctie naar onderwerpen
+-avatar plaatje weergen
+-html code goed maken zodat het door de validator komt
+-zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen
+-account verifieren via de email die je na het registreren krijgt
+-een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen
+-check bij posts weghalen en toevoegen bij subjects in database
+-extra knoppen bij admin profielen voor axtra taken zoals bijvoorbeeld nieuwe onderwerpen goedkeuren
+-de persoonlijke profielpagina verbeteren/afmaken
+-aantal posts bij onderwerpen zeten
+-mooie knop voor make new subject
+-link naar eigen profiel goed maken
+-paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage
+-highlight weg bij posts en bij subjects in database
+-niet een lijst met echo's om html in php weer te geven
+-knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is
+-password retrieval
+-last post? wat was dat ook alweer jennifer?
+-poging voor member, onderwerp en reactie? wat was dat ook alweer jennifer?

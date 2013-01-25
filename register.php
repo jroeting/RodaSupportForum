@@ -109,6 +109,7 @@ function checkName()
 		
 		if ($_FILES["file"]["name"] != "")
 		{
+			
 			if ((($_FILES["file"]["type"] == "image/gif")
 			|| ($_FILES["file"]["type"] == "image/jpeg")
 			|| ($_FILES["file"]["type"] == "image/png")
@@ -116,9 +117,14 @@ function checkName()
 			&& ($_FILES["file"]["size"] < 200000)
 			&& in_array($extension, $allowedExts))
 			{
+				$size = getimagesize($_FILES['file']['tmp_name']);
+				
 				if ($_FILES["file"]["error"] > 0)
 				{
 					$GLOBALS['errorFile'] = "file error";
+				}elseif ($size["0"] > 1000 && $size["1"] > 1000)
+					$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
+				{
 				}else
 				{
 					$GLOBALS['imgData'] = addslashes(file_get_contents($_FILES['file']['tmp_name']));
@@ -157,7 +163,8 @@ function checkName()
 			
 			$to = $_POST["mail"];
 			$subject = "Welcome to Roda support forum";
-			$message = "Welcome " . $name . "\n\nYou have succesfully registered to Roda support forum!\nNow that you are a member you can post subjects and respond to other subjects.\n\nFor the forum's rules and questions about the forum please see the FAQ.";
+			$message = "Welcome " . $name . "\n\nYou have succesfully registered to Roda support forum!\nThe only thing left to do is verify your email, please click the link below to verify our email:\n\nNow that you are a member you can post subjects and respond to other subjects.\n\nFor the forum's rules and questions about the forum please see the FAQ.\n\nIs this e-mail not meant for you, please click the following link
+			\n";
 			$from = "noreply@roda.com";
 			$headers = "From:" . $from;
 			mail($to,$subject,$message,$headers);
@@ -165,6 +172,7 @@ function checkName()
 			include "registersucces.php";
 		}else
 		{
+			$include = true;
 			include "registerform.php";
 		}
 	}
@@ -195,6 +203,7 @@ function checkName()
 			inputForm();
 		}else
 		{
+			$include = true;
 			include "registerform.php";
 		}
 		

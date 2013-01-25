@@ -1,7 +1,4 @@
 <?php
-	$errorTitle = "";
-	$username = $_SESSION['username'];
-	
 	function checkTitle()
 	{
 		// connect with database
@@ -20,7 +17,7 @@
 		// close database
         $db = NULL;
 		
-		if ($_POST["title"] == "" || !(filter_var($_POST["title"], FILTER_SANITIZE_STRING) == $_POST["title"] && preg_match('/^[a-z0-9_\s]+$/i', $_POST["title"])))
+		if ($_POST["title"] == "" || !(filter_var($_POST["title"], FILTER_SANITIZE_STRING) == $_POST["title"] && preg_match('/^[a-z0-9]+$/i', $_POST["title"])))
 		{
 			$GLOBALS['errorTitle'] = "invalid title";	
 		}
@@ -70,12 +67,16 @@
 			header("location:index.php?content=topic&subject=" . $subjectId . "&subjectname=" . $title);
 		}else
 		{
+			$include = true;
 			include 'newpostform.php';
 		}
 	}
 	
 	if(isset($_SESSION['username']))
 	{
+		$errorTitle = "";
+		$username = $_SESSION['username'];
+	
 		if (isset($_POST["submit"]))
 		{
 			checkTitle();
@@ -83,6 +84,7 @@
 			inputPost();
 		}else
 		{
+			$include = true;
 			include 'newpostform.php';
 		}
 		
