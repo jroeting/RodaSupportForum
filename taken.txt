@@ -1,6 +1,6 @@
 Dit is een lijst van alle taken die nog gedaan moeten worden voor de website.
 Als je bezig ben met een taak zet dan je naam erachter.
-Ga niet gelijk heel veel taken op je nemen maar doe liever één taak en rond die af en ga dan naar een volgende.
+Ga niet gelijk heel veel taken op je nemen maar doe liever ï¿½ï¿½n taak en rond die af en ga dan naar een volgende.
 Als je een taak af heb zet er dan achter dat het af is.
 
 Taken:
@@ -30,5 +30,5 @@ Taken:
 -niet een lijst met echo's om html in php weer te geven
 -knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is
 -password retrieval
--last post? wat was dat ook alweer jennifer?
--poging voor member, onderwerp en reactie? wat was dat ook alweer jennifer?
+-last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp)
+-paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden)
