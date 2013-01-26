@@ -1,7 +1,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML Basic 1.1//EN"
 "http://www.w3.org/TR/xhtml-basic/xhtml-basic11.dtd">
-
+<!-- index.php shows a framework for the entire site, consisting of a header, a menubar, content and a footer. This is build up
+by divs. All the website content is shown in the div with id 'content'.-->
 <?php
+	// start user session
 	session_start();
 ?>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +11,7 @@
         <title>Roda Support Forum</title>
         <link rel="stylesheet" type="text/css" href="stylesheetbasis.css" />
 		<?php
+			// show the content as given in http url. If that's not given, show home.
 			$content = "";
 			
 			
@@ -19,7 +22,7 @@
 			{		
 				$content = "home";
 			}	
-
+			// devision of different kind of pages
 			$homepages = array("home");
 			$memberspages = array("members", "profile");
 			$forumpages = array("forum", "forumcontent", "newpost", "topic", "newreaction");
@@ -31,16 +34,19 @@
 		<div id="header">
 			<p class="logintext">
 				<?php
+				// if user is logged in, the header will show a logout button and a link to the user's own profile
 				if(isset($_SESSION['username']))
 				{
 					echo "<a href='index.php?content=logout'>Log out</a> | <a href='index.php?content=profile&user_id=".$_SESSION['user_id']."'>" . $_SESSION['username'] . "&nbsp;<img src=\"images/avatar.png\" height=\"30px\" width=\"auto\" /></a>&nbsp;";
 				}else
+				// if the user is not logged in, the header will show a link to the login page or a link to the register page
 				{
 					echo "<a href='index.php?content=inlog'>Login</a> | <a href='index.php?content=register'>Register</a>&nbsp;";
 				}
 				?>
 			</p>
 		</div>
+        <!-- This div shows the menu and the links to different pages -->
         <div id="menu">
 			<div id="menucontainer">
 			    <div id="nav">
@@ -55,16 +61,19 @@
 		</div>
         <div id="content">
             <?php
+			// shows given content
 			if(file_exists($content . '.php'))
 			{
 				include $content . '.php';
 			}
 			else
+			// if for some reason the file is not found, the following error message will be shown
 			{
 				echo "<p>Sorry page not found</p>";
 			}
 			?>
         </div>
+        <!-- showing the footer content including copyright, disclaimer, contact address and w3 buttons -->
         <div id="footer">
         	<table>
         		<tr>

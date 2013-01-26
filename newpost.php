@@ -1,3 +1,4 @@
+<!-- newpost.php handles the creation of a new post-->
 <?php
 	function checkTitle()
 	{

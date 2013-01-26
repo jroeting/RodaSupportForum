@@ -20,21 +20,19 @@
 				// open database
                 include 'db_con.php';
 				// select subjects from given category
-                $sql = "SELECT *
-						FROM subjects
-						WHERE category='$category'
-						AND open = 1
-						ORDER BY subject_id";
-                $results = $db->query($sql);
-				// show subject name with a link to the reaction overview
-				
-                foreach($results as $row)
+                $select_subjects = "SELECT *
+									FROM subjects
+									WHERE category='$category'
+									AND checked = 1
+									ORDER BY subject_id";
+                $results = $db->query($select_subjects);
+				// show subject name with a link to topic
+				foreach($results as $row)
                 {
                     echo "<tr>";
                     echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" . $row['subject_name'] . "</a></td>";
 					echo "</tr>";
                 }
-				
 				// close databae
                 $db = NULL;
 			?>

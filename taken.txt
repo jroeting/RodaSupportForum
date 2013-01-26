@@ -6,6 +6,8 @@ Als je een taak af heb zet er dan achter dat het af is.
 Taken:
 -documentatie van de website (algemene taak)
 -comments in de php code (algemene taak)
+	--> gedaan voor home.php, db_con.php, forum.php, forumcontent.php, index.php, newreaction.php
+	newreactionform.php, removepost.php, removesubject.php, topic.php
 -elkaars code nakijken zodat het alemaal netjes en goed in elkaar zit (algemene taak)
 -errors oplossen (algemene taak)
 -javascript/ajax waar en wat? (elgemene taak) 

@@ -13,11 +13,11 @@
 				// open database
                 include 'db_con.php';
 				// selection of number of subjects.
-                $sql = "SELECT COUNT(subject_id) 
-						FROM subjects 
-						WHERE category = 'technical issues'
-						AND open=1";
-                $result = $db->query($sql);
+                $num_subjects = "SELECT COUNT(subject_id) 
+								FROM subjects 
+								WHERE category = 'technical issues'
+								AND checked=1";
+                $result = $db->query($num_subjects);
 				// shows the number of subjects.
 				foreach($result as $row) 
 				{
@@ -27,16 +27,16 @@
         </td>
 	</tr>
   	<tr class="tablebody">
-    	<!-- link to subjects belonging to category -->
+    	<!-- link to subjects overview belonging to category -->
   		<td><p class="blacktext"><a href="index.php?content=forumcontent&category=cartalk"><span>Cartalk</span></a></p></td>
     	<td>
 			<?php
 				// selection of number of subjects
-                $sql = "SELECT COUNT(*) 
-						FROM subjects 
-						WHERE category = 'cartalk'
-						AND open=1";
-                $result = $db->query($sql);
+                $num_subjects = "SELECT COUNT(*) 
+								FROM subjects 
+								WHERE category = 'cartalk'
+								AND checked=1";
+                $result = $db->query($num_subjects);
 				// shows the number of subjects
 				foreach($result as $row) 
 				{
@@ -51,11 +51,11 @@
     	<td>
 			<?php
 				// selection of number of subjects
-                $sql = "SELECT COUNT(*) 
-						FROM subjects 
-						WHERE category = 'car unrelated'
-						AND open=1";
-                $result = $db->query($sql);
+                $num_subjects = "SELECT COUNT(*) 
+								FROM subjects 
+								WHERE category = 'car unrelated'
+								AND checked=1";
+                $result = $db->query($num_subjects);
 				// shows the number of subjects
 				foreach($result as $row) 
 				{
