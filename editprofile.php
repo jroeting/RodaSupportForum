@@ -30,11 +30,12 @@
 				</tr>
 				<tr>
 					<td>Gender: </td> 
-					<td><input type="radio" name="gender" value= "0"> Male </td>
+					<td><input type="radio" name="gender" id="radio" value= 0 <?php if($_POST['gender']== 0) echo 'checked="checked"'; ?> > Male </td>
 				</tr>
 				<tr>
 					<td> &nbsp; </td>
-					<td><input type="radio" name="gender" value= "1"> Female </td>	
+					<td><input type="radio" name="gender" id="radio" value= 1 <?php if($_POST['gender']== 1) echo 'checked="checked"'; ?> > Female </td>	
+					
 				</tr> 
 				<tr>
 					<td> Country </td> 
@@ -52,6 +53,9 @@
 				</tr>
 			</table>
 		</form>
+		<br />
+		<i><strong>Notice: If your profile has not changed, then your input was wrong. <br />
+		Go to <a href="index.php?content=faq">FAQ</a> and see the link "How can I edit/update my profile page?" for more info.</i></strong>
 	</div>
 	<?php
 	else :

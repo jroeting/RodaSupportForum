@@ -8,10 +8,13 @@
 		<div class="userprofile1">
 			<div class="avatar"> <img src="images/avatar.png" height="100px" width="100px" > </div>
 			<?php 
+			
 				include "db_con.php";
 				$userID = $_GET["user_id"];
-				$sql = "SELECT * FROM user_data WHERE user_id=$userID";
-				$result = $db->query($sql);
+				$sql = "SELECT * FROM user_data WHERE user_id=?";
+				$result = $db->prepare($sql);
+				$result->bindValue(1, $userID, PDO::PARAM_INT);
+				$result->execute();
 				// output profilepage
 				foreach($result as $row)
 				{ 
@@ -21,59 +24,77 @@
 					echo "<br />";
 					echo "<br />";
 					
-					switch ($row["account_type"]) {
-                                case "adm": 
-                                    $accountType = "admin";
-                                    break;
-                                case "usr": 
-                                    $accountType = "user";
-                                    break;
-                            }
-                            echo "Account Type: " . $accountType;  
+					switch ($row["account_type"]) 
+					{
+                        case "adm": 
+                        $accountType = "admin";
+                        break;
+						
+                        case "usr": 
+                        $accountType = "user";
+                        break;
+                    }
+                    echo "Account Type: " . $accountType;  
 					echo "<br />";
 					echo "<br />";
 					break;
-				}				
+				}	
 			?>	
 		</div>
 
 		<!-- displays right side of profile -->
 		<div class="userprofile2">
 			<?php		
-				echo "<table>";
-				// displays the personal text of the user
-				echo "<tr><td> Personal Text:  </td>";
-				echo "<td>" . $row["personal_text"] . "</td>"; 
-				echo "</tr>";
+				echo <<<EOT
+
+				<table>
+				<!-- displays the personal text of the user-->
+					<tr>
+						<td> Personal Text:  </td>
+					<td> {$row['personal_text']} </td> 
+					</tr>
+
+					<tr>
+						<td> &nbsp; </td>
+					</tr>
+				<!-- displays the first name of the user -->
+					<tr>
+						<td> First Name:  </td>
+						<td> {$row['name']}</td> 
+					</tr>
 		
-				echo "<tr><td> &nbsp; </td></tr>";
-				// displays the first name of the user
-				echo "<tr><td> First Name:  </td>";
-				echo "<td>" . $row["name"] . "</td>"; 
-				echo "</tr>";
-		
-				echo "<tr><td> &nbsp; </td></tr>";
-				// displays the last name of the user
-				echo "<tr><td> Last Name:  </td>";
-				echo "<td>" . $row["surname"] . "</td>"; 
-				echo "</tr>";
-		
-				echo "<tr><td> &nbsp; </td></tr>";
-					
-				// checks to see if the user allows their age to be shown	
+					<tr>
+						<td> &nbsp; </td>
+					</tr>
+				<!-- displays the last name of the user -->
+					<tr>
+						<td> Last Name:  </td>
+						<td> {$row['surname']} </td>
+					</tr>
+
+					<tr>
+						<td> &nbsp; </td>
+					</tr>
+EOT;
+			    // checks to see if the user allows their age to be shown	
 				if($row['age'] <= 0 || $row['age'] >= 120)
 				{ 
-					echo "<tr><td> &nbsp;  </td></tr>";
+					echo "<tr>
+							<td> &nbsp;  </td>
+						</tr>";
 				} else 
 				{
-					echo "<tr><td> Age:  </td>";
-					echo "<td>" . $row["age"] . "</td>"; 
-					echo "</tr>";
+					echo "<tr>
+							<td> Age:  </td>";
+					echo "<td>" . $row['age'] . "</td> 
+							</tr>";
 				}
-				echo "<tr><td> &nbsp; </td></tr>";
+				echo "<tr>
+						<td> &nbsp; </td>
+					</tr>";
 				// displays the gender of the user
 				echo "<tr><td> Gender:  </td>";
-				if($row["gender"] == 0)
+				if($row['gender'] == 0)
 				{
 					echo "<td> Male </td>"; 
 				} else
@@ -81,28 +102,36 @@
 					echo "<td> Female </td>";
 				}
 				echo "</tr>";
+				
+				echo <<<EOT
+					<tr>
+						<td> &nbsp; </td>
+					</tr>
+				<!-- displays the country of the user -->
+					<tr>
+						<td> Country:  </td>
+						<td> {$row['country']} </td> 
+					</tr>
 		
-				echo "<tr><td> &nbsp; </td></tr>";
-				// displays the country of the user
-				echo "<tr><td> Country:  </td>";
-				echo "<td>" . $row["country"] . "</td>"; 
-				echo "</tr>";
+					<tr>
+						<td> &nbsp; </td>
+					</tr>
+				<!-- displays the quote of the user -->
+					<tr>
+						<td> Quote:  </td>
+						<td> {$row['quote']} </td> 
+				</tr>
+				</table>
 		
-				echo "<tr><td> &nbsp; </td></tr>";
-				// displays the quote of the user
-				echo "<tr><td> Quote:  </td>";
-				echo "<td>" . $row["quote"] . "</td>"; 
-				echo "</tr>";
-				echo "</table>";
-		
-				echo "<br />";
-				echo "<br />";
-					
+				<br />
+				<br />
+EOT;
+
 				// if the user is at his/her own profile, the "Edit Profile" link
 				// will appear else not
-				if(isset($_SESSION['username']) == $row['username']) 
+				if($_SESSION['user_id'] == $row['user_id']) 
 				{
-					echo "<a href=\"index.php?content=editprofile&user_id=" . $row["user_id"] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a>" ;
+					echo "<a href=\"index.php?content=editprofile&user_id=" . $row['user_id'] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a>" ;
 				} 
 			?>
 		</div>	
@@ -112,8 +141,8 @@
 	<?php
 		// variables that contains form errors of the user
 		$errorFile = ""; // avatar error
-		$errorAge = ""; //
-		$errorCountry = ""; // country error
+		//$errorAge = ""; //
+		//$errorCountry = ""; // country error
 		// adds slashes and read the contents of a file into a string
 		$imgData = addslashes (file_get_contents("images/avatar.png")); 
 		
@@ -149,9 +178,10 @@
 			}
 		}
 		
-		// check for personal text in profile
+		// checks personal text in profile
 		function checkPersonalText()
 		{	
+			//$GLOBALS['personal_text'] = strip_tag($GLOBALS['personal_text']);
 			$GLOBALS['personal_text'] = trim($GLOBALS['personal_text']);
 			$GLOBALS['personal_text'] = filter_var($GLOBALS['personal_text'], FILTER_SANITIZE_STRING);
 			$GLOBALS['personal_text'] = htmlentities($GLOBALS['personal_text'], ENT_QUOTES);
@@ -173,39 +203,81 @@
 			$GLOBALS['quote'] = filter_var($GLOBALS['quote'], FILTER_SANITIZE_STRING);
 			$GLOBALS['quote'] = htmlentities($GLOBALS['quote'], ENT_QUOTES);
 		}
-			
+		
+	/*	function checkCountry()
+		{
+			include 'db_con.php';
+				
+			 
+			$country = $_POST['country']; // input of user in country
+			$sql= "SELECT * FROM country_list"; 
+			$countryCheck = $db->query($sql);
+			$bool = "";
+								
+			// checks whether a country exists
+			foreach($countryCheck as $row)
+			{
+				if ($country == $row['country']) 
+				{
+					$bool = 'true';
+				}
+			}
+			$db=NULL; // closes database
+				
+		}*/
 		// Updates the database, thus updates the profile page
 		function inputForm()
 		{
-		//	if($GLOBALS['errorCountry'] == "" && $GLOBALS['errorFile'] == "")
+		//	if($GLOBALS['errorFile'] == "")
 		//	{
 				include 'db_con.php';
 				
-				$userID = $_GET["user_id"]; 
-				$sql= "SELECT * FROM country_list"; 
-				$country = $_POST["country"]; // input of user in country
-				$results = $db->query($sql);
-				
+				$userID = $_GET['user_id']; 
+									
 				// checks whether a country exists
-				foreach($results as $row)
+				
+				$country = $_POST['country']; // input of user in country
+				$sql= "SELECT * FROM country_list"; 
+				$countryCheck = $db->query($sql);
+				$bool = "";
+								
+			// checks whether a country exists
+				foreach($countryCheck as $row)
 				{
-					// if the input matches with the data in country_list, the country will be updated in user_data, else not
-					if ($row['country'] == $country) 
+					if ($country==$row['country']) 
 					{
-						$selection = "UPDATE user_data SET avatar='$_POST[avatar]', personal_text='$_POST[personal_text]', age='$_POST[age]', gender='$_POST[gender]', country='$_POST[country]', quote='$_POST[quote]' WHERE user_id= $userID LIMIT 1";	
-					} else
+						$bool = 'true';
+					} else 
 					{
-						$selection = "UPDATE user_data SET avatar='$_POST[avatar]', personal_text='$_POST[personal_text]', age='$_POST[age]', gender='$_POST[gender]', quote='$_POST[quote]' WHERE user_id= $userID LIMIT 1";
+						$bool = 'false';
 					}
 				}
-				$result = $db->query($selection);
-				if (!$selection) 
+				if($bool = 'true')
 				{
-					echo 'Could not run query: ' . mysql_error();
-					exit;
-				}				
-		//	} 
+					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
+					$result = $db->prepare($selection);
+					$result->bindValue(1, $_POST['avatar'], PDO::PARAM_LOB);
+					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
+					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
+					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
+					$result->bindValue(5, $_POST['country'], PDO::PARAM_STR);
+					$result->bindValue(6, $_POST['quote'], PDO::PARAM_STR);
+					$result->bindValue(7, $userID, PDO::PARAM_INT);
+					$result->execute();
+				} else
+				{
+					$selection2 = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, quote=? WHERE user_id= ? LIMIT 1";
+					$result = $db->prepare($selection2);
+					$result->bindValue(1, $_POST['avatar'], PDO::PARAM_STR);
+					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
+					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
+					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
+					$result->bindValue(5, $_POST['quote'], PDO::PARAM_STR);
+					$result->bindValue(6, $userID, PDO::PARAM_INT);
+					$result->execute();
+				}		
 		}
+		
 			if(isset($_POST["submit"]))
 			{	
 				$personalText = $_POST['personal_text'];
@@ -213,10 +285,9 @@
 				$gender = $_POST['gender'];
 				$country = $_POST['country'];
 				$quote = $_POST['quote'];
-		
+				
 				checkFile();
 				checkPersonalText();
-				checkCountry();
 				checkQuote();
 				inputForm();
 			} 

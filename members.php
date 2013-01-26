@@ -1,3 +1,4 @@
+<!-- The memberlist will only be shown after you are logged in -->
 <?php
 	if(isset($_SESSION['username'])) :
 ?>
@@ -18,14 +19,15 @@
 			
 			$sql = "SELECT * FROM user_data ORDER BY username LIMIT 0,1000";
             $result = $db->query($sql);
-				// shows the memberlist
+			
+			// shows the memberlist with info of members
 			foreach($result as $row) 
 			{
 				echo "<tr>";
 				echo "<td>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
 				$userId = $row['user_id'];
-				echo "<td>" . /*$row[''] .*/ "</td>";
+				echo "<td>" . $row['number_of_posts'] . "</td>";
 				switch ($row["account_type"]) {
 								case "adm": 
 									$accountType = "admin";
@@ -35,7 +37,7 @@
 									break;
 							}
 				echo "<td>" . $accountType . "</td>";	
-				echo "<td>" . /*$row[''] .*/ "</td>";
+				echo "<td>" . $row['register_date'] . "</td>";
 				echo "</tr>";
 			}
 	
