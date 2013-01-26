@@ -1,4 +1,4 @@
-Dit is een lijst van alle taken die nog gedaan moeten worden voor de website.
+﻿Dit is een lijst van alle taken die nog gedaan moeten worden voor de website.
 Als je bezig ben met een taak zet dan je naam erachter.
 Ga niet gelijk heel veel taken op je nemen maar doe liever ��n taak en rond die af en ga dan naar een volgende.
 Als je een taak af heb zet er dan achter dat het af is.
@@ -8,7 +8,7 @@ Taken:
 -comments in de php code (algemene taak)
 -elkaars code nakijken zodat het alemaal netjes en goed in elkaar zit (algemene taak)
 -errors oplossen (algemene taak)
--javascript/ajax waar en wat? (elgemene taak)
+-javascript/ajax waar en wat? (elgemene taak) 
 -overal juiste connectie met database (algemene taak)
 -overal juiste connectie met database (algemene taak)
 -alle stijl in css (algemene taak)
@@ -19,16 +19,19 @@ Taken:
 -zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen
 -account verifieren via de email die je na het registreren krijgt
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen
--check bij posts weghalen en toevoegen bij subjects in database
+-check bij posts weghalen en toevoegen bij subjects in database JENNIFER
 -extra knoppen bij admin profielen voor axtra taken zoals bijvoorbeeld nieuwe onderwerpen goedkeuren
 -de persoonlijke profielpagina verbeteren/afmaken
 -aantal posts bij onderwerpen zeten
 -mooie knop voor make new subject
--link naar eigen profiel goed maken
 -paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage
--highlight weg bij posts en bij subjects in database
+-highlight weg bij posts en bij subjects in database JENNIFER
 -niet een lijst met echo's om html in php weer te geven
 -knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is
 -password retrieval
 -last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp)
 -paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden)
+
+
+GEDAAN
+-link naar eigen profiel goed maken
