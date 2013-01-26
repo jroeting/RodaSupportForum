@@ -25,7 +25,7 @@ Taken:
 -extra knoppen bij admin profielen voor axtra taken zoals bijvoorbeeld nieuwe onderwerpen goedkeuren JENNIFER
 -de persoonlijke profielpagina verbeteren/afmaken
 -aantal posts bij onderwerpen zeten
--mooie knop voor make new subject JENNIFER
+-mooie knop voor make new subject 
 -paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage
 -niet een lijst met echo's om html in php weer te geven
 -knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is
