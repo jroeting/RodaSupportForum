@@ -19,10 +19,10 @@ Taken:
 -html code goed maken zodat het door de validator komt (algemene taak)
 -zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen (algemene taak)
 -zoekfunctie naar onderwerpen
--avatar plaatje weergen
+-avatar plaatje weergen MAX
 -account verifieren via de email die je na het registreren krijgt KYLLIAN
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen
--de persoonlijke profielpagina verbeteren/afmaken
+-de persoonlijke profielpagina verbeteren/afmaken MAX
 -aantal posts bij onderwerpen zeten
 -mooie knop voor make new subject JENNIFER 
 -paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage
