@@ -22,10 +22,9 @@ Taken:
 -zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen
 -account verifieren via de email die je na het registreren krijgt
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen
--extra knoppen bij admin profielen voor axtra taken zoals bijvoorbeeld nieuwe onderwerpen goedkeuren JENNIFER
 -de persoonlijke profielpagina verbeteren/afmaken
 -aantal posts bij onderwerpen zeten
--mooie knop voor make new subject 
+-mooie knop voor make new subject JENNIFER
 -paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage
 -niet een lijst met echo's om html in php weer te geven
 -knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is
@@ -39,3 +38,5 @@ GEDAAN
 -check bij posts weghalen en toevoegen bij subjects in database JENNIFER
 	--> tevens open weggehaald, omdat deze nu enigszins overbodig is
 -highlight weg bij posts en bij subjects in database JENNIFER
+-extra knoppen bij admin profielen voor axtra taken zoals bijvoorbeeld nieuwe onderwerpen goedkeuren JENNIFER
+	--> lay out en plaats van toegang (nu op eigen profiel) benodigd nog wat finetuning
