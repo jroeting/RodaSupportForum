@@ -1,14 +1,13 @@
 	<!-- Layout Profile -->
-	<?php
+<?php
 	if(isset($_SESSION['username'])) :
-	?>
+?>
 	<div class="tablehead"> <strong> Profile </strong></div>					
 	<!-- displays the left side of profile -->
 	<div class="profilecontent">
 		<div class="userprofile1">
 			<div class="avatar"> <img src="images/avatar.png" height="100px" width="100px" > </div>
 			<?php 
-			
 				include "db_con.php";
 				$userID = $_GET["user_id"];
 				$sql = "SELECT * FROM user_data WHERE user_id=?";
@@ -18,11 +17,9 @@
 				// output profilepage
 				foreach($result as $row)
 				{ 
-					echo "<br />";
-					echo "<br />";
+					echo "<br /><br />";
 					echo "Username: " . $row["username"];  
-					echo "<br />";
-					echo "<br />";
+					echo "<br /><br />";
 					
 					switch ($row["account_type"]) 
 					{
@@ -35,8 +32,7 @@
                         break;
                     }
                     echo "Account Type: " . $accountType;  
-					echo "<br />";
-					echo "<br />";
+					echo "<br /><br />";
 					break;
 				}	
 			?>	
@@ -126,16 +122,15 @@ EOT;
 				<br />
 				<br />
 EOT;
+
 				// if the user is at his/her own profile, the "Edit Profile" link
 				// will appear else not
 				if($_SESSION['user_id'] == $row['user_id']) 
 				{
-					echo "<a href=\"index.php?content=editprofile&user_id=" . $row['user_id'] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a><br />" ;
+					echo "<a href=\"index.php?content=editprofile&user_id=" . $row['user_id'] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a>" ;
 				} 
-			?>
-            
-            <?php
-				if($_SESSION['user_id'] == $row['user_id'] && $_SESSION['account_type'] == 1) {
+				if($_SESSION['user_id'] == $row['user_id'] && $_SESSION['account_type'] == 1) 
+				{
 					echo '<br/><strong><a href="index.php?content=phpadmin">Go to administrator panel</a></strong>';
 				}
 			?>
@@ -146,8 +141,6 @@ EOT;
 	<?php
 		// variables that contains form errors of the user
 		$errorFile = ""; // avatar error
-		//$errorAge = ""; //
-		//$errorCountry = ""; // country error
 		// adds slashes and read the contents of a file into a string
 		$imgData = addslashes (file_get_contents("images/avatar.png")); 
 		
@@ -186,78 +179,46 @@ EOT;
 		// checks personal text in profile
 		function checkPersonalText()
 		{	
-			//$GLOBALS['personal_text'] = strip_tag($GLOBALS['personal_text']);
-			$GLOBALS['personal_text'] = trim($GLOBALS['personal_text']);
-			$GLOBALS['personal_text'] = filter_var($GLOBALS['personal_text'], FILTER_SANITIZE_STRING);
-			$GLOBALS['personal_text'] = htmlentities($GLOBALS['personal_text'], ENT_QUOTES);
+			$_POST['personal_text'] = strip_tags($_POST['personal_text']); // strip HTML and PHP tags from a string
+			$_POST['personal_text'] = htmlentities($_POST['personal_text'], ENT_QUOTES); // will convert both double and single quotes to html entities
+			$_POST['personal_text'] = trim($_POST['personal_text']); // strip whitespace from the beginning and end of a string
+			$_POST['personal_text'] = filter_var($_POST['personal_text'], FILTER_SANITIZE_STRING);// Filters a variable with FILTER_SANITIZE_STRING		
 		}
-	
-	/*	function checkAge()
-		{
-			if (!is_numeric($_POST["age"]))
-			{
-				$GLOBALS['errorAge'] = "not a number";
-			}
-		}
-	*/
 			
 		// check the input form for quote
 		function checkQuote()
 		{
-			$GLOBALS['quote'] = trim($GLOBALS['quote']);
-			$GLOBALS['quote'] = filter_var($GLOBALS['quote'], FILTER_SANITIZE_STRING);
-			$GLOBALS['quote'] = htmlentities($GLOBALS['quote'], ENT_QUOTES);
+			$_POST['quote'] = strip_tags($_POST['quote']); // strip HTML and PHP tags from a string
+			$_POST['quote'] = htmlentities($_POST['quote'], ENT_QUOTES); // will convert both double and single quotes to html entities
+			$_POST['quote'] = trim($_POST['quote']); // strip whitespace from the beginning and end of a string
+			$_POST['quote'] = filter_var($_POST['quote'], FILTER_SANITIZE_STRING);// Filters a variable with FILTER_SANITIZE_STRING	
 		}
 		
-	/*	function checkCountry()
-		{
-			include 'db_con.php';
-				
-			 
-			$country = $_POST['country']; // input of user in country
-			$sql= "SELECT * FROM country_list"; 
-			$countryCheck = $db->query($sql);
-			$bool = "";
-								
-			// checks whether a country exists
-			foreach($countryCheck as $row)
-			{
-				if ($country == $row['country']) 
-				{
-					$bool = 'true';
-				}
-			}
-			$db=NULL; // closes database
-				
-		}*/
 		// Updates the database, thus updates the profile page
 		function inputForm()
 		{
-		//	if($GLOBALS['errorFile'] == "")
-		//	{
+			if($GLOBALS['errorFile'] == "")
+			{
 				include 'db_con.php';
 				
 				$userID = $_GET['user_id']; 
 									
 				// checks whether a country exists
-				
 				$country = $_POST['country']; // input of user in country
-				$sql= "SELECT * FROM country_list"; 
+				$sql= "SELECT country FROM country_list"; 
 				$countryCheck = $db->query($sql);
-				$bool = "";
 								
 			// checks whether a country exists
 				foreach($countryCheck as $row)
 				{
-					if ($country==$row['country']) 
-					{
-						$bool = 'true';
-					} else 
-					{
-						$bool = 'false';
-					}
+					$contains = false;
+					
+					if ($country == $row['country']) 
+					{	
+						$contains = true;
+					} 
 				}
-				if($bool = 'true')
+				if($contains = true)
 				{
 					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection);
@@ -269,33 +230,44 @@ EOT;
 					$result->bindValue(6, $_POST['quote'], PDO::PARAM_STR);
 					$result->bindValue(7, $userID, PDO::PARAM_INT);
 					$result->execute();
-				} else
+				}
+				else
 				{
 					$selection2 = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection2);
-					$result->bindValue(1, $_POST['avatar'], PDO::PARAM_STR);
+					$result->bindValue(1, $_POST['avatar'], PDO::PARAM_LOB);
 					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
 					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
 					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
 					$result->bindValue(5, $_POST['quote'], PDO::PARAM_STR);
 					$result->bindValue(6, $userID, PDO::PARAM_INT);
-					$result->execute();
-				}		
+					$result->execute(); 
+				}
+			}		
 		}
 		
 			if(isset($_POST["submit"]))
 			{	
+				$avatar = $_POST['avatar'];
 				$personalText = $_POST['personal_text'];
 				$age = $_POST['age'];
 				$gender = $_POST['gender'];
 				$country = $_POST['country'];
 				$quote = $_POST['quote'];
 				
+				if(!isset($_POST['avatar']))
+				{
+					checkPersonalText();
+					checkQuote();
+					inputForm();
+				} else
+				{				
 				checkFile();
 				checkPersonalText();
 				checkQuote();
 				inputForm();
-			} 
+				} 
+			}
 			
 			$db=NULL; // closes database
 	?>
