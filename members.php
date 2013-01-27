@@ -16,7 +16,7 @@
         </tr>
 		<?php
 			include "db_con.php";
-			
+			// Query for output of memberlist
 			$sql = "SELECT * FROM user_data ORDER BY username LIMIT 0,1000";
             $result = $db->query($sql);
 			
@@ -26,8 +26,13 @@
 				echo "<tr>";
 				echo "<td>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
 				echo "<td>" . $row['email'] . "</td>";
-				$userId = $row['user_id'];
-				echo "<td>" . $row['number_of_posts'] . "</td>";
+				
+				$userID = $row['user_id'];
+				// Query to count number of posts for each member
+				$numberOfPosts = "SELECT count(*) FROM posts WHERE user_id = $userID";
+				$count = $db->query($numberOfPosts);
+				$data_array = $count->fetch();
+				echo "<td>" . $data_array[0] . "</td>";
 				switch ($row["account_type"]) {
 								case "adm": 
 									$accountType = "admin";
