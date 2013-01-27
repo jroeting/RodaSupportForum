@@ -24,10 +24,10 @@ Taken:
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen
 -de persoonlijke profielpagina verbeteren/afmaken
 -aantal posts bij onderwerpen zeten
--mooie knop voor make new subject JENNIFER
+-mooie knop voor make new subject JENNIFER 
 -paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage
 -niet een lijst met echo's om html in php weer te geven
--knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is
+-knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is JENNIFER
 -password retrieval - Michael
 -last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp)
 -paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden)
