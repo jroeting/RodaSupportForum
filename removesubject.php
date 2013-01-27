@@ -1,5 +1,5 @@
 <!-- removesupbject.php removes a subject from the subject list. It does not actually removes the subject from the database, instead, it sets checked on
-0, so the subject isn't selected in the subject overview.-->
+3, so the subject isn't selected in the subject overview or in the administration panel.-->
 <?php
 	// action is default 0, if action is set to 1, the subject will be actually removed
 	$action = $_GET['action'];
@@ -12,13 +12,14 @@
 		// if action = 1, set checked on 0
 		include 'db_con.php';
 		$removesubject = "UPDATE subjects
-						SET checked=0
+						SET checked=3
 						WHERE subject_id=$subject";
 		$db->exec($removesubject);
 		// close database
 		$db=NULL;
 		// removal message and link to forum overview.
 		echo 'This subject has been succesfully deleted.</br>';
-		echo '<a href="index.php?content=forum">Go back to forum overview</a>';
+		// go back to from where you came from
+		echo '<a href="javascript:history.go(-2)">Go back</a>';
 	}
 ?>

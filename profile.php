@@ -126,13 +126,18 @@ EOT;
 				<br />
 				<br />
 EOT;
-
 				// if the user is at his/her own profile, the "Edit Profile" link
 				// will appear else not
 				if($_SESSION['user_id'] == $row['user_id']) 
 				{
-					echo "<a href=\"index.php?content=editprofile&user_id=" . $row['user_id'] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a>" ;
+					echo "<a href=\"index.php?content=editprofile&user_id=" . $row['user_id'] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a><br />" ;
 				} 
+			?>
+            
+            <?php
+				if($_SESSION['user_id'] == $row['user_id'] && $_SESSION['account_type'] == 1) {
+					echo '<br/><strong><a href="index.php?content=phpadmin">Go to administrator panel</a></strong>';
+				}
 			?>
 		</div>	
 	</div> 

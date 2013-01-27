@@ -6,7 +6,7 @@
 		// if the user is logged in, the user can place a new reaction in this subject
 		if($_SESSION['account_type'] == 1) {
 			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Close this subject</a></br>";
-		}
+		} 
 		// shows subject name
 		
 		echo '<table align="center">';
