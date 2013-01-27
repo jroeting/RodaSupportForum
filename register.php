@@ -122,10 +122,11 @@ function checkName()
 				if ($_FILES["file"]["error"] > 0)
 				{
 					$GLOBALS['errorFile'] = "file error";
-				}elseif ($size["0"] > 1000 && $size["1"] > 1000)
-					$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
+				}else if ($size["0"] > 1000 && $size["1"] > 1000)
 				{
-				}else
+					$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
+				}
+				else
 				{
 					$GLOBALS['imgData'] = addslashes(file_get_contents($_FILES['file']['tmp_name']));
 				}
