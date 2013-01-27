@@ -1,5 +1,5 @@
 <!-- removesupbject.php removes a subject from the subject list. It does not actually removes the subject from the database, instead, it sets checked on
-3, so the subject isn't selected in the subject overview or in the administration panel.-->
+3, so the subject isn't selected in the subject overview or administrator panel.-->
 <?php
 	// action is default 0, if action is set to 1, the subject will be actually removed
 	$action = $_GET['action'];
@@ -20,6 +20,10 @@
 		// removal message and link to forum overview.
 		echo 'This subject has been succesfully deleted.</br>';
 		// go back to from where you came from
-		echo '<a href="javascript:history.go(-2)">Go back</a>';
+		echo '<a href="index.php?content=forum">Go back to forum overview</a><br/>';
+		if ($_SESSION['account_type'] == 1) {
+			echo 'or <br/>';
+			echo '<a href="index.php?content=phpadmin">Go to administrator panel</a>';
+		}
 	}
 ?>
