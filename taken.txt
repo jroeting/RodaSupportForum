@@ -1,6 +1,6 @@
 ﻿Dit is een lijst van alle taken die nog gedaan moeten worden voor de website.
 Als je bezig ben met een taak zet dan je naam erachter.
-Ga niet gelijk heel veel taken op je nemen maar doe liever ��n taak en rond die af en ga dan naar een volgende.
+Ga niet gelijk heel veel taken op je nemen maar doe liever 1 taak en rond die af en ga dan naar een volgende.
 Als je een taak af heb zet er dan achter dat het af is.
 
 Taken:
@@ -10,17 +10,17 @@ Taken:
 	newreactionform.php, removepost.php, removesubject.php, topic.php
 -elkaars code nakijken zodat het alemaal netjes en goed in elkaar zit (algemene taak)
 -errors oplossen (algemene taak)
--javascript/ajax waar en wat? (elgemene taak) 
+-javascript/ajax waar en wat? (algemene taak) 
 -overal juiste connectie met database (algemene taak)
 	--> gedaan voor home.php, db_con.php, forum.php, forumcontent.php, newreaction.php, newreactionform.php
 	removepost.php, removesubject.php, topic.php
 -alle stijl in css (algemene taak)
 -als alles af is alle tabellen leeg en opnieuw met goede dingen vullen voor presentatie (algemene taak)
+-html code goed maken zodat het door de validator komt (algemene taak)
+-zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen (algemene taak)
 -zoekfunctie naar onderwerpen
 -avatar plaatje weergen
--html code goed maken zodat het door de validator komt
--zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen
--account verifieren via de email die je na het registreren krijgt
+-account verifieren via de email die je na het registreren krijgt KYLLIAN
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen
 -de persoonlijke profielpagina verbeteren/afmaken
 -aantal posts bij onderwerpen zeten
