@@ -18,14 +18,13 @@ Taken:
 -als alles af is alle tabellen leeg en opnieuw met goede dingen vullen voor presentatie (algemene taak)
 -html code goed maken zodat het door de validator komt (algemene taak)
 -zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen (algemene taak)
+-paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage (algemene taak)
 -zoekfunctie naar onderwerpen
 -avatar plaatje weergen MAX
--account verifieren via de email die je na het registreren krijgt KYLLIAN
--een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen
+-een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen KYLLIAN
 -de persoonlijke profielpagina verbeteren/afmaken MAX
 -aantal posts bij onderwerpen zeten
--mooie knop voor make new subject JENNIFER 
--paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage
+-mooie knop voor make new subject JENNIFER
 -niet een lijst met echo's om html in php weer te geven
 -knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is JENNIFER
 -password retrieval - Michael
@@ -40,3 +39,4 @@ GEDAAN
 -highlight weg bij posts en bij subjects in database JENNIFER
 -extra knoppen bij admin profielen voor axtra taken zoals bijvoorbeeld nieuwe onderwerpen goedkeuren JENNIFER
 	--> lay out en plaats van toegang (nu op eigen profiel) benodigd nog wat finetuning
+-account verifieren via de email die je na het registreren krijgt KYLLIAN
