@@ -122,11 +122,10 @@ function checkName()
 				if ($_FILES["file"]["error"] > 0)
 				{
 					$GLOBALS['errorFile'] = "file error";
-				}else if ($size["0"] > 1000 && $size["1"] > 1000)
+				}elseif ($size["0"] > 1000 && $size["1"] > 1000)
 				{
 					$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
-				}
-				else
+				}else
 				{
 					$GLOBALS['imgData'] = addslashes(file_get_contents($_FILES['file']['tmp_name']));
 				}
@@ -162,10 +161,11 @@ function checkName()
 				$name = $_POST["name"] . " " . $_POST["infix"] . " " . $_POST["surname"];
 			}
 			
+			$code = crypt($_POST["username"]);
+			
 			$to = $_POST["mail"];
 			$subject = "Welcome to Roda support forum";
-			$message = "Welcome " . $name . "\n\nYou have succesfully registered to Roda support forum!\nThe only thing left to do is verify your email, please click the link below to verify our email:\n\nNow that you are a member you can post subjects and respond to other subjects.\n\nFor the forum's rules and questions about the forum please see the FAQ.\n\nIs this e-mail not meant for you, please click the following link
-			\n";
+			$message = "Welcome " . $name . "\n\nYou have succesfully registered to Roda support forum!\nThe only thing left to do is verify your account, please click the link below to verify your account:\n http://webdb.science.uva.nl/~10343865/index.php?content=verify&code=" . $code . "\n\nNow that you are a member you can post subjects and respond to other subjects.\n\nFor the forum's rules and questions about the forum please see the FAQ.\n\nIs this e-mail not meant for you, please click the following link:\n http://webdb.science.uva.nl/~10343865/index.php?content=wrongemail&code=" . $code;
 			$from = "noreply@roda.com";
 			$headers = "From:" . $from;
 			mail($to,$subject,$message,$headers);
