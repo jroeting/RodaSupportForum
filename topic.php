@@ -56,7 +56,8 @@
 			// enables the admin to remove posts from other users and enables users to remove their own posts
 			if((isset($_SESSION['username']) && $_SESSION['username'] == $row['username']) || $_SESSION['account_type'] == 1) 
 			{
-				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove this post</a></td></tr>';
+				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove this post</a> | 
+					  <a href="index.php?content=report_spam&post_id='. $row['post_id'] . '"> Report as spam </a></td></tr>';
 			}
 			echo '<tr><td></td><td height="2px" class="bar"></td></tr>';
         }
