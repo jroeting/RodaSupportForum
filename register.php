@@ -148,8 +148,18 @@ function checkName()
 			// connect with database
 			include 'db_con.php';
 			// selection of all subjects, ordered by subject_id (so most recent is on top)
-			$sql= "INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES ('$_POST[username]','$password','$_POST[mail]','$_POST[name]','$_POST[surname]','$GLOBALS[imgData]','$_POST[quote]','$_POST[infix]')";
-			$results = $db->query($sql);
+			$sql= "INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES (?,?,?,?,?,?,?,?)";
+			$results = $db->prepare($sql);
+			$results->bindValue(1, $_POST["username"], PDO::PARAM_STR);
+			$results->bindValue(2, $password, PDO::PARAM_STR);
+			$results->bindValue(3, $_POST["mail"], PDO::PARAM_STR);
+			$results->bindValue(4, $_POST["name"], PDO::PARAM_STR);
+			$results->bindValue(5, $_POST["surname"], PDO::PARAM_STR);
+			$results->bindValue(6, $GLOBALS["imgData"], PDO::PARAM_STR);
+			$results->bindValue(7, $_POST["quote"], PDO::PARAM_STR);
+			$results->bindValue(8, $_POST["infix"], PDO::PARAM_STR);
+			$results->execute();
+			
 			// close database
             $db = NULL;
 			
