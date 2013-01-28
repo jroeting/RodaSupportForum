@@ -1,6 +1,6 @@
 <!-- adminpanel.php is a page that is available for all other administrators for checking subjects and other admin related tasks -->
-<p> Welcome ad the administrator panel. Together with the other members of the administrator panel, you are responsible for approve new
-submitted subjects, take care of spam reports, block inappropriate users and delete unactivated accounts.</p>
+<p> Welcome to the administrator panel. Together with the other members of the administrator panel, you are responsible for the approval of new
+submitted subjects, taking care of spam reports, blocking inappropriate users and deleting unactivated accounts.</p>
 
 <?php
 	function nrUnverified()
@@ -23,7 +23,7 @@ submitted subjects, take care of spam reports, block inappropriate users and del
 		{
 			include 'db_con.php';
 			$remove_unverified = $db->prepare("DELETE FROM user_data WHERE verified = false AND register_date<DATE_SUB(curdate(), INTERVAL 5 DAY)");
-			$remove_unverified->execute;
+			$remove_unverified->execute();
 			// close database
 			$db = NULL;
 		}
@@ -33,6 +33,9 @@ submitted subjects, take care of spam reports, block inappropriate users and del
 	<input type="hidden" name="button" value="remove unverified" />
 	<input type="submit" class="button2" name="submit" value="Remove <?php echo nrUnverified() ?> unverified users" />
 </form>
+
+<br />
+
 <table width = "400">
 	<tr>
     	<td class="tablehead" colspan="2">Your colleague admins</td>
@@ -57,6 +60,8 @@ submitted subjects, take care of spam reports, block inappropriate users and del
 	?>
 </table>
 
+<br />
+
 <table width = "400">
 	<tr>
     	<td class="tablehead" colspan="2">Subjects waiting for approval</td>
@@ -75,6 +80,8 @@ submitted subjects, take care of spam reports, block inappropriate users and del
 		
 	?>	
 </table>
+
+<br />
 
 <table width = "400">
 	<tr>
