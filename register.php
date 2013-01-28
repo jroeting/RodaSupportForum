@@ -187,7 +187,7 @@ function checkName()
 		$errorPassword = "";
 		$errorUsername = "";
 		$errorFile = "";
-		$imgData = addslashes (file_get_contents("images/avatar.png"));
+		$imgData = file_get_contents("images/avatar.png");
 		
 		if (isset($_POST["submit"])) 
 		{	
