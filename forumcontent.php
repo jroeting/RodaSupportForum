@@ -30,8 +30,11 @@
 				// show subject name with a link to topic
 				foreach($results as $row)
                 {
-                    echo "<tr>";
+                    $selectLastPost = $db->query("SELECT date_time FROM posts WHERE subject_id = $row[subject_id] ORDER BY date_time DESC LIMIT 1");
+					$dateTime = $selectLastPost->fetch();
+					echo "<tr>";
                     echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" . $row['subject_name'] . "</a></td>";
+					echo "<td>" . $dateTime["date_time"] . "</td>"
 					echo "</tr>";
                 }
 				// close databae
