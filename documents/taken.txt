@@ -23,7 +23,7 @@ Taken:
 -avatar plaatje weergen MAX
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen KYLLIAN
 -de persoonlijke profielpagina verbeteren/afmaken MAX
--aantal posts bij onderwerpen zeten
+-aantal posts bij onderwerpen zeten KYLLIAN
 -mooie knop voor make new subject JENNIFER
 -niet een lijst met echo's om html in php weer te geven
 -password retrieval - Michael
