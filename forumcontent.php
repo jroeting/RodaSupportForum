@@ -34,7 +34,7 @@
 					$dateTime = $selectLastPost->fetch();
 					echo "<tr>";
                     echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" . $row['subject_name'] . "</a></td>";
-					echo "<td>" . $dateTime["date_time"] . "</td>"
+					echo "<td>" . $dateTime["date_time"] . "</td>";
 					echo "</tr>";
                 }
 				// close databae
