@@ -17,7 +17,7 @@
 		include 'db_con.php';
 		// select user data and post concent as a reaction on selected subject
         $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, posts.post_id, 	
-				user_data.user_id
+				user_data.user_id, posts.spam
 				FROM user_data, posts 
 				WHERE posts.user_id = user_data.user_id
 				AND posts.subject_id = $subject
@@ -58,6 +58,10 @@
 			{
 				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove this post</a> | 
 					  <a href="index.php?content=report_spam&post_id='. $row['post_id'] . '"> Report as spam </a></td></tr>';
+			} 
+			if ($_SESSION['account_type'] == 1 && $row['spam'] == 1 )
+			{
+				echo '<tr><td></td><td><strong><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove spam</a> | <a href="index.php?content=nospam&post_id='.$row['post_id'].'"> No spam</a></strong></td></tr>';
 			}
 			echo '<tr><td></td><td height="2px" class="bar"></td></tr>';
         }
