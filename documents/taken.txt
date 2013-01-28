@@ -19,13 +19,13 @@ Taken:
 -html code goed maken zodat het door de validator komt (algemene taak)
 -zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen (algemene taak)
 -paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage (algemene taak)
+-niet een lijst met echo's om html in php weer te geven (algemene taak)
+
 -zoekfunctie naar onderwerpen
 -avatar plaatje weergen MAX
 -de persoonlijke profielpagina verbeteren/afmaken MAX
--mooie knop voor make new subject JENNIFER
--niet een lijst met echo's om html in php weer te geven
 -password retrieval - Michael
--last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp)
+-last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp) KYLLIAN
 -paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden)
 
 
@@ -40,3 +40,4 @@ GEDAAN
 -knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is JENNIFER
 -aantal posts bij onderwerpen zeten
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen KYLLIAN
+-mooie knop voor make new subject JENNIFER
