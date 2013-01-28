@@ -1,16 +1,17 @@
 <!-- adminpanel.php is a page that is available for all other administrators for checking subjects and other admin related tasks -->
 <p> Welcome ad the administrator panel. Together with the other members of the administrator panel, you are responsible for approve new
 submitted subjects, take care of spam reports, block inappropriate users and delete unactivated accounts.</p>
-<p>remove unverified users
+<p class="button2">remove 
 	<?php
 		include 'db_con.php';
-		$count_unverified = "SELECT COUNT(*) AS nrUnverified FROM user_data WHERE verified = FALSE"
+		$count_unverified = $db->prepare("SELECT COUNT(*) AS nrUnverified FROM user_data WHERE verified = FALSE");
 		if ($count_unverified->execute())
 		{
 			$row = $count_unverified->fetch();
-			echo $row["nrUnverified"]
+			echo $row["nrUnverified"];
 		}
 	?>
+	unverified users
 </p>
 <table width = "400">
 	<tr>
