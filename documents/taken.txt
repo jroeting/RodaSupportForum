@@ -13,7 +13,8 @@ Taken:
 -javascript/ajax waar en wat? (algemene taak) 
 -overal juiste connectie met database (algemene taak)
 	--> gedaan voor home.php, db_con.php, forum.php, forumcontent.php, newreaction.php, newreactionform.php
-	removepost.php, removesubject.php, topic.php
+	removepost.php, removesubject.php, topic.php, verify.php, register.php, checklogin.php, editprofile.php,
+	profile.php, wrongemail.php, members.php, newpost.php, phpadmin.php
 -alle stijl in css (algemene taak)
 -als alles af is alle tabellen leeg en opnieuw met goede dingen vullen voor presentatie (algemene taak)
 -html code goed maken zodat het door de validator komt (algemene taak)
