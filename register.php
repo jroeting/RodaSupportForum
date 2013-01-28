@@ -170,6 +170,7 @@ function checkName()
 			$headers = "From:" . $from;
 			mail($to,$subject,$message,$headers);
 			
+			$include = true;
 			include "registersucces.php";
 		}else
 		{
