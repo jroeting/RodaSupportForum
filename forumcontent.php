@@ -7,7 +7,7 @@
         if(isset($_SESSION['username'])) 
 		{
 			// link to page where the user can make a new subject in the selected category
-			echo '<table><tr>';
+			echo '<table>';
 			echo '<td></td><td><a href="index.php?content=newpost&category=$category"><img src="images/button_new_subject.jpg"></img></a></td></tr></table>';
         }
     ?>

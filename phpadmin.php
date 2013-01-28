@@ -46,16 +46,17 @@ submitted subjects, take care of spam reports, block inappropriate users and del
 
 <table width = "400">
 	<tr>
-    	<td class="tablehead">Spam reports</td>
+    	<td class="tablehead">Subjects with spam reports</td>
     </tr>
     <?php
-		$spam = "SELECT post_id
-				 FROM posts
-				 WHERE spam = 1";
+		$spam = "SELECT subjects.subject_id, posts.subject_id, subjects.subject_name
+				 FROM posts,subjects
+				 WHERE subjects.subject_id = posts.subject_id
+				 AND posts.spam = 1";
 		$result = $db->query($spam);
 		foreach($result as $row) {
 				echo '<tr>';
-				echo '<td>'. $row['post_id'] . '</td></tr>';
+				echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" .$row['subject_name'] ."</a></td></tr>";
 		}
 	?>
 </table>

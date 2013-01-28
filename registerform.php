@@ -96,7 +96,6 @@ if (isset($include)):
 	</div>
 <?php 
 	else :
-	else :
 		header("location:index.php?content=home");
 	endif;
 ?>
