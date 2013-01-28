@@ -23,7 +23,6 @@ Taken:
 -avatar plaatje weergen MAX
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen KYLLIAN
 -de persoonlijke profielpagina verbeteren/afmaken MAX
--aantal posts bij onderwerpen zeten KYLLIAN
 -mooie knop voor make new subject JENNIFER
 -niet een lijst met echo's om html in php weer te geven
 -password retrieval - Michael
@@ -40,3 +39,4 @@ GEDAAN
 	--> lay out en plaats van toegang (nu op eigen profiel) benodigd nog wat finetuning
 -account verifieren via de email die je na het registreren krijgt KYLLIAN
 -knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is JENNIFER
+-aantal posts bij onderwerpen zeten
