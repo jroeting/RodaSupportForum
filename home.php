@@ -16,9 +16,11 @@
 			// sql will select all subjects which are checked, they are ordered by subject_id, this will cause to show the
 			// most recent subject on top
             $subject_selection = "SELECT * FROM subjects 
-								  WHERE checked=1 ORDER BY subject_id 
+								  WHERE checked=1
+								  ORDER BY subject_id 
 								  DESC LIMIT 0,10";
-            $results = $db->query($subject_selection);
+            $results = $db->prepare($subject_selection);
+			$results->execute();
 			// makes a table out of the query results, with a link to that subject
             foreach($results as $row)
             {
@@ -39,7 +41,8 @@
 								  FROM subjects 
 								  WHERE highlight = 1
 								  AND checked = 1";
-            $results = $db->query($subject_highlight);
+            $results = $db->prepare($subject_highlight);
+			$results->execute();
 			// makes a table out of the query results, with a link to the posts in that subject
             foreach($results as $row)
             {

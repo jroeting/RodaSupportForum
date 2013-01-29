@@ -46,8 +46,10 @@ submitted subjects, taking care of spam reports, blocking inappropriate users an
 		$username;
 		$select_admins = "SELECT username, email
 						  FROM user_data
-						  WHERE account_type = 'adm'";
-		$results = $db->query($select_admins);
+						  WHERE account_type = ?";
+		$results = $db->prepare($select_admins);
+		$results->bindValue(1,'adm',PDO::PARAM_STR);
+		$results->execute();
 		foreach ($results as $row) {
 			$username = $row['username'];
 			if ($myUsername != $username) {
@@ -70,7 +72,8 @@ submitted subjects, taking care of spam reports, blocking inappropriate users an
 		$unchecked = "SELECT *
 					  FROM subjects
 					  WHERE checked = 0";
-		$results = $db->query($unchecked);
+		$results = $db->prepare($unchecked);
+		$results->execute();
 		foreach ($results as $row) {
 			echo '<tr>';
 			echo "<td><a href=\"index.php?content=topic&checked=0&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" . $row['subject_name'] . "</a></td>";
@@ -92,7 +95,8 @@ submitted subjects, taking care of spam reports, blocking inappropriate users an
 				 FROM posts,subjects
 				 WHERE subjects.subject_id = posts.subject_id
 				 AND posts.spam = 1";
-		$result = $db->query($spam);
+		$result = $db->prepare($spam);
+		$result->execute();
 		foreach($result as $row) {
 				echo '<tr>';
 				echo "<td><a href=\"index.php?content=topic&subject=" . $row['subject_id'] . "&subjectname=" . $row['subject_name'] ."\">" .$row['subject_name'] ."</a></td></tr>";

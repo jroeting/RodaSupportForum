@@ -23,10 +23,12 @@
 				// select subjects from given category
                 $select_subjects = "SELECT *
 									FROM subjects
-									WHERE category='$category'
+									WHERE category = ?
 									AND checked = 1
 									ORDER BY subject_id";
-                $results = $db->query($select_subjects);
+                $results = $db->prepare($select_subjects);
+				$results->bindValue(1,$category,PDO::PARAM_STR);
+				$results->execute();
 				// show subject name with a link to topic
 				foreach($results as $row)
                 {

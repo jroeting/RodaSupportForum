@@ -13,12 +13,18 @@
 			// connect with database
     		include 'db_con.php';
 			// insert content of user message into database
-			$sqlinsert = "INSERT INTO posts (user_id, subject_id, content) VALUES ('$userId','$subjectId','$post')";
-    		$input = $db->query($sqlinsert);
+			$sqlinsert = "INSERT INTO posts (user_id, subject_id, content) VALUES (?,?,?)";
+    		$input = $db->prepare($sqlinsert);
+			$input->bindValue(1,$userId,PDO::PARAM_INT);
+			$input->bindValue(2,$subjectId,PDO::PARAM_INT);
+			$input->bindValue(3,$post,PDO::PARAM_STR);
+			$input->execute();
 	
 			// select the subject name to wich subject_id is belonging
-			$sqlSelectSubjectName = "SELECT subject_name FROM subjects WHERE (subject_id='$subjectId')";
-			$results = $db->query($sqlSelectSubjectName);
+			$sqlSelectSubjectName = "SELECT subject_name FROM subjects WHERE (subject_id=?)";
+			$results = $db->prepare($sqlSelectSubjectName);
+			$results->bindValue(1,$subjectId,PDO::PARAM_INT);
+			$results->execute();
 			foreach($results as $row)
     		{
     			$subjectName = $row['subject_name'];

@@ -20,9 +20,11 @@
 				user_data.user_id, posts.spam
 				FROM user_data, posts 
 				WHERE posts.user_id = user_data.user_id
-				AND posts.subject_id = $subject
+				AND posts.subject_id = ?
 				ORDER BY posts.date_time ASC";
-        $results = $db->query($sql);
+        $results = $db->prepare($sql);
+		$results->bindValue(1,$subject,PDO::PARAM_INT);
+		$results->execute();
 		// shows user data and post content
         foreach($results as $row)
         {

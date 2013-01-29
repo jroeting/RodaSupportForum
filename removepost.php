@@ -9,9 +9,12 @@ of the message to 'This message has been deleted ...'-->
 	include 'db_con.php';
 	// set post content to $message
 	$removeMessage = "UPDATE posts 
-					SET content='$message'
-					WHERE post_id = '$post_id'";
-	$removedpost = $db->query($removeMessage);
+					SET content= :message
+					WHERE post_id = :postId";
+	$removedpost = $db->prepare($removeMessage);
+	$removedpost->bindValue(':message', $message, PDO::PARAM_STR);
+	$removedpost->bindValue(':postId', $post_id, PDO::PARAM_INT);
+	$removedpost->execute();
 	echo "Your message was succesfully deleted.</br>";
 	// a link to subject overview
 	echo "<a href='" . $_SERVER['HTTP_REFERER'] . "'>Go back to subject overview</a>";
