@@ -1,15 +1,16 @@
 <?php
+//Reads the url
 $protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') 
 				=== FALSE ? 'http' : 'https';
 $params   = $_SERVER['QUERY_STRING'];
 
-$params = preg_replace("/[^0-9]/", '', $params);
+$params = preg_replace("/[^0-9]/", '', $params); //Only numbers from the parameters remain
 if ($_SESSION['user_id'] == $params) :
 	?>
 	<div>
         <div class="tablehead"> <strong> Edit Your Profile </strong></div>
 		<?php 	
-		// connection with databse
+			// connection with databse
 			include "db_con.php";
 			$userID = $_GET["user_id"];
 			$sql = "SELECT * FROM user_data WHERE user_id=$userID";
