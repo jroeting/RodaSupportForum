@@ -170,9 +170,13 @@ EOT;
 					if ($_FILES["file"]["error"] > 0)
 					{
 						$GLOBALS['errorFile'] = "file error";
-					}else
+					}
+					else
 					{
-						$GLOBALS['imgData'] = addslashes(file_get_contents($_FILES['file']['tmp_name']));
+						move_uploaded_file($_FILES["file"]["tmp_name"],
+						"images/" . $_FILES["file"]["name"]);
+						echo "Saved.";
+						//header("location:index.php?content=check");
 					}
 				}
 				else
@@ -228,7 +232,7 @@ EOT;
 				{
 					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection);
-					$result->bindValue(1, $_POST['avatar'], PDO::PARAM_LOB);
+					$result->bindValue(1, $_POST['file'], PDO::PARAM_LOB);
 					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
 					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
 					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
@@ -241,7 +245,7 @@ EOT;
 				{
 					$selection2 = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection2);
-					$result->bindValue(1, $_POST['avatar'], PDO::PARAM_LOB);
+					$result->bindValue(1, $_POST['file'], PDO::PARAM_LOB);
 					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
 					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
 					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
@@ -254,25 +258,26 @@ EOT;
 		
 			if(isset($_POST["submit"]))
 			{	
-				$avatar = $_POST['avatar'];
+				if(isset($_POST['file'])){ $avatar = $_POST['file']; }
 				$personalText = $_POST['personal_text'];
 				$age = $_POST['age'];
 				$gender = $_POST['gender'];
 				$country = $_POST['country'];
 				$quote = $_POST['quote'];
 				
-				if(!isset($_POST['avatar']))
+				if(!isset($_POST['file']))
 				{
 					checkPersonalText();
 					checkQuote();
 					inputForm();
-				} else
+				}
+				else
 				{				
-				checkFile();
-				checkPersonalText();
-				checkQuote();
-				inputForm();
-				} 
+					checkFile();
+					checkPersonalText();
+					checkQuote();
+					inputForm();
+				}
 			}
 			
 			$db=NULL; // closes database
