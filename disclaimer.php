@@ -14,7 +14,7 @@ This disclaimer applies to:<br /><br />
     You: The visitor of the website<br />
     Content: The content of this website<br /><br />
 
-The following applies to the page you are currently viewing. By visiting this page, you automatically agree with our disclaimer.<br />
+The following applies to the page you are currently viewing. By visiting this website, you automatically agree with our disclaimer.<br />
 The content is with great care composed by the owner, however, the owner accepts no liability for any inaccuracies displayed. <br />
 The owner is not responsible for the content of linked files to other files than belonging to the content of this website.<br />
 Unauthorized or improper use of (parts of) the content infringe intellectual property rights.<br />
