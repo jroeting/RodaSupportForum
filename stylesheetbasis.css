@@ -249,12 +249,34 @@ p.datetime
 table.forumcontent
 {
 	width:100%;
-	margin:5px;
+	margin-left:auto;
+	margin-right:auto;
 	border:0px;
+	
 }
 
 .tablehead
 {
+	border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+	padding:5px;
+		/* IE10 Consumer Preview */
+	background: -ms-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* Mozilla Firefox */
+	background: -moz-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* Opera */
+	background: -o-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* Webkit (Safari/Chrome 10) */
+	background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #A4190C), color-stop(1, #FA807F));
+	/* Webkit (Chrome 11+) */
+	background: -webkit-linear-gradient(bottom, #A4190C 0%, #FA807F 100%);
+	/* W3C Markup, IE10 Release Preview */
+	background: linear-gradient(to top, #A4190C 0%, #FA807F 100%);
+}
+
+.smallTableHead
+{
+	width:200px;
 	border-top-left-radius: 5px 5px;
     border-top-right-radius: 5px 5px;
 	padding:5px;

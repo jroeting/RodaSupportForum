@@ -1,4 +1,3 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <!-- forumcontent.php gives an overview of the subjects that are posted in the selected category, the subjects are ordered on date and time with the most recent post on top. The user can also see who, and on which time, the last reaction was posted in a subject. The subjects are linked to a page with an overview of the reactions on the subject -->
     <?php
 		// gets the category that is given in the link
@@ -11,11 +10,11 @@
 			echo '<td></td><td><a href="index.php?content=newpost&category=$category"><img src="images/button_new_subject.jpg"></img></a></td></tr></table>';
         }
     ?>
-  <table class="forumcontent" align="center">
+  <table class="forumcontent">
   		<tr>
         	<!-- gives an overview of all subjects and the last post made in each subject -->
             <td class="tablehead"><strong>Subject</strong></td>
-            <td class="tablehead" width="200"><strong>Last post</strong></td>
+            <td class="smallTableHead"><strong>Last post</strong></td>
         </tr>
      		<?php
 				// open database
@@ -44,4 +43,3 @@
 			?>
             
     </table>
-</html>
