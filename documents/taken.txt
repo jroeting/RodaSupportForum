@@ -27,7 +27,7 @@ Taken:
 -avatar plaatje weergen MAX
 -de persoonlijke profielpagina verbeteren/afmaken MAX
 -password retrieval - Michael
--paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden)
+-paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden) JENNIFER
 
 
 GEDAAN
