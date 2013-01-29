@@ -35,6 +35,10 @@
 					echo "<br /><br />";
 					break;
 				}	
+				if($_SESSION['user_id'] == $row['user_id']) 
+				{
+					echo "<a href=\"index.php?content=changepasswordform&user_id=" . $row['user_id'] . "\">" . '<i><strong>Change Password</strong></i>' . "</a>" ;
+				}
 			?>	
 		</div>
 
@@ -128,10 +132,12 @@ EOT;
 				if($_SESSION['user_id'] == $row['user_id']) 
 				{
 					echo "<a href=\"index.php?content=editprofile&user_id=" . $row['user_id'] . "\">" . '<i><strong>Edit Profile</strong></i>' . "</a>" ;
+					echo "<br />";
 				} 
 				if($_SESSION['user_id'] == $row['user_id'] && $_SESSION['account_type'] == 1) 
 				{
 					echo '<br/><strong><a href="index.php?content=phpadmin">Go to administrator panel</a></strong>';
+					
 				}
 			?>
 		</div>	
