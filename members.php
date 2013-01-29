@@ -6,13 +6,13 @@
 		Members of Roda
 	</h1>
 	 
-	<table class="tablemember" border="1" cellpadding="10">
+	<table class="memberlist">
   		<tr>
-			<th class="tablehead"><strong> Username </strong></th>
-			<th class="tablehead"><strong> Email </strong> </th>
-			<th class="tablehead"><strong> Posts </strong> </th>
-			<th class="tablehead"><strong> Account Type </strong></th>
-			<th class="tablehead"><strong> Date Registered </strong></th>
+			<th class="tablehead2"><strong> Username </strong></th>
+			<th class="tablehead2"><strong> Email </strong> </th>
+			<th class="tablehead2"><strong> Posts </strong> </th>
+			<th class="tablehead2"><strong> Account Type </strong></th>
+			<th class="tablehead2"><strong> Date Registered </strong></th>
         </tr>
 		<?php
 			include "db_con.php";
@@ -23,16 +23,16 @@
 			// shows the memberlist with info of members
 			foreach($result as $row) 
 			{
-				echo "<tr>";
-				echo "<td>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
-				echo "<td>" . $row['email'] . "</td>";
+				echo "<tr class=cellpadding>";
+				echo "<td class=cellpadding>" . "<a href=\"index.php?content=profile&user_id=" . $row["user_id"] . "\">" . $row["username"] . "</a>" . "</td>";
+				echo "<td class=cellpadding>" . $row['email'] . "</td>";
 				
 				$userID = $row['user_id'];
 				// Query to count number of posts for each member
 				$numberOfPosts = "SELECT count(*) FROM posts WHERE user_id = $userID";
 				$count = $db->query($numberOfPosts);
 				$data_array = $count->fetch();
-				echo "<td>" . $data_array[0] . "</td>";
+				echo "<td class=cellpadding>" . $data_array[0] . "</td>";
 				switch ($row["account_type"]) {
 								case "adm": 
 									$accountType = "admin";
@@ -41,8 +41,8 @@
 									$accountType = "user";
 									break;
 							}
-				echo "<td>" . $accountType . "</td>";	
-				echo "<td>" . $row['register_date'] . "</td>";
+				echo "<td class=cellpadding>" . $accountType . "</td>";	
+				echo "<td class=cellpadding>" . $row['register_date'] . "</td>";
 				echo "</tr>";
 			}
 	
