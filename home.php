@@ -29,9 +29,6 @@
                 echo "</tr>";
             }
   		?>
-	</table>
-	<!-- Display's the 10 most recent subjects which are highlighted -->
-  	<table class="tablemember">
 	  	<tr>
    			<td class="tablehead"><strong>10 most popular subjects</strong></td>
   		</tr>

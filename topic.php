@@ -18,6 +18,24 @@
 		echo '</tr>';
 		// open database
 		include 'db_con.php';
+		$count = "SELECT COUNT(*) FROM posts WHERE subject_id = ?";
+		$num_posts = $db->prepare($count);
+		$num_posts->bindValue(1,$subject,PDO::PARAM_INT);
+		$num_posts->execute();
+		foreach($num_posts as $row) 
+		{
+			$num = $row[0];
+		}
+		
+		if ($num > 14) 
+		{
+			$sql = "UPDATE subjects
+					SET highlight = 1
+					WHERE subject_id = ?";
+			$set_highlight = $db->prepare($sql);
+			$set_highlight->bindValue(1,$subject,PDO::PARAM_INT);
+			$set_highlight->execute();
+		}
 		// select user data and post concent as a reaction on selected subject
         $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, posts.post_id, 	
 				user_data.user_id, posts.spam
