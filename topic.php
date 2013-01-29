@@ -1,11 +1,14 @@
 <!-- topic.php gives an overview of the reactions in a subject. It is showed with the user that wrote the reaction, the user's avatar and the user's quote. -->
     <?php
+		
 		// get subject ID and name from variables given in url
         $subject = $_GET['subject'];
 		$subjectname = $_GET['subjectname'];
 		// if the user is logged in, the user can place a new reaction in this subject
-		if($_SESSION['account_type'] == 1) {
-			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Close this subject</a><br />";
+		if(isset($_SESSION['username'])) {
+			if  ($_SESSION['account_type'] == 1)  {
+				echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Close this subject</a><br />";
+			}
 		} 
 		// shows subject name
 		
@@ -54,14 +57,20 @@
 			echo '<td><br /><p class="quote">' . $row['quote'] . '</p></td>';
 			echo '</tr>';
 			// enables the admin to remove posts from other users and enables users to remove their own posts
-			if((isset($_SESSION['username']) && $_SESSION['username'] == $row['username']) || $_SESSION['account_type'] == 1) 
+			if(isset($_SESSION['username'])) 
 			{
-				echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove this post</a> | 
-					  <a href="index.php?content=report_spam&post_id='. $row['post_id'] . '"> Report as spam </a></td></tr>';
-			} 
-			if ($_SESSION['account_type'] == 1 && $row['spam'] == 1 )
+				if ($_SESSION['username'] == $row['username'] || $_SESSION['account_type'] == 1) 
+				{
+					echo '<tr><td></td><td><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove this post</a> | 
+						  <a href="index.php?content=report_spam&post_id='. $row['post_id'] . '"> Report as spam </a></td></tr>';
+				}
+			}
+			if (isset($_SESSION['username'])) 
 			{
-				echo '<tr><td></td><td><strong><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove spam</a> | <a href="index.php?content=nospam&post_id='.$row['post_id'].'"> No spam</a></strong></td></tr>';
+				if ($_SESSION['account_type'] == 1 && $row['spam'] == 1 )
+				{
+					echo '<tr><td></td><td><strong><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove spam</a> | <a href="index.php?content=nospam&post_id='.$row['post_id'].'"> No spam</a></strong></td></tr>';
+				}
 			}
 			echo '<tr><td></td><td class="barpost"></td></tr>';
         }
