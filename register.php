@@ -1,7 +1,7 @@
 <?php
 function checkName()
 	{
-		if ($_POST["name"] == "" || !(filter_var($_POST["name"], FILTER_SANITIZE_STRING) == $_POST["name"] && str_replace(" ", "", $_POST["name"]) == $_POST["name"] && preg_match('/^[a-z]+$/i', $_POST["name"])))
+		if ($_POST["name"] == "" || !(filter_var($_POST["name"], FILTER_SANITIZE_STRING) == $_POST["name"] && str_replace(" ", "", $_POST["name"]) == $_POST["name"] && preg_match('/^[a-z]+$/i', $_POST["name"]) ))
 		{
 			$GLOBALS['errorName'] = "invalid name";	
 		}
@@ -59,7 +59,6 @@ function checkName()
 	function checkUsername()
 	{
 		$username = $_POST["username"];
-		
 		// connect with database
 		include 'db_con.php';
 		// selection of all subjects, ordered by subject_id (so most recent is on top)
@@ -88,7 +87,6 @@ function checkName()
 	{
 		$GLOBALS['quote'] = trim($GLOBALS['quote']);
 		$GLOBALS['quote'] = filter_var($GLOBALS['quote'], FILTER_SANITIZE_STRING);
-		$GLOBALS['quote'] = htmlentities($GLOBALS['quote'], ENT_QUOTES);
 	}
 	
 	function checkPassword()
@@ -150,7 +148,7 @@ function checkName()
 			// selection of all subjects, ordered by subject_id (so most recent is on top)
 			$sql= "INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES (?,?,?,?,?,?,?,?)";
 			$results = $db->prepare($sql);
-			$results->bindValue(1, $_POST["username"], PDO::PARAM_STR);
+			$results->bindValue(1, htmlentities($_POST["username"]), PDO::PARAM_STR);
 			$results->bindValue(2, $password, PDO::PARAM_STR);
 			$results->bindValue(3, $_POST["mail"], PDO::PARAM_STR);
 			$results->bindValue(4, $_POST["name"], PDO::PARAM_STR);
