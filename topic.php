@@ -5,11 +5,11 @@
 		$subjectname = $_GET['subjectname'];
 		// if the user is logged in, the user can place a new reaction in this subject
 		if($_SESSION['account_type'] == 1) {
-			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Close this subject</a></br>";
+			echo "<a href=\"index.php?content=removesubject&subject='$subject'&action=0\">Close this subject</a><br />";
 		} 
 		// shows subject name
 		
-		echo '<table align="center">';
+		echo '<table class="centeredtable">';
 		echo '<tr>';
 		echo '<td class="tablehead" colspan="2"><strong>' . $subjectname . '</strong></td>';
 		echo '</tr>';
@@ -35,9 +35,9 @@
 				$user = 'administrator';
 			}
 			echo '<tr>';
-			echo '<td width="100"></td>';
+			echo '<td class="post"></td>';
 			// date and time of when the post was created
-			echo '<td width="850"><p class="datetime"> Reaction placed at &nbsp;' . $row['date_time'] . '</p></td>';
+			echo '<td class="contentpost"><p class="datetime"> Reaction placed at &nbsp;' . $row['date_time'] . '</p></td>';
 			echo '</tr>';
 			echo '<tr>';
 			// username and link to user profile
@@ -45,15 +45,13 @@
 			// content of the post
 			echo '<td rowspan="2">' . $row['content'] .'</td>';
 			echo '</tr>';
-			echo '<tr>';
-			echo '<tr>';
+			echo '<tr></tr>';
 			// user avatar
-			echo '<td height="110" width="110">' . $user . '</br><img src="images/avatar.png" width="100" height="100"></img></td>';
-			echo '</tr>';
+			echo '<tr><td class="avatarpost">' . $user . '<br /><img src="images/avatar.png" class="avatarpost" alt=""></img></td></tr>';
 			echo '<tr>';
 			echo '<td></td>';
 			// user quote
-			echo '<td></br><p class="quote">' . $row['quote'] . '</p></td>';
+			echo '<td><br /><p class="quote">' . $row['quote'] . '</p></td>';
 			echo '</tr>';
 			// enables the admin to remove posts from other users and enables users to remove their own posts
 			if((isset($_SESSION['username']) && $_SESSION['username'] == $row['username']) || $_SESSION['account_type'] == 1) 
@@ -65,17 +63,17 @@
 			{
 				echo '<tr><td></td><td><strong><a href="index.php?content=removepost&post_id='.$row['post_id'].'">Remove spam</a> | <a href="index.php?content=nospam&post_id='.$row['post_id'].'"> No spam</a></strong></td></tr>';
 			}
-			echo '<tr><td></td><td height="2px" class="bar"></td></tr>';
+			echo '<tr><td></td><td class="barpost"></td></tr>';
         }
 		// close database 
 		echo "</table>";
 		// if the user is logged in, the user can place a reaction in the subject
 		if(isset($_SESSION['username'])) 
 		{
-			echo '</br>';
+			echo '<br />';
 			echo '<table>';
 			echo '<tr>';
-			echo '<td width="100"></td>';
+			echo '<td class="post"></td>';
 			echo '<td>';
             echo '&nbsp;Write a new reaction in this subject';
 			echo '</td>';
@@ -83,6 +81,6 @@
 			echo '<td></td>';
 			echo '<td>';
 			include 'newreactionform.php';
-			echo '</td></tr></table';
+			echo '</td></tr></table>';
         }
 		?>
