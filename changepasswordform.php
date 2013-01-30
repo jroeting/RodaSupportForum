@@ -16,17 +16,6 @@
 			}
 			count.innerHTML = "Password strength is " + strength; 
 		}
-		function checkPasswordMatch() 
-		{
-			var password = $("#count").val();
-			var confirmPassword = $("#match").val();
-
-			if (password != confirmPassword)
-				check.innerHTML = "Passwords match.";
-			else
-				check.innerHTML = "Passwords DO NOT match.";
-		}
-	</script>
 </head>
 
 <?php
