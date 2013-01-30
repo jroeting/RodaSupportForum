@@ -92,7 +92,6 @@
 					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection);
 					$result->bindValue(1, $GLOBALS['imgData'], PDO::PARAM_LOB);
-					
 					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
 					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
 					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);

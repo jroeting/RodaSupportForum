@@ -163,7 +163,7 @@
 			// all registration values are inserted into the database
 			$sql= "INSERT INTO user_data (username, password, email, name, surname, avatar, quote, infix) VALUES (?,?,?,?,?,?,?,?)";
 			$results = $db->prepare($sql);
-			$results->bindValue(1, htmlentities($_POST["username"]), PDO::PARAM_STR);
+			$results->bindValue(1, $_POST["username"], PDO::PARAM_STR);
 			$results->bindValue(2, $password, PDO::PARAM_STR);
 			$results->bindValue(3, $_POST["mail"], PDO::PARAM_STR);
 			$results->bindValue(4, $_POST["name"], PDO::PARAM_STR);
@@ -175,6 +175,10 @@
 			
 			// close database
             $db = NULL;
+			
+			$include = true;
+			include "scp.php";
+			ssh2_scp_send($connection, $_FILES['file']['tmp_name'], 'public_html/avatars/' . $_POST["username"] .  '.png', 0644);
 			
 			//assembles the complete name of the user
 			if ($_POST["infix"] == "")
