@@ -1,5 +1,6 @@
 	<!-- Layout Profile -->
 <?php
+	// the user can only enter the profile page if he/she is logged in
 	if(isset($_SESSION['username'])) :
 ?>
 	<div class="tablehead"> <strong> Profile </strong></div>					
@@ -259,7 +260,7 @@ EOT;
 				}
 			}		
 		}
-		
+			// functions only run after form submission
 			if(isset($_POST["submit"]))
 			{	
 				if(isset($_POST['file'])){ $avatar = $_POST['file']; }
