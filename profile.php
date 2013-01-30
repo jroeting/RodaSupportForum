@@ -161,6 +161,9 @@ EOT;
 			
 			if ($_FILES["file"]["name"] != "")
 			{
+				$allowedExts = array("jpg", "jpeg", "gif", "png");
+				$extension = end(explode(".", $_FILES["file"]["name"]));
+				
 				//checks for right extension, size ,height and width
 				if ((($_FILES["file"]["type"] == "image/gif")
 				|| ($_FILES["file"]["type"] == "image/jpeg")
