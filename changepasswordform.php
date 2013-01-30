@@ -20,7 +20,13 @@
 </head>
 
 <?php
-	if(isset($_SESSION['username'])) :
+	//Reads the url
+	$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') 
+				=== FALSE ? 'http' : 'https';
+	$params   = $_SERVER['QUERY_STRING'];
+
+	$params = preg_replace("/[^0-9]/", '', $params); //Only numbers from the parameters remain
+	if ($_SESSION['user_id'] == $params) :
 ?>
 	<div>
         <div class="tablehead"> <strong> Change Your Password </strong></div>
