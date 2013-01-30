@@ -26,7 +26,6 @@ Taken:
 -zoekfunctie naar onderwerpen
 -avatar plaatje weergen MAX
 -de persoonlijke profielpagina verbeteren/afmaken MAX
--password retrieval - Michael
 -paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden) JENNIFER
 
 
@@ -43,3 +42,4 @@ GEDAAN
 -een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen KYLLIAN
 -mooie knop voor make new subject JENNIFER
 -last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp) KYLLIAN
+-password retrieval - KYLLIAN
