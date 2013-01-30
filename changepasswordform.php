@@ -16,6 +16,16 @@
 			}
 			count.innerHTML = "Password strength is " + strength; 
 		}
+		function checkPasswordMatch() 
+		{
+			var password = $("#count").val();
+			var confirmPassword = $("#match").val();
+
+			if (password != confirmPassword)
+				check.innerHTML = "Passwords match.";
+			else
+				check.innerHTML = "Passwords DO NOT match.";
+		}
 	</script>
 </head>
 
@@ -30,16 +40,13 @@
 ?>
 	<div>
         <div class="tablehead"> <strong> Change Your Password </strong></div>
-		<?php 	
-			
-		// connection with databse
+		<?php 		
+			// connection with databse
 			include "db_con.php";
 			$userID = $_GET["user_id"];
 			$sql = "SELECT * FROM user_data WHERE user_id=$userID";
             $result = $db->query($sql);
 			$data_array = $result->fetch();
-			
-			
 			
 			// form for edit profile
 			echo "<form action=\"index.php?content=changepassword&user_id=" . $data_array["user_id"] . "\" method=\"post\">"; ?>
@@ -53,15 +60,17 @@
 				</tr> 
 				<tr>
 					<td id="count">New Password: </td> 
-					<td><input type="password" name="newPassword" id="password" maxlength="20" onkeyup="pwstrength()"/></td>
+					<td><input type="password" name="newPassword" id="password" maxlength="20" onkeyup="pwstrength()" /></td>
 				</tr> 
 				<tr>
-					<td> Repeat New Password: </td> 
-					<td><input type="password" name="passwordCheck" maxlength="20" /></td>	
+					<td id="match">Repeat New Password: </td>
+					<td><input type="password" name="passwordCheck" onkeyup="checkPasswordMatch()" maxlength="20" /></td>	
 				</tr>
 				<tr>
-				</tr> 
+					<td id="check"></td>
+				</tr>
 				<tr>
+				</div>
 					<td><input type="submit" name="submit" value="Change Password" /></td>
 				</tr>
 			</table>
