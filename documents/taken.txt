@@ -73,3 +73,11 @@ GEDAAN
 -mooie knop voor make new subject JENNIFER
 -last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp) KYLLIAN
 -password retrieval - KYLLIAN
+
+
+PAGES DIE AF ZIJN - gecheckt door ( zet je naam erachter voor checks, het is de bedoeling dat we elkaars werk dubbel checken):
+- rules; --> michael
+- faq tot en met 11;  --> michael
+- members;  --> michael
+- changepassword;  --> michael
+- changepasswordform;  --> michael
