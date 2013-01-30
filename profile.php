@@ -152,37 +152,41 @@ EOT;
 		
 		/**** Functions ****/ 
 		
-		// check for upload avatar
+		//checks the file for several conditions, errormessages will be assigned if conditions dont pass
 		function checkFile()
 		{
 			$allowedExts = array("jpg", "jpeg", "gif", "png");
 			$extension = end(explode(".", $_FILES["file"]["name"]));
-		
+			
 			if ($_FILES["file"]["name"] != "")
 			{
+				//checks for right extension, size ,height and width
 				if ((($_FILES["file"]["type"] == "image/gif")
-					|| ($_FILES["file"]["type"] == "image/jpeg")
-					|| ($_FILES["file"]["type"] == "image/png")
-					|| ($_FILES["file"]["type"] == "image/pjpeg"))
-					&& ($_FILES["file"]["size"] < 200000)
-					&& in_array($extension, $allowedExts))
+				|| ($_FILES["file"]["type"] == "image/jpeg")
+				|| ($_FILES["file"]["type"] == "image/png")
+				|| ($_FILES["file"]["type"] == "image/pjpeg"))
+				&& ($_FILES["file"]["size"] < 200000)
+				&& in_array($extension, $allowedExts))
 				{
+					$size = getimagesize($_FILES['file']['tmp_name']);
+					
 					if ($_FILES["file"]["error"] > 0)
 					{
 						$GLOBALS['errorFile'] = "file error";
-					}
-					else
+					}elseif ($size["0"] > 1000 && $size["1"] > 1000)
 					{
-						move_uploaded_file($_FILES["file"]["tmp_name"],
-						"images/" . $_FILES["file"]["name"]);
-						echo "Saved.";
-						//header("location:index.php?content=check");
+						$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
+					}else
+					{
+						$GLOBALS['imgData'] = fopen($_FILES['file']['tmp_name'], 'rb');
 					}
 				}
 				else
 				{
-				$GLOBALS['errorFile'] = "invalid file, only .gif, .jpg, .jpg or .png and less then 200kb ";
-				}		
+					$GLOBALS['errorFile'] = "invalid file, only .gif, .jpg, .jpg or .png and less then 200kb ";
+				}
+				
+				
 			}
 		}
 		

@@ -4,6 +4,32 @@ Ga niet gelijk heel veel taken op je nemen maar doe liever 1 taak en rond die af
 Als je een taak af heb zet er dan achter dat het af is.
 
 Taken:
+-overal waar user input is, checken me htmlentities
+-avatar weergeven KYLLIAN
+-Documentatie/verslag
+-overal waar je include een check uitvoeren:
+	<?php
+		$include = true;
+		include "page.php";
+	?>
+
+	en dan in die page:
+	<?php 
+		//checks if the file is being included, else redirects to home
+		if (isset($include)):
+		unset($include);
+	?>
+	-de pagina-
+	<?php 
+		else :
+			header("location:index.php?content=home");
+		endif;
+	?>
+	
+	
+
+
+Taken:
 -documentatie van de website (algemene taak)
 -comments in de php code (algemene taak)
 	--> gedaan voor home.php, db_con.php, forum.php, forumcontent.php, index.php, newreaction.php
