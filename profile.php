@@ -3,7 +3,7 @@
 		// variables that contains form errors of the user
 		$errorFile = ""; // avatar error
 		// adds slashes and read the contents of a file into a string
-		$imgData = addslashes (file_get_contents("images/avatar.png")); 
+		$imgData = "images/avatar.png"; 
 
 		/**** Functions ****/ 
 
@@ -91,7 +91,8 @@
 				{
 					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection);
-					$result->bindValue(1, $_POST['file'], PDO::PARAM_LOB);
+					$result->bindValue(1, $GLOBALS['imgData'], PDO::PARAM_LOB);
+					
 					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
 					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
 					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
