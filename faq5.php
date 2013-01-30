@@ -1,8 +1,7 @@
-<h3 class="tablehead">
+<h2>
 	How do I return to the forum directory page?
-</h3>
-<!-- content -->
-<div>
+</h2>
+<div style='height:250px'>
 	To return to the forum directory page, simply click the "forum" button on the red main menu. <br />
 	
 	<br />

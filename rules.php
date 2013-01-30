@@ -1,8 +1,7 @@
-<h3 class="tablehead">
+<h2>
 	Forum Rules
-</h3>
-<!-- content of rules -->
-<div>
+</h2>
+<div style='height:250px'>
 	<p> <i> <strong> General Rules </strong> </i> </p> 
 	- <i> <b> Respect: </b> </i> respect each other's posts. Each person has his/her own opinions. No hateful messages. <br />
 	- <i> <b> No Offensive Content: </b> </i> Sexually explicit or illegal activities are not allowed. <br />

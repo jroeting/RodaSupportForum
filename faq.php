@@ -1,8 +1,8 @@
-<h2 class="tablehead">
+<h1>
 		FAQ
-</h2>
-<!-- content of FAQ-page-->
-<div >
+</h1>
+
+<div style='height:250px;'>
 	<a href="index.php?content=rules"> <i> <strong> Rules </strong> </i> </a> <br /> <br />
 	<a href="index.php?content=faq1">How do I register for the forum? </a> <br />
 	<a href="index.php?content=faq2">How do I log into the forums? </a> <br />
