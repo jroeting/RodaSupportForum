@@ -1,6 +1,4 @@
-<!-- topic.php gives an overview of the reactions in a subject. It is showed with the user that wrote the reaction, the user's avatar and the user's quote. -->
-    <?php
-		
+<?php
 		// get subject ID and name from variables given in url
         $subject = $_GET['subject'];
 		$subjectname = $_GET['subjectname'];
@@ -16,18 +14,28 @@
 		echo '<tr>';
 		echo '<td class="tablehead" colspan="2"><strong>' . $subjectname . '</strong></td>';
 		echo '</tr>';
-		// open database
-		include 'db_con.php';
-		$count = "SELECT COUNT(*) FROM posts WHERE subject_id = ?";
-		$num_posts = $db->prepare($count);
-		$num_posts->bindValue(1,$subject,PDO::PARAM_INT);
-		$num_posts->execute();
-		foreach($num_posts as $row) 
-		{
-			$num = $row[0];
-		}
 		
-		if ($num > 14) 
+		// check page_number for pagination
+		if (isset($_GET['page_number'])) {
+   			$page_number = $_GET['page_number'];
+		} else {
+   			$page_number = 1;
+		}
+	
+		include 'db_con.php';
+		
+		// count number of posts in this subject for pagination and highlighting	
+		$sql = "SELECT COUNT(*) FROM posts WHERE subject_id = ?";
+		$count = $db->prepare($sql);
+		$count->bindValue(1,$subject,PDO::PARAM_INT);
+		$count->execute();
+		foreach($count as $row) 
+		{
+			// num_rows accounts for the number of posts
+			$num_rows = $row[0];
+		}
+		// if there are more than 14 posts in this subject, highlight is set on 1. (This will become a popular subject).
+		if ($num_rows > 14) 
 		{
 			$sql = "UPDATE subjects
 					SET highlight = 1
@@ -36,13 +44,29 @@
 			$set_highlight->bindValue(1,$subject,PDO::PARAM_INT);
 			$set_highlight->execute();
 		}
-		// select user data and post concent as a reaction on selected subject
-        $sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, posts.post_id, 	
+		// how many posts will be shown on one page
+		$rows_per_page = 10;
+		// to determine when last page is reached
+		$lastpage      = ceil($num_rows/$rows_per_page);
+		// defines last page
+		$page_number = (int)$page_number;
+		if ($page_number > $lastpage) {
+	   		$page_number = $lastpage;
+		} 
+		// defines first page
+		if ($page_number < 1) {
+   			$page_number = 1;
+		} 
+		// sets limit for every page if needed	
+		$limit = 'LIMIT ' .($page_number - 1) * $rows_per_page .',' .$rows_per_page;
+		// selection of data to be shown
+		$sql = "SELECT user_data.username, user_data.avatar, user_data.quote, user_data.account_type, posts.content, posts.date_time, posts.post_id, 	
 				user_data.user_id, posts.spam
 				FROM user_data, posts 
 				WHERE posts.user_id = user_data.user_id
 				AND posts.subject_id = ?
-				ORDER BY posts.date_time ASC";
+				ORDER BY posts.date_time ASC
+				$limit"; // limited by pagination
         $results = $db->prepare($sql);
 		$results->bindValue(1,$subject,PDO::PARAM_INT);
 		$results->execute();
@@ -92,10 +116,29 @@
 				}
 			}
 			echo '<tr><td></td><td class="barpost"></td></tr>';
-        }
-		// close database 
-		echo "</table>";
-		// if the user is logged in, the user can place a reaction in the subject
+		}
+		echo "</table><br/>";
+		echo '<table class="centeredtable">';
+		// buttons to get to previous page. If there is nog previous page, nothing is shown
+		if ($page_number == 1) {
+   			echo "";
+		} else {
+   			echo "<a href='{$_SERVER['REQUEST_URI']}&page_number=1'>&#60;&#60; First&nbsp;</a>";
+   			$prevpage = $page_number-1;
+   			echo " <a href='{$_SERVER['REQUEST_URI']}&page_number=$prevpage'>&#60; Previous</a> ";
+		}	 
+		// shows on which page you are
+		echo "  Page $page_number of $lastpage  ";
+		// buttons to get to next and last page. If there is none, nothing is shown
+		if ($page_number == $lastpage) {
+   			echo "";
+		} else {
+   			$nextpage = $page_number+1;
+   			echo " <a href='{$_SERVER['REQUEST_URI']}&page_number=$nextpage'> Next &#62; &nbsp;</a> ";
+   			echo " <a href='{$_SERVER['REQUEST_URI']}&page_number=$lastpage'>Last &#62;&#62;</a> ";
+		}	 
+		echo '</table>';
+		// when user is logged in, user can make a new post
 		if(isset($_SESSION['username'])) 
 		{
 			echo '<br />';
@@ -111,4 +154,4 @@
 			include 'newreactionform.php';
 			echo '</td></tr></table>';
         }
-		?>
+	?>

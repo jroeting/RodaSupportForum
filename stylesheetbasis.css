@@ -196,6 +196,15 @@ p.h1
     margin:20px
 }
 
+p.centered
+{
+	color: #CCC;
+	font-family: Tahoma, Verdana, Geneva, sans-serif;
+	text-align: center;
+	front-size: 14px;
+	font-weight:bold;
+}
+
 a:link 
 {
     color:#CCC;
