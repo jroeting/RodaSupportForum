@@ -8,7 +8,7 @@ if (isset($_POST["submit"]))
 	// Connect to server and select databse.
 	include "db_con.php";
 
-	$sql = "SELECT * FROM user_data WHERE username='$myusername'";
+	$sql = "SELECT * FROM user_data WHERE username='$myusername' AND verified=true";
 	$result = $db->query($sql);
 
 	foreach($result as $row)

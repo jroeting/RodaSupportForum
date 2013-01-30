@@ -1,3 +1,6 @@
+<?php
+	if(isset($_SESSION['username']) && $_SESSION['account_type'] == 1) :		
+?>
 <!-- adminpanel.php is a page that is available for all other administrators for checking subjects and other admin related tasks -->
 <p> Welcome to the administrator panel. Together with the other members of the administrator panel, you are responsible for the approval of new
 submitted subjects, taking care of spam reports, blocking inappropriate users and deleting unactivated accounts.</p>
@@ -106,3 +109,6 @@ submitted subjects, taking care of spam reports, blocking inappropriate users an
         $db = NULL;
 	?>
 </table>
+<?php
+	endif;
+?>
