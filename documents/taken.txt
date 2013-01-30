@@ -75,7 +75,7 @@ GEDAAN
 -password retrieval - KYLLIAN
 
 
-PAGES DIE AF ZIJN - gecheckt door ( zet je naam erachter voor checks, het is de bedoeling dat we elkaars werk dubbel checken):
+PAGES DIE AF ZIJN: gecheckt op structuur, comments en werking op site - gecheckt door ( zet je naam erachter voor checks, het is de bedoeling dat we elkaars werk dubbel checken):
 - rules; --> michael
 - faq tot en met 11;  --> michael
 - members;  --> michael
