@@ -152,6 +152,7 @@
 			echo '<tr>';
 			echo '<td></td>';
 			echo '<td>';
+			$include = true;
 			include 'newreactionform.php';
 			echo '</td></tr></table>';
         }
