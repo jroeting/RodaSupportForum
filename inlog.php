@@ -1,4 +1,5 @@
 <?php
+	//checks is not logged in, else redirects to home
 	if(!isset($_SESSION['username'])) :
 ?>
 	<div id="registrationcontent">

@@ -6,6 +6,7 @@
 submitted subjects, taking care of spam reports, blocking inappropriate users and deleting unactivated accounts.</p>
 
 <?php
+	//counts number of unverified accounts older than 5 days
 	function nrUnverified()
 	{
 		include 'db_con.php';
@@ -20,6 +21,7 @@ submitted subjects, taking care of spam reports, blocking inappropriate users an
         $db = NULL;
 	}
 	
+	//if button pressed unverifiedusers are deleted from database
 	if(isset($_POST["submit"]))
 	{
 		if($_POST["button"] == "remove unverified")

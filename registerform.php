@@ -1,4 +1,5 @@
 <?php 
+//checks if the file is being included, else redirects to home
 if (isset($include)):
 	unset($include);
 ?>
