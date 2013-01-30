@@ -1,12 +1,13 @@
 <?php
-//Reads the url
-$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') 
+	// the user can only change his/her profile
+	//Reads the url
+	$protocol = strpos(strtolower($_SERVER['SERVER_PROTOCOL']),'https') 
 				=== FALSE ? 'http' : 'https';
-$params   = $_SERVER['QUERY_STRING'];
+	$params   = $_SERVER['QUERY_STRING'];
 
-$params = preg_replace("/[^0-9]/", '', $params); //Only numbers from the parameters remain
-if ($_SESSION['user_id'] == $params) :
-	?>
+	$params = preg_replace("/[^0-9]/", '', $params); //Only numbers from the parameters remain
+	if ($_SESSION['user_id'] == $params) :
+?>
 	<div>
         <div class="tablehead"> <strong> Edit Your Profile </strong></div>
 		<?php 	
@@ -20,11 +21,6 @@ if ($_SESSION['user_id'] == $params) :
 			// form for edit profile
 			echo "<form action=\"index.php?content=profile&user_id=" . $data_array["user_id"] . "\" method=\"post\">"; ?>
 			<table class="editprofile">
-				<tr>
-					<td>Password:</td>
-					<td><input type="password" name="oldPassword" />
-					</td>
-				</tr>
 				<tr>
 					<td>Avatar &#60;200kB</td>
 					<td><input type="hidden" name="MAX_FILE_SIZE" value="200000" />
@@ -69,6 +65,7 @@ if ($_SESSION['user_id'] == $params) :
 		Go to <a href="index.php?content=faq">FAQ</a> and see the link "How can I edit/update my profile page?" for more info.</i></strong>
 	</div>
 	<?php
+	// if the user is not logged in, he/she will be redirected to the inlogscreen
 	else :
 		header("location:index.php?content=inlog");
 	endif;
