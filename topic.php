@@ -49,6 +49,7 @@
 		// shows user data and post content
         foreach($results as $row)
         {
+			
 			// shows whether the user is an administrator or a user
 			if($row['account_type']== 'usr') {
 				$user = 'user';
@@ -68,7 +69,7 @@
 			echo '</tr>';
 			echo '<tr></tr>';
 			// user avatar
-			echo '<tr><td class="avatarpost">' . $user . '<br /><img src="images/avatar.png" class="avatarpost" alt=""></img></td></tr>';
+			echo '<tr><td class="avatarpost">' . $user . '<br /><img src="images/avatar.png" class="avatarpost"></img></td></tr>';
 			echo '<tr>';
 			echo '<td></td>';
 			// user quote

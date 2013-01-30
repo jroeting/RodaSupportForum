@@ -167,7 +167,7 @@
 			$results->bindValue(3, $_POST["mail"], PDO::PARAM_STR);
 			$results->bindValue(4, $_POST["name"], PDO::PARAM_STR);
 			$results->bindValue(5, $_POST["surname"], PDO::PARAM_STR);
-			$results->bindValue(6, $GLOBALS["imgData"], PDO::PARAM_STR);
+			$results->bindValue(6, $GLOBALS["imgData"], PDO::PARAM_LOB);
 			$results->bindValue(7, $_POST["quote"], PDO::PARAM_STR);
 			$results->bindValue(8, $_POST["infix"], PDO::PARAM_STR);
 			$results->execute();
