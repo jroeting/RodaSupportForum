@@ -25,11 +25,15 @@ Taken:
 			header("location:index.php?content=home");
 		endif;
 	?>
+-error bij editprofile
+-presentatie
+-link in email verbeterd
+
 	
 	
 
 
-Taken:
+Oude taken:
 -documentatie van de website (algemene taak)
 -comments in de php code (algemene taak)
 	--> gedaan voor home.php, db_con.php, forum.php, forumcontent.php, index.php, newreaction.php
