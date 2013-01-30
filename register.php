@@ -136,7 +136,7 @@
 					$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
 				}else
 				{
-					$GLOBALS['imgData'] = addslashes(file_get_contents($_FILES['file']['tmp_name']));
+					$GLOBALS['imgData'] = fopen($_FILES['file']['tmp_name'], 'rb');
 				}
 			}
 			else
@@ -216,7 +216,7 @@
 		$errorPassword = "";
 		$errorUsername = "";
 		$errorFile = "";
-		$imgData = file_get_contents("images/avatar.png");
+		$imgData = fopen('images/avatar.png','rb');
 		
 		//is the form is submitted a number of check functions are done and eventually tried to be inserted into the database, else the form wil be included 
 		if (isset($_POST["submit"])) 

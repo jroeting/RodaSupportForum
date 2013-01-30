@@ -1,19 +1,19 @@
 <?php
 	if(isset($_SESSION['username']))
 	{
-		$username = $_SESSION['username'];
-		
 		// connect with database
 		include 'db_con.php';
-		// selection of all subjects, ordered by subject_id (so most recent is on top)
-		$sql= "SELECT avatar FROM user_data WHERE username='$username'";
-		$results = $db->query($sql);
-
-		foreach($results as $row)
-		{
-			$avatar = ($row['avatar']);
-		}
-		header("Content-type: image/png");
-		echo $avatar;
+		// all registration values are inserted into the database
+		$sql= "SELECT avatar FROM user_data WHERE username=?";
+		$results = $db->prepare($sql);
+		$results->bindValue(1, $_SESSION['username'], PDO::PARAM_STR);
+		$results->execute();
+		
+		
+		$results->bindColumn(1, $avatar, PDO::PARAM_LOB);
+		$results->fetch(PDO::FETCH_BOUND);
+		
+		header("Content-Type: image/png");
+		echo $avatar;		
 	}
 ?>
