@@ -116,6 +116,7 @@
 				}
 			}
 			echo '<tr><td></td><td class="barpost"></td></tr>';
+			$db=NULL;
 		}
 		echo "</table><br/>";
 		echo '<table class="centeredtable">';

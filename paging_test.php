@@ -1,4 +1,9 @@
 <?php
+		if (isset($_GET['page_number'])) {
+   			$page_number = $_GET['page_number'];
+		} else {
+   			$page_number = 1;
+		}
 	include 'db_con.php';
 		// count number of records
 		$sql = "SELECT COUNT(*) FROM table WHERE property=something";
