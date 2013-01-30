@@ -10,10 +10,7 @@
 		//checks the file for several conditions, errormessages will be assigned if conditions dont pass
 		function checkFile()
 		{
-			$allowedExts = array("jpg", "jpeg", "gif", "png");
-			$extension = end(explode(".", $_FILES["file"]["name"]));
-
-			if ($_FILES["file"]["name"] != "")
+			if (isset($_FILES["file"]["name"]))
 			{
 				$allowedExts = array("jpg", "jpeg", "gif", "png");
 				$extension = end(explode(".", $_FILES["file"]["name"]));
