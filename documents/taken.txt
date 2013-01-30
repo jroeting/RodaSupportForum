@@ -26,7 +26,6 @@ Taken:
 		endif;
 	?>
 -error bij editprofile
--presentatie
 -link in email verbeterd
 
 	
@@ -73,7 +72,7 @@ GEDAAN
 -mooie knop voor make new subject JENNIFER
 -last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp) KYLLIAN
 -password retrieval - KYLLIAN
-
+-presentatie
 
 PAGES DIE AF ZIJN: gecheckt op structuur, comments en werking op site - gecheckt door ( zet je naam erachter voor checks, het is de bedoeling dat we elkaars werk dubbel checken):
 - rules; --> michael
