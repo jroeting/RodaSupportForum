@@ -37,7 +37,7 @@ by divs. All the website content is shown in the div with id 'content'.-->
 				// if user is logged in, the header will show a logout button and a link to the user's own profile
 				if(isset($_SESSION['username']))
 				{
-					echo "<a href='index.php?content=logout'>Log out</a> | <a href='index.php?content=profile&user_id=".$_SESSION['user_id']."'>" . $_SESSION['username'] . "&nbsp;<img src=\"avatar/" . $_SESSION['username'] . ".png\" height=\"30px\" width=\"auto\" /></a>&nbsp;";
+					echo "<a href='index.php?content=logout'>Log out</a> | <a href='index.php?content=profile&user_id=".$_SESSION['user_id']."'>" . $_SESSION['username'] . "&nbsp;<img src=\"avatars/" . $_SESSION['username'] . ".png\" height=\"30px\" width=\"auto\" /></a>&nbsp;";
 				}else
 				// if the user is not logged in, the header will show a link to the login page or a link to the register page
 				{
