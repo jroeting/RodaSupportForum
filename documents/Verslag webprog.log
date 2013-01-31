@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.9.10)  29 JAN 2013 23:32
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2012.9.10)  31 JAN 2013 19:23
 entering extended mode
 **Verslag*webprog.tex
 
@@ -405,7 +405,8 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \Gin@req@height=\dimen148
 \Gin@req@width=\dimen149
 )
-No file Verslag*webprog.aux.
+("C:\Users\MichaelChen\Documents\GitHub\RodaSupportForum\documents\Verslag webp
+rog.aux")
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 21.
@@ -420,7 +421,7 @@ LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 21.
 LaTeX Font Info:    ... okay on input line 21.
 LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 21.
 LaTeX Font Info:    Try loading font information for TS1+cmr on input line 21.
-("C:\Program Files\LateX\tex\latex\base\ts1cmr.fd"
+ ("C:\Program Files\LateX\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    ... okay on input line 21.
@@ -560,37 +561,76 @@ Underfull \hbox (badness 10000) in paragraph at lines 105--107
  []
 
 [6] [7] [8]
-Underfull \hbox (badness 10000) in paragraph at lines 130--131
+Overfull \hbox (1.29733pt too wide) in paragraph at lines 130--142
+\OT1/cmr/m/n/12 - Home pag-ina: De 10 meest re-cente berichten en 10 meest pop-
+u-laire berichten
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 130--142
+
+ []
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+
+Underfull \hbox (badness 10000) in paragraph at lines 143--150
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 133--135
+Underfull \hbox (badness 10000) in paragraph at lines 151--156
 
  []
 
+[9] [10] [11] [12] [13]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
 
-Underfull \hbox (badness 10000) in paragraph at lines 136--138
+Overfull \hbox (17.75133pt too wide) in paragraph at lines 210--212
+\OT1/cmr/m/n/12 Eve-neens wordt het in-voer gecon-troleerd door het be-stand 'c
+hangepass-word.php'. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
-[9] [10] [11] [12] [13] [14] [15]
+[14] [15] [16]
 ("C:\Users\MichaelChen\Documents\GitHub\RodaSupportForum\documents\Verslag webp
 rog.aux") ) 
 Here is how much of TeX's memory you used:
- 6492 strings out of 494045
- 80653 string characters out of 3150384
+ 6495 strings out of 494045
+ 80839 string characters out of 3150384
  185430 words of memory out of 3000000
- 9665 multiletter control sequences out of 15000+200000
+ 9666 multiletter control sequences out of 15000+200000
  11874 words of font info for 48 fonts, out of 3000000 for 9000
  715 hyphenation exceptions out of 8191
  27i,5n,24p,3253b,197s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/LateX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files/LateX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program File
 s/LateX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "Verslag webprog.pdf" (16 pages, 64392 bytes).
+Output written on "Verslag webprog.pdf" (17 pages, 68959 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
+ 69 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

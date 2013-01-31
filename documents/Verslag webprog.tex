@@ -127,14 +127,34 @@ een handleiding voor het gebruik van de site.
 { \LARGE \bfseries Reflectie}\\[0.1cm]
 \HRule \\[0.5cm]
 \end{center}
-Doelen:\\
+{\bfseries Doelen die bereikt zijn:}\\
+Een forum moet minimaal de volgende aspecten bevatten:\\
+-	Registreerpagina: 
+Je moet als gebruiker kunnen registreren om het forum \hspace{30 cm}te kunnen gebruiken.\\
+-	Inlogpagina:
+Er moet een inlogpagina aanwezig zijn, zodat mensen als gebruikers kunnen inloggen.\\
+-	Het forum met de geplaatste berichten:
+De gebruikers moeten op het forum berichten kunnen plaatsen en op bestaande berichten reageren.\\
+-	Home pagina:
+De 10 meest recente berichten en 10 meest populaire berichten worden in de home pagina weergegeven.\\
+-	Profielpagina:
+Ieder lid heeft een eigen profiel.\\
 
+Extra aspecten die toegevoegd zijn aan het forum:\\
+-	Op de inlogpagina staat een extra link “password forgotten”. Als een gebruiker zijn of haar wachtwoord is vergeten, dan wordt er via de mail een nieuw wachtwoord verstuurd naar de gebruiker;\\
+-	Op het forum is een ledenlijst aanwezig;\\
+-	Regels die gebruikers op het forum moeten naleven en meest gestelde vragen in de FAQ-pagina;\\
+-	Knopje om ongepaste berichten te melden;\\
+-	Administratorpanel: wordt weergeven op profielpagina als diegene een administrator is;\\
+-	Een gebruiker kan indien gewenst zijn of haar wachtwoord wijzigen.\\
 
-Doelen die bereikt zijn:\\
-content\\
+{\bfseries Doelen die niet bereikt zijn:}\\
+-	Zoekmachine;\\
+-	Javascript gebruiken om velden te controleren waar gebruikers gegevens moeten invullen bijvoorbeeld bij het registreren, inloggen en het wijzigen van het profiel;\\
+-	PM-systeem voor de leden;\\
+-	Status van de leden: online of offline op het forum;\\
 
-Doelen die niet bereikt zijn:\\
-content\\
+De bovenstaande doelen zijn niet bereikt en dat komt vooral wegens gebrek aan tijd.
 
 
 
@@ -172,7 +192,28 @@ zie Relatie.pdf
 {\LARGE \bfseries Structuur}\\[0.1cm]
 \HRule \\[0.5cm]
 \end{center}
-de structuur van de PHP/javascript code
+
+Bijna alle pagina’s maken gebruik van de connectie met de database. Alleen de FAQ-pagina maakt geen gebruik ervan. Er wordt een connectie gemaakt met de database door het bestand 'db\_con.php'. In die database staan drie tabellen beschreven: \\
+-	user\_data: alle gegevens van de geregistreerde gebruikers;\\
+-	subjects: alle berichten die geplaatst zijn door de gebruikers van het forum;\\
+-	posts: alle reacties van gebruikers op die berichten.
+
+{\bfseries Registreren} \\
+Het registeren gebeurt in het 'registerform.php' bestand. Daar worden de ingevulde velden (gegevens van de gebruiker) in de tabel 'user\_data' geplaatst. Natuurlijk worden de ingevulde velden eerst gecontroleerd. Na het invoeren van de gegevens wordt “register.php” aangeroepen. Daarin worden de velden gecontroleerd. Zo mag bijvoorbeeld een “username” geen spaties bevatten en het moet uniek zijn. Op deze manier worden alle velden gecontroleerd. 
+
+{\bfseries Inloggen}\\
+Tijdens het registeren zijn de velden, als alles goed is verlopen, opgeslagen in de tabel 'user\_data'. Om te kunnen inloggen, moet de gebruiker zijn of haar gebruikersnaam en wachtwoord invullen dat beschreven is door het bestand 'inlog.php'. Na het invoeren wordt de 'checklogin.php' aangeroepen. Daar wordt gekeken of de gebruikersnaam en het wachtwoord in de database staan en of het bij die gebruiker overeenkomen. Als alle stappen zijn verlopen zonder fouten, dan is de gebruiker ingelogd.
+
+{\bfseries Ledenlijst}\\
+De gebruikers die zich op het forum hebben geregistreerd en hun account hebben geactiveerd komen in de database te staan. Met behulp van de een query worden de gegevens per gebruiker opgehaald uit de database en vervolgens wordt daar een mooi lijst van gemaakt. 
+
+{\bfseries Profiel}\\
+De gegevens van de gebruiker worden getoond in het profiel. Indien gewenst kan het profiel en het wachtwoord van de gebruiker bewerkt worden en kunnen er zo nieuwe gegevens aan de database worden toegevoegd. Het 'editprofile.php' bestand is het formulier om de nieuwe gegevens in te vullen. Vervolgens worden deze velden gecontroleerd door het bestand 'profiel.php'. Voor het wachtwoord is er een apart bestand genaamd 'changepasswordform.php'. Eveneens wordt het invoer gecontroleerd door het bestand 'changepassword.php'. 
+
+{\bfseries Forum}\\
+Als een gebruiker een eigen bericht maakt of op andere berichten reageert, wordt dat opgeslagen in de tabellen subjects en posts. Met behulp van queries worden de berichten met de bijbehorende reacties getoond. Ook hier wordt al het invoer gecontroleerd voordat ze in de database worden ingevoerd.\\
+
+
 
 \newpage
 \begin{center}
