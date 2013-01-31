@@ -74,14 +74,16 @@
 
 					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection);
-					$result->bindValue(1, $GLOBALS['imgData'], PDO::PARAM_LOB);
+					$result->bindValue(1, "avatars/" . $_POST["username"] . ".png", PDO::PARAM_STR);
 					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
 					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
 					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
 					$result->bindValue(5, $_POST['country'], PDO::PARAM_STR);
 					$result->bindValue(6, $_POST['quote'], PDO::PARAM_STR);
 					$result->bindValue(7, $userID, PDO::PARAM_INT);
-					$result->execute();				
+					$result->execute();
+
+					file_put_contents("avatars/" . $_POST["username"] . ".png",$GLOBALS['imgData']);
 			}		
 		}
 			// functions only run after form submission
@@ -131,7 +133,7 @@
 				// output profilepage
 				foreach($result as $row)
 				{ 
-					echo "<div class=\"avatar\"> <img src=\"" . $row["avatar"] . "\" height=\"100px\" width=\"100px\" > </div>"
+					echo "<div class=\"avatar\"> <img src=\"" . $row["avatar"] . "\" height=\"100px\" width=\"100px\" > </div>";
 					echo "<br /><br />";
 					echo "Username: " . $row["username"];  
 					echo "<br /><br />";
