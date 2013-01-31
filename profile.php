@@ -8,40 +8,35 @@
 		//checks the file for several conditions, errormessages will be assigned if conditions dont pass
 		function checkFile()
 		{
-			if (isset($_FILES["file"]["name"]))
+			$allowedExts = array("jpg", "jpeg", "gif", "png");
+			$extension = end(explode(".", $_FILES["file"]["name"]));
+
+			//checks for right extension, size ,height and width
+			if ((($_FILES["file"]["type"] == "image/gif")
+			|| ($_FILES["file"]["type"] == "image/jpeg")
+			|| ($_FILES["file"]["type"] == "image/png")
+			|| ($_FILES["file"]["type"] == "image/pjpeg"))
+			&& ($_FILES["file"]["size"] < 200000)
+			&& in_array($extension, $allowedExts))
 			{
-				$allowedExts = array("jpg", "jpeg", "gif", "png");
-				$extension = end(explode(".", $_FILES["file"]["name"]));
-
-				//checks for right extension, size ,height and width
-				if ((($_FILES["file"]["type"] == "image/gif")
-				|| ($_FILES["file"]["type"] == "image/jpeg")
-				|| ($_FILES["file"]["type"] == "image/png")
-				|| ($_FILES["file"]["type"] == "image/pjpeg"))
-				&& ($_FILES["file"]["size"] < 200000)
-				&& in_array($extension, $allowedExts))
+				$size = getimagesize($_FILES['file']['tmp_name']);
+				if ($_FILES["file"]["error"] > 0)
 				{
-					$size = getimagesize($_FILES['file']['tmp_name']);
-
-					if ($_FILES["file"]["error"] > 0)
-					{
-						$GLOBALS['errorFile'] = "file error";
-					}elseif ($size["0"] > 1000 && $size["1"] > 1000)
-					{
-						$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
-					}else
-					{
-						$GLOBALS['imgData'] = fopen($_FILES['file']['tmp_name'], 'rb');
-					}
-				}
-				else
+					$GLOBALS['errorFile'] = "file error";
+				}elseif ($size["0"] > 1000 && $size["1"] > 1000)
 				{
-					$GLOBALS['errorFile'] = "invalid file, only .gif, .jpg, .jpg or .png and less then 200kb ";
+					$GLOBALS['errorFile'] = "file width or height must be less then 1000px";
+				}else
+				{
+					$GLOBALS['imgData'] = fopen($_FILES["file"]["tmp_name"], 'rb');
 				}
-
-
+			}
+			else
+			{
+				$GLOBALS['errorFile'] = "invalid file, only .gif, .jpg, .jpg or .png and less then 200kb ";
 			}
 		}
+		
 
 		// checks personal text in profile
 		function checkPersonalText()
@@ -72,16 +67,19 @@
 				
 				$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
 				$result = $db->prepare($selection);
-				$result->bindValue(1, "avatars/" . $_POST["username"] . ".png", PDO::PARAM_STR);
+				$result->bindValue(1, $GLOBALS['filePath'], PDO::PARAM_STR);
 				$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
 				$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
-				$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
+				$result->bindValue(4, $GLOBALS['gender'], PDO::PARAM_STR);
 				$result->bindValue(5, $_POST['country'], PDO::PARAM_STR);
 				$result->bindValue(6, $_POST['quote'], PDO::PARAM_STR);
 				$result->bindValue(7, $userID, PDO::PARAM_INT);
 				$result->execute();
-
-				file_put_contents("avatars/" . $_POST["username"] . ".png",$GLOBALS['imgData']);
+				
+				if($_FILES["file"]["name"] != "")
+				{
+					file_put_contents("avatars/" . $_SESSION["username"] . ".png",$GLOBALS['imgData']);
+				}
 			}		
 		}
 			// functions only run after form submission
@@ -90,35 +88,40 @@
 				// connection with databse
 				include "db_con.php";
 				$userID = $_GET["user_id"];
-				$sql = "SELECT avatar FROM user_data WHERE user_id=$userID";
+				$sql = "SELECT * FROM user_data WHERE user_id=$userID";
 				$result = $db->query($sql);
 				$data_array = $result->fetch();
-				
-				// close database
-				$db = NULL;
-				
 				$imgData = $data_array["avatar"]; 
+				$filePath = $data_array["avatar"];
 				
-				if(isset($_POST['file'])){ $avatar = $_POST['file']; }
+				if($_FILES["file"]["name"] != "")
+				{
+					$imgData = $_FILES['file']['tmp_name'];
+					$filePath = "avatars/" . $_SESSION["username"] . ".png";
+					checkFile();
+				}
 				$personalText = $_POST['personal_text'];
 				$age = $_POST['age'];
-				$gender = $_POST['gender'];
-				$country = $_POST['country'];
+				if(isset($_POST['gender']))
+				{
+					$gender = $_POST['gender'];
+				}else
+				{
+					$gender = "";
+				}
+				if($_POST['country'] != "")
+				{
+					$country = $_POST['country'];
+				}else
+				{
+					$country = $data_array["country"];
+				}
 				$quote = $_POST['quote'];
 
-				if(!isset($_POST['file']))
-				{
-					checkPersonalText();
-					checkQuote();
-					inputForm();
-				}
-				else
-				{				
-					checkFile();
-					checkPersonalText();
-					checkQuote();
-					inputForm();
-				}
+				
+				checkPersonalText();
+				checkQuote();
+				inputForm();
 			}
 
 			$db=NULL; // closes database
@@ -172,18 +175,22 @@
 		<!-- displays right side of profile -->
 		<div class="userprofile2">
 			<?php		
-				echo <<<EOT
-
-				<table>
-				<!-- displays the personal text of the user-->
+				echo "<table>";
+				//displays the personal text of the user
+				if ($row["personal_text"] != "")
+				{
+					echo <<<EOT
 					<tr>
 						<td> Personal Text:  </td>
 					<td> {$row['personal_text']} </td> 
 					</tr>
-
 					<tr>
 						<td> &nbsp; </td>
-					</tr>
+					</tr>			
+EOT;
+				
+				}
+				echo <<<EOT
 				<!-- displays the first name of the user -->
 					<tr>
 						<td> First Name:  </td>
@@ -203,14 +210,10 @@
 						<td> &nbsp; </td>
 					</tr>
 EOT;
+					
 			    // checks to see if the user allows their age to be shown	
-				if($row['age'] <= 0 || $row['age'] >= 120)
+				if(!($row['age'] <= 0 || $row['age'] >= 120))
 				{ 
-					echo "<tr>
-							<td> &nbsp;  </td>
-						</tr>";
-				} else 
-				{
 					echo "<tr>
 							<td> Age:  </td>";
 					echo "<td>" . $row['age'] . "</td> 
@@ -220,39 +223,49 @@ EOT;
 						<td> &nbsp; </td>
 					</tr>";
 				// displays the gender of the user
-				echo "<tr><td> Gender:  </td>";
-				if($row['gender'] == 0)
+				
+				if($row['gender'] == "male")
 				{
-					echo "<td> Male </td>"; 
-				} else
+					echo "<tr><td> Gender:  </td>";
+					echo "<td> Male </td>";
+					echo "</tr>";
+				} elseif($row['gender'] == "female")
 				{
+					echo "<tr><td> Gender:  </td>";
 					echo "<td> Female </td>";
+					echo "</tr>";
 				}
-				echo "</tr>";
+				
 
-				echo <<<EOT
-					<tr>
-						<td> &nbsp; </td>
-					</tr>
-				<!-- displays the country of the user -->
-					<tr>
-						<td> Country:  </td>
-						<td> {$row['country']} </td> 
-					</tr>
-		
-					<tr>
-						<td> &nbsp; </td>
-					</tr>
-				<!-- displays the quote of the user -->
-					<tr>
-						<td> Quote:  </td>
-						<td> {$row['quote']} </td> 
-				</tr>
-				</table>
-		
-				<br />
-				<br />
+				if ($row['country'] != "")
+				{
+					echo <<<EOT
+						<tr>
+							<td> &nbsp; </td>
+						</tr>
+					<!-- displays the country of the user -->
+						<tr>
+							<td> Country:  </td>
+							<td> {$row['country']} </td> 
+						</tr>
 EOT;
+				}
+				
+				if ($row['quote'] != "")
+				{
+					echo <<<EOT
+						<tr>
+							<td> &nbsp; </td>
+						</tr>
+					<!-- displays the quote of the user -->
+						<tr>
+							<td> Quote:  </td>
+							<td> {$row['quote']} </td> 
+					</tr>
+EOT;
+				}
+				
+				echo "</table><br /><br />";
 
 				// if the user is at his/her own profile, the "Edit Profile" link
 				// will appear else not

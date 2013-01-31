@@ -19,7 +19,7 @@
 			$data_array = $result->fetch();
 			
 			// form for edit profile
-			echo "<form action=\"index.php?content=profile&user_id=" . $data_array["user_id"] . "\" method=\"post\">"; ?>
+			echo "<form action=\"index.php?content=profile&user_id=" . $data_array["user_id"] . "\" method=\"post\" enctype=\"multipart/form-data\">"; ?>
 			<table class="editprofile">
 				<tr>
 					<td>Avatar &#60;200kB</td>
@@ -37,11 +37,11 @@
 				</tr>
 				<tr>
 					<td>Gender: </td> 
-					<td><input type="radio" name="gender" id="radio" value= "0" <?php if($_POST['gender']== 0) echo 'checked="checked"'; ?> /> Male </td>
+					<td><input type="radio" name="gender" id="radio" value= "male" <?php if($_POST['gender'] == "male") echo 'checked="checked"'; ?> /> Male </td>
 				</tr>
 				<tr>
 					<td>&nbsp; </td>
-					<td><input type="radio" name="gender" id="radio" value= "1" <?php if($_POST['gender']== 1) echo 'checked="checked"'; ?> /> Female </td>	
+					<td><input type="radio" name="gender" id="radio" value= "female" <?php if($_POST['gender'] == "female") echo 'checked="checked"'; ?> /> Female </td>	
 					
 				</tr> 
 				<tr>
