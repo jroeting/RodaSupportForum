@@ -25,54 +25,7 @@ Taken:
 			header("location:index.php?content=home");
 		endif;
 	?>
--error bij editprofile
--link in email verbeterd
-
-	
-	
-
-
-Oude taken:
--documentatie van de website (algemene taak)
--comments in de php code (algemene taak)
-	--> gedaan voor home.php, db_con.php, forum.php, forumcontent.php, index.php, newreaction.php
-	newreactionform.php, removepost.php, removesubject.php, topic.php
--elkaars code nakijken zodat het alemaal netjes en goed in elkaar zit (algemene taak)
--errors oplossen (algemene taak)
--javascript/ajax waar en wat? (algemene taak) 
--overal juiste connectie met database (algemene taak)
-	--> gedaan voor home.php, db_con.php, forum.php, forumcontent.php, newreaction.php, newreactionform.php
-	removepost.php, removesubject.php, topic.php, verify.php, register.php, checklogin.php, editprofile.php,
-	profile.php, wrongemail.php, members.php, newpost.php, phpadmin.php
--alle stijl in css (algemene taak)
--als alles af is alle tabellen leeg en opnieuw met goede dingen vullen voor presentatie (algemene taak)
--html code goed maken zodat het door de validator komt (algemene taak)
-	-->gedaan voor home.php, topic.php, forumcontent.php
--zorgen dat paginas die niet zomaar bezocht mogen worden of waarvan het niet netjes is al iemand daar zo op kan komen (algemene taak)
--paginas waarvoor ingelogt moet worden als niet ingelogt is doorverwijzen naar inlogpagina, anders naar de homepage (algemene taak)
--niet een lijst met echo's om html in php weer te geven (algemene taak)
-
--zoekfunctie naar onderwerpen
--avatar plaatje weergen MAX
--de persoonlijke profielpagina verbeteren/afmaken MAX
--paging voor member, onderwerp en reactie (dus automatisch een volgende pagina aanmaken als er bijv. meer dan 20 records weergegeven moeten worden) JENNIFER
-
-
-GEDAAN
--link naar eigen profiel goed maken
--check bij posts weghalen en toevoegen bij subjects in database JENNIFER
-	--> tevens open weggehaald, omdat deze nu enigszins overbodig is
--highlight weg bij posts en bij subjects in database JENNIFER
--extra knoppen bij admin profielen voor axtra taken zoals bijvoorbeeld nieuwe onderwerpen goedkeuren JENNIFER
-	--> lay out en plaats van toegang (nu op eigen profiel) benodigd nog wat finetuning
--account verifieren via de email die je na het registreren krijgt KYLLIAN
--knop bij berichten om aan te geven dat een bericht spam is of gewoon nie normaal is JENNIFER
--aantal posts bij onderwerpen zeten
--een knop bij admins op profiel om oude ongeverifieerde accounts te verwijderen KYLLIAN
--mooie knop voor make new subject JENNIFER
--last post weergeven bij onderwerpen (dus wie wanneer de laatste post heeft gemaakt in een onderwerp) KYLLIAN
--password retrieval - KYLLIAN
--presentatie
+-link in email verbeterd KYLLIAN
 
 PAGES DIE AF ZIJN: gecheckt op structuur, comments en werking op site - gecheckt door ( zet je naam erachter voor checks, het is de bedoeling dat we elkaars werk dubbel checken):
 - rules; --> michael
@@ -80,3 +33,22 @@ PAGES DIE AF ZIJN: gecheckt op structuur, comments en werking op site - gecheckt
 - members;  --> michael
 - changepassword;  --> michael
 - changepasswordform;  --> michael
+
+VOOR HET VERSLAG
+INHOUD GEWOON IN HET LATEX FILE!
+
+ONTWERPBESLISSING
+Inlogpagina - Max
+Registreerpagina - Kyllian
+
+DEEL 1 (OPDRACHTGEVER)
+Handleiding - Max
+Reflectie - Michael
+
+DEEL 2 (ICT AFDELING)
+Installatieprocedure - Kyllian
+Datamodel en relaties - Jennifer
+Algemene structuur PHP code - Michael
+Instructies mbt onderhoud - Jennifer
+
+vrijdag voor 17:00 af
