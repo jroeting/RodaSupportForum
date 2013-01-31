@@ -77,16 +77,6 @@
 				$sql= "SELECT country FROM country_list"; 
 				$countryCheck = $db->query($sql);
 
-			// checks whether a country exists
-				foreach($countryCheck as $row)
-				{
-					$contains = false;
-
-					if ($country == $row['country']) 
-					{	
-						$contains = true;
-					} 
-				}
 				if($contains = true)
 				{
 					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
