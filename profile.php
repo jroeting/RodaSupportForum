@@ -72,13 +72,6 @@
 
 				$userID = $_GET['user_id']; 
 
-				// checks whether a country exists
-				$country = $_POST['country']; // input of user in country
-				$sql= "SELECT country FROM country_list"; 
-				$countryCheck = $db->query($sql);
-
-				if($contains = true)
-				{
 					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
 					$result = $db->prepare($selection);
 					$result->bindValue(1, $GLOBALS['imgData'], PDO::PARAM_LOB);
@@ -88,20 +81,7 @@
 					$result->bindValue(5, $_POST['country'], PDO::PARAM_STR);
 					$result->bindValue(6, $_POST['quote'], PDO::PARAM_STR);
 					$result->bindValue(7, $userID, PDO::PARAM_INT);
-					$result->execute();
-				}
-				else
-				{
-					$selection2 = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, quote=? WHERE user_id= ? LIMIT 1";
-					$result = $db->prepare($selection2);
-					$result->bindValue(1, $_POST['file'], PDO::PARAM_LOB);
-					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
-					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
-					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
-					$result->bindValue(5, $_POST['quote'], PDO::PARAM_STR);
-					$result->bindValue(6, $userID, PDO::PARAM_INT);
-					$result->execute(); 
-				}
+					$result->execute();				
 			}		
 		}
 			// functions only run after form submission
