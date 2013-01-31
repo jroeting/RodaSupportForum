@@ -219,7 +219,7 @@
 		$errorPassword = "";
 		$errorUsername = "";
 		$errorFile = "";
-		$imgData = fopen('images/avatar.png','rb');
+		$imgData = fopen('avatar/avatar.png','rb');
 		
 		//is the form is submitted a number of check functions are done and eventually tried to be inserted into the database, else the form wil be included 
 		if (isset($_POST["submit"])) 
