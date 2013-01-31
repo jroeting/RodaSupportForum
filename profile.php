@@ -2,9 +2,7 @@
 	<?php
 		// variables that contains form errors of the user
 		$errorFile = ""; // avatar error
-		// adds slashes and read the contents of a file into a string
-		$imgData = "images/avatar.png"; 
-
+		
 		/**** Functions ****/ 
 
 		//checks the file for several conditions, errormessages will be assigned if conditions dont pass
@@ -71,24 +69,36 @@
 				include 'db_con.php';
 
 				$userID = $_GET['user_id']; 
+				
+				$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
+				$result = $db->prepare($selection);
+				$result->bindValue(1, "avatars/" . $_POST["username"] . ".png", PDO::PARAM_STR);
+				$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
+				$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
+				$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
+				$result->bindValue(5, $_POST['country'], PDO::PARAM_STR);
+				$result->bindValue(6, $_POST['quote'], PDO::PARAM_STR);
+				$result->bindValue(7, $userID, PDO::PARAM_INT);
+				$result->execute();
 
-					$selection = "UPDATE user_data SET avatar=?, personal_text=?, age=?, gender=?, country=?, quote=? WHERE user_id= ? LIMIT 1";
-					$result = $db->prepare($selection);
-					$result->bindValue(1, "avatars/" . $_POST["username"] . ".png", PDO::PARAM_STR);
-					$result->bindValue(2, $_POST['personal_text'], PDO::PARAM_STR);
-					$result->bindValue(3, $_POST['age'], PDO::PARAM_INT);
-					$result->bindValue(4, $_POST['gender'], PDO::PARAM_BOOL);
-					$result->bindValue(5, $_POST['country'], PDO::PARAM_STR);
-					$result->bindValue(6, $_POST['quote'], PDO::PARAM_STR);
-					$result->bindValue(7, $userID, PDO::PARAM_INT);
-					$result->execute();
-
-					file_put_contents("avatars/" . $_POST["username"] . ".png",$GLOBALS['imgData']);
+				file_put_contents("avatars/" . $_POST["username"] . ".png",$GLOBALS['imgData']);
 			}		
 		}
 			// functions only run after form submission
 			if(isset($_POST["submit"]))
 			{	
+				// connection with databse
+				include "db_con.php";
+				$userID = $_GET["user_id"];
+				$sql = "SELECT avatar FROM user_data WHERE user_id=$userID";
+				$result = $db->query($sql);
+				$data_array = $result->fetch();
+				
+				// close database
+				$db = NULL;
+				
+				$imgData = $data_array["avatar"]; 
+				
 				if(isset($_POST['file'])){ $avatar = $_POST['file']; }
 				$personalText = $_POST['personal_text'];
 				$age = $_POST['age'];
