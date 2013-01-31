@@ -115,7 +115,7 @@
 	{
 		
 		
-		if (isset($_FILES["file"]["name"]))
+		if ($_FILES["file"]["name"] != "")
 		{
 			$allowedExts = array("jpg", "jpeg", "gif", "png");
 			$extension = end(explode(".", $_FILES["file"]["name"]));
@@ -176,9 +176,9 @@
 			// close database
             $db = NULL;
 			
-			$include = true;
-			include "scp.php";
-			ssh2_scp_send($connection, $_FILES['file']['tmp_name'], 'public_html/avatars/' . $_POST["username"] .  '.png', 0644);
+			//$include = true;
+			//include "scp.php";
+			//ssh2_scp_send($connection, $_FILES['file']['tmp_name'], 'public_html/avatars/' . $_POST["username"] .  '.png', 0644);
 			
 			//assembles the complete name of the user
 			if ($_POST["infix"] == "")
@@ -195,7 +195,7 @@
 			//mail with welcoming text and 2 links, one to verify the account and one to report a wrong email
 			$to = $_POST["mail"];
 			$subject = "Welcome to Roda support forum";
-			$message = "Welcome " . $name . "\n\nYou have succesfully registered to Roda support forum!\nThe only thing left to do is verify your account, please click the link below to verify your account:\n http://webdb.science.uva.nl/~10343865/index.php?content=verify&code=" . $code . "\n\nNow that you are a member you can post subjects and respond to other subjects.\n\nFor the forum's rules and questions about the forum please see the FAQ.\n\nIs this e-mail not meant for you, please click the following link:\n http://webdb.science.uva.nl/~10343865/index.php?content=wrongemail&code=" . $code;
+			$message = "Welcome " . $name . "\n\nYou have succesfully registered to Roda support forum!\nThe only thing left to do is verify your account, please click the link below to verify your account:\n http://webdb.science.uva.nl/webdb13KIC1/index.php?content=verify&code=" . $code . "\n\nNow that you are a member you can post subjects and respond to other subjects.\n\nFor the forum's rules and questions about the forum please see the FAQ.\n\nIs this e-mail not meant for you, please click the following link:\n http://webdb.science.uva.nl/webdb13KIC1/index.php?content=wrongemail&code=" . $code;
 			$from = "noreply@roda.com";
 			$headers = "From:" . $from;
 			mail($to,$subject,$message,$headers);
