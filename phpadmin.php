@@ -11,12 +11,10 @@ submitted subjects, taking care of spam reports, blocking inappropriate users an
 	{
 		include 'db_con.php';
 		$count_unverified = $db->prepare("SELECT COUNT(*) AS nrUnverified FROM user_data WHERE verified = false AND register_date<DATE_SUB(curdate(), INTERVAL 5 DAY)");
-		if ($count_unverified->execute())
-		{
-			$row = $count_unverified->fetch();
-			return $row["nrUnverified"];
-		}
-
+		$count_unverified->execute();
+		$row = $count_unverified->fetch();
+		return $row["nrUnverified"];
+		
 		// close database
         $db = NULL;
 	}
@@ -36,7 +34,7 @@ submitted subjects, taking care of spam reports, blocking inappropriate users an
 ?>
 <form action="index.php?content=phpadmin" method="post">
 	<input type="hidden" name="button" value="remove unverified" />
-	<input type="submit" class="button2" name="submit" value="Remove <?php echo nrUnverified() ?> unverified users" />
+	<input type="submit" class="button2" name="submit" value="Remove <?php echo nrUnverified();?> unverified users" />
 </form>
 
 <br />
