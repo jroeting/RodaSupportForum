@@ -13,6 +13,11 @@
 			<th class="tablehead2"><strong> Posts </strong> </th>
 			<th class="tablehead2"><strong> Account Type </strong></th>
 			<th class="tablehead2"><strong> Date Registered </strong></th>
+            <?php
+				if(isset($_SESSION['username']) && $_SESSION['account_type'] == 1) {
+					echo '<th class="tablehead2"><strong> Block/Unblock</strong></th>';
+				}
+			?>
         </tr>
 		<?php
 			include "db_con.php";
@@ -83,6 +88,14 @@
 							}
 				echo "<td class=cellpadding>" . $accountType . "</td>";	
 				echo "<td class=cellpadding>" . $row['register_date'] . "</td>";
+				if(isset($_SESSION['username']) && $_SESSION['account_type'] == 1)
+				{
+					if ($row['verified'] == 1) {
+						echo '<td class=cellpadding><a href="index.php?content=block_user&block=1&user_id='. $row['user_id'] .'"> block </a></td>';
+					} else {
+						echo '<td class=cellpadding><a href="index.php?content=block_user&block=0&user_id='. $row['user_id'] .'"> unblock </a></td>';
+					}
+				}
 				echo "</tr>";
 			}
 			$db=NULL; // closing database	
