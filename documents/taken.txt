@@ -43,12 +43,12 @@ Registreerpagina - Kyllian
 
 DEEL 1 (OPDRACHTGEVER)
 Handleiding - Max
-Reflectie - Michael
+Reflectie - Michael --> Done
 
 DEEL 2 (ICT AFDELING)
 Installatieprocedure - Kyllian
 Datamodel en relaties - Jennifer
-Algemene structuur PHP code - Michael
+Algemene structuur PHP code - Michael --> Done
 Instructies mbt onderhoud - Jennifer
 
 vrijdag voor 17:00 af
