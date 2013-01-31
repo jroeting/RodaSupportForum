@@ -24,8 +24,8 @@ by divs. All the website content is shown in the div with id 'content'.-->
 			}	
 			// devision of different kind of pages
 			$homepages = array("home");
-			$memberspages = array("members", "profile");
-			$forumpages = array("forum", "forumcontent", "newpost", "topic", "newreaction");
+			$memberspages = array("members", "profile", "editprofile", "changepassword", "phpadmin");
+			$forumpages = array("forum", "forumcontent", "newpost", "newpostform", "topic", "newreaction", "newreactionform", "report_spam", "removepost", "nospam", "removesubject");
 			$faqpages = array("faq", "rules", "faq1",  "faq2", "faq3", "faq4", "faq5", "faq6", "faq7", "faq8", "faq9", "faq10", "faq11");
 		?>
 	</head>
