@@ -471,7 +471,7 @@ table.forumcontent
 .profilecontent
 {
 	background-color:#333;
-	height:300px;
+	height:100%;
 	width:940px;
 	padding:10px;
 	border:0px;
