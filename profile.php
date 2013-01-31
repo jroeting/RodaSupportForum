@@ -121,7 +121,6 @@
 	<!-- displays the left side of profile -->
 	<div class="profilecontent">
 		<div class="userprofile1">
-			<div class="avatar"> <img src="images/avatar.png" height="100px" width="100px" > </div>
 			<?php 
 				include "db_con.php";
 				$userID = $_GET["user_id"];
@@ -132,6 +131,7 @@
 				// output profilepage
 				foreach($result as $row)
 				{ 
+					echo "<div class=\"avatar\"> <img src=\"" . $row["avatar"] . "\" height=\"100px\" width=\"100px\" > </div>"
 					echo "<br /><br />";
 					echo "Username: " . $row["username"];  
 					echo "<br /><br />";

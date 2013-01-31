@@ -93,7 +93,7 @@
 			echo '</tr>';
 			echo '<tr></tr>';
 			// user avatar
-			echo '<tr><td class="avatarpost">' . $user . '<br /><img src="images/avatar.png" class="avatarpost"></img></td></tr>';
+			echo '<tr><td class="avatarpost">' . $user . '<br /><img src=\"" . $row["avatar"] . "\" class="avatarpost"></img></td></tr>';
 			echo '<tr>';
 			echo '<td></td>';
 			// user quote
