@@ -1,3 +1,5 @@
+
+
 \documentclass[a4paper,12pt]{article}
 
 \usepackage{amsmath}
@@ -40,7 +42,7 @@
 \HRule \\[0.5cm]
 \end{center}
 {\bfseries Opdracht}\\
-De opdracht is het bouwen van een discussieforum voor een bedrijf, waardoor gebruikers eenvoudiger met elkaar contact kunnen houden. Zo kunnen klanten bijvoorbeeld vragen stellen over de producten van het bedrijf of feedback geven etc. Er moet een hi\"erarchie systeem in het forum zitten, zodat niet alle gebruikers dezelfde rechten hebben.
+De opdracht is het bouwen van een discussieforum voor een bedrijf, waardoor gebruikers eenvoudiger met elkaar contact kunnen houden. Zo kunnen klanten bijvoorbeeld vragen stellen over de producten van het bedrijf of feedback geven op het bedrijf of de producten. Er moet een hi\"erarchische structuur in het forum zitten, zodat niet alle gebruikers dezelfde rechten hebben.
 Voor dit forum zullen er drie soorten gebruikers zijn: beheerders, ingeschreven gebruikers en mensen die niet ingeschreven staan in het forum.\\
 
 Beheerders\\
@@ -67,8 +69,9 @@ Een discussieforum bestaat uit de volgende basis aspecten:\\\\
 -	Ledenlijst;\\\\
 - 	Profielpagina \\\\
 -	FAQ-pagina;\\\\
--       Administrator panel\\\\
+-         Administrator panel\\\\
 
+Om dit zo duidelijk mogelijk weer te geven is het van belang dat het forum een aantrekkelijk uiterlijk heeft dat past bij het bedrijf. Daarnaast moet een nieuwe gebruiker, direct zijn of haar weg kunnen vinden op het forum. Het is dus van belang dat het forum overzichtelijk is en dat er makkelijk te navigeren is door de pagina's. Gebruikersvriendelijkheid wordt versterkt door het toedelen van administrator rollen. Dit zijn aangwezen gebruikers die de orde op het forum handhaven. Daarnaast is een veilige omgeving essenti\"eel. Daarom zal er gezorgd worden dat opslag en uitwisseling van gebruikersgegevens zo veilig mogelijk plaats zal vinden.
 
 
 
@@ -78,7 +81,7 @@ Een discussieforum bestaat uit de volgende basis aspecten:\\\\
 \HRule \\[0.5cm]
 \end{center}
 {\bfseries Homepagina} \\
-De homepagina bestaat uit een korte introductie over de inhoud van de website. Daarnaast worden op de homepagina de 10 meest recente en de 10 meest populaire berichten weergegeven. Hierdoor kan de gebruiker in \'e\'en oogopslag zien, welke onderwerpen nieuw zijn en uit welke onderwerpen de bezoeker mogelijk de meeste informatie kan halen. De onderwerpen die in deze lijsten verschijnen zijn klikbare links die verwijzen naar het berichtenoverzicht van het desbetreffende ondwerep.\\
+De homepagina bestaat uit een korte introductie over de inhoud van de website. Daarnaast worden op de homepagina de 10 meest recente en de 10 meest populaire berichten weergegeven. Hierdoor kan de gebruiker in \'e\'en oogopslag zien, welke onderwerpen nieuw zijn en uit welke onderwerpen de bezoeker mogelijk de meeste informatie kan halen. Een onderwerp is populair zodra het meer dan 15 reacties heeft. De onderwerpen die in deze lijsten verschijnen zijn klikbare links die verwijzen naar het berichtenoverzicht van het desbetreffende ondwerp.\\
 
 
 
@@ -86,7 +89,9 @@ De homepagina bestaat uit een korte introductie over de inhoud van de website. D
 Content ontwerp van registreerpagina.\\
 
 {\bfseries Inlogpagina}\\
-Content ontwerp vaninlogpagina.\\
+Voor de inlog pagina is er gekozen voor een link die weliswaar niet in de menubalk zit, maar toch vanuit elke pagina te bereiken is. Deze zit in de rechterbovenhoek van de pagina, boven de menubalk. We hebben hiervoor gekozen omdat de inlog pagina niet een direct onderdeel vormt van de inhoud van het forum.
+Op de inlog pagina wordt gevraagd om de invoer van twee gegevens, namelijk het wachtwoord en de gebruikersnaam van de gebruiker. Daarnaast zijn er twee links onder het inlogformulier, een link waarbij een nieuw wachtwoord opgevraagd kan worden en een link om te registreren indien de gebruiker nog geen account heeft. Deze links verhogen het gebruikersgemak.
+Afsluitend, als alles ingevuld is, kan er op de "Sign in" button gedrukt worden. Indien er een fout is gemaakt, dan zal dit gemeld worden en kan de gebruiker een nieuwe inlogpoging doen. Zodra het inloggen geslaagd is, is de gebruiker ingelogd en kan deze gebruik maken van de vele functies op het forum.\\
 
 
 {\bfseries Forum}\\
@@ -95,11 +100,11 @@ Het forum bestaat uit drie onderdelen. Een overzicht met de categorie\"en, een o
 
 
 {\bfseries Ledenlijst}\\
-Het forum is niet compleet zonder een ledenlijst. Hierin worden alle mensen die zich geregistreerd hebben als gebruiker weergegeven. Mensen die niet geregistreerd staan, kunnen de ledenlijst niet zien. Als een niet-gebruiker op de ledenlijst klikt, wordt diegene meteen doorverwezen naar de inlogpagina. Het alleen weergeven van de gebruikersnamen in de lijst was naar onze mening niet aantrekkelijk, dus hebben we besloten ook nog de registratiedata, aantal berichten die ze hebben geplaatst, de e-mailadressen en het account-type weer te geven. Als extra functie zijn de gebruikersnamen klikbare links. Als op een naam wordt klikt, wordt er doorverwezen naar zijn of haar profiel. \\
+Het forum is niet compleet zonder een ledenlijst. Hierin worden alle mensen die zich geregistreerd hebben als gebruiker weergegeven. Mensen die niet geregistreerd staan, kunnen de ledenlijst niet zien. Als een niet-gebruiker op de ledenlijst klikt, wordt diegene direct doorverwezen naar de inlogpagina. Het enkel weergeven van de gebruikersnamen in de lijst was naar onze mening niet aantrekkelijk, dus hebben we besloten ook nog de registratiedatum, het aantal berichten die de gebruiker heeft geplaatst, het e-mail adres van de gebruiker en het account-type van de gebruiker weer te geven. Als extra functie zijn de gebruikersnamen klikbare links. Als op een naam wordt klikt, wordt er doorverwezen naar zijn of haar profiel. \\
 
  
 {\bfseries Profiel}\\
-Ieder lid van het forum heeft een eigen profiel pagina ter beschikking, die hij/zij indien gewenst kan bewerken. Zo kan het avatar plaatje en de quote veranderd worden en kan de leeftijd, land en persoonlijkke tekst aan het profiel toegevoegd worden. Ook is er de mogelijkheid om het wachtwoord te veranderen. Dit is vooral handig als de gebruiker zijn of haar wachtwoord is vergeten. Als dat gebeurt, wordt er een mail gestuurd met een nieuw wachtwoord dat automatisch gegenereerd is. Als gebruiker zou het vervolgens wel fijn zijn om dat wachtwoord te kunnen wijzigen. Indien een gebruiker ook een administrator van het forum is, beschikt diegene ook een "adminitrator panel" in zijn of haar profiel. \\
+Ieder lid van het forum heeft een eigen profiel pagina ter beschikking, die de gebruiker kan bewerken, om zo zijn of haar account persoonlijker te maken. Zo kan de avatar afbeelding en de quote veranderd worden en kan de gebruiker een leeftijd, een land en een persoonlijke tekst toevoegen. Ook is er de mogelijkheid om het wachtwoord te veranderen. Dit is vooral handig wanneer de gebruiker zijn of haar wachtwoord is vergeten en een nieuw, automatisch gegenereerd, wachtwoord heeft ontvangen. Dit zijn vaak onhandige wachtwoorden, waarvan het handig is om deze te wijzigen. Indien een gebruiker ook een administrator van het forum is, beschikt diegene ook een "adminitrator panel" in zijn of haar profiel. \\
 
 
 {\bfseries Administrator panel}\\
@@ -107,7 +112,7 @@ Om het berichtenverkeer in het forum te handhaven, zijn er administrators toegew
 
 
 {\bfseries FAQ-pagina}\\
-Om de niet-gebruikers en nieuwe gebruikers van het forum een handje te helpen, is er ook een FAQ-pagina aanwezig. Deze pagina is voor iedereen toegangkelijk. Daarin staan alle meest gestelde vragen met de bijbehorende antwoorden. De vragen zijn weergegeven als links en de antwoorden van die vragen komen te voorschijnen als er op geklikt wordt. Dus als gebruikers vragen hebben of problemen ondervinden, kunnen zij eerst de FAQ-pagina raadplegen. Om het forum netjes te houden, staan er ook een aantal regels vermeld in de FAQ-pagina.
+Om de niet-gebruikers en nieuwe gebruikers van het forum een handje te helpen, is er ook een FAQ-pagina aanwezig. Deze pagina is voor iedereen toegangkelijk. Daarin staan alle meest gestelde vragen met de bijbehorende antwoorden. De vragen zijn weergegeven als links en de antwoorden van die vragen komen te voorschijnen als er op geklikt wordt. Dus als gebruikers vragen hebben of problemen ondervinden, kunnen zij eerst de FAQ-pagina raadplegen. Om het forum netjes te houden, staan er ook een aantal regels vermeld in de FAQ-pagina waar de gebruikers zich aan dienen te houden.
 
 
 
@@ -119,7 +124,12 @@ Om de niet-gebruikers en nieuwe gebruikers van het forum een handje te helpen, i
 { \LARGE \bfseries Handleiding}\\[0.1cm]
 \HRule \\[0.5cm]
 \end{center}
-een handleiding voor het gebruik van de site.
+Ten eerste zullen de functies worden besproken waarover een niet ingelogde gebruiker beschikt. Vervolgens zal een handleiding volgen voor het registreren en inloggen. Tenslotte zullen de functies voor een ingelogde gebruiker besproken worden.\\
+De gebruiker komt als eerste op de home pagina, waar de 10 meest recente onderwerpen en de tien meest populaire onderwerpen weergegeven worden. Ieder onderwerp bevat een link naar de pagina van het desbetreffende onderwerp met desbetreffende tekst en reacties.
+Door in de menubalk op "forum" te klikken wordt te gebruiker verwezen naar het forum. Deze knop is op iedere pagina van de website aanwezig. Hier zal een overzicht gevonden worden met alle categorie\"en.  Achter de categorie staat ook het aantal onderwerpen in de desbetreffende categorie. Door op een categorie te klikken wordt de gebruiker verwezen naar het overzicht van alle onderwerpen die behoren tot die categorie. De onderwerpen zijn geordend op datum dat ze zijn aangemaakt. Per pagina worden er twintig onderwerpen weergegeven. Onderaan de pagina kan door de pagina's gebladerd worden. Bij ieder onderwerp staat wanneer de laatste reactie is geplaatst in dat onderwerp. Door op een onderwerp te klikken komt de gebruiker op het overzicht van de berichten binnen een onderwerp. Voor ieder bericht is te zien van welke gebruiker de reactie is, inclusief een link naar het profiel van deze gebruiker, wanneer het bericht geplaatst is, het bericht zelf, een eventuele quote en of de gebruiker een administrator is of een gewone gebruiker. Het laatste wat een niet ingelogde gebruiker kan doen, is het bezoeken van de FAQ pagina, waar de tien meestgestelde vragen staan. Door te klikken op een vraag wordt de gebruiker doorgestuurd naar het antwoord. De "Go Back" link die aanwezig is op deze pagina, verwijst de gebruiker terug naar de FAQ-pagina.\\
+Nu zal een handleiding volgen voor het registreren en inloggen. De gebruiker kan zich registreren door op "Register" te klikken, rechtsboven. De velden met een ster zijn verplichte velden. De velden zonder ster hoeven niet ingevuld te worden. Men kan een avatar uploaden. Dit is een afbeelding die weergegeven wordt bij de reacties van de gebruiker en op de profielpagina van de gebruiker. Als men eenmaal geregistreerd is, is het proces bijna klaar. Er zal een e-mail gestuurd worden naar het ingevulde e-mail adres. In deze e-mail staat een link, waarmee het account geverifi\"eerd kan worden. Hierna kan de gebruiker inloggen. \\
+Eenmaal ingelogd is er een scala aan mogelijkheden waarover de gebruiker beschikt. De gebruiker kan naar de ledenlijst gaan wanneer deze op "Members" klikt in de menubalk. Rechtsboven kan de gebruiker op zijn of haar eigen gebruikersnaam klikken. De gebruiker wordt doorverwezen naar zijn of haar eigen gebruikersprofiel. Het profiel kan aangepast worden door op "edit profile" te klikken. Ook kan het wachtvoord van de gebruiker aangepast worden door op "change password" te klikken. Rechtsboven is ook een knop "Log out" te vinden, om uit te loggen. Het belangrijkste is natuurlijk het forum. Als de gebruiker ingelogd is, kunnen er nieuwe berichten gestart worden of gereageerd worden op al bestaande onderwerpen. Zoals ook niet-ingelogde gebruikers kan er geklikt worden het onderwerp waarop me wilt reageren. Bovenin staat nu een knop met “New subject”. Als hierop geklikt wordt kan de gebruiker een nieuw onderwerp plaatsen. Hier kan de gebruiker het onderwerp kiezen, de categorie waarin het onderwerp toebehoort en de vraag of het bericht dat de gebruiker wilt plaatsen. Voordat het onderwerp verschijnt in de lijst met onderwerpen, zal het onderwerp eerst gecheckt worden door administrators op ongewenste inhoud, waarna het, als het is goedgekeurd, wordt geplaatst in de gekozen categorie. Als het onderwerp eenmaal in het forum staat naar beneden gescrolld worden, net zoals bij elk ander onderwerp, om daar een nieuwe reactie schrijven.
+
 
 
 \newpage
@@ -157,7 +167,6 @@ Extra aspecten die toegevoegd zijn aan het forum:\\
 De bovenstaande doelen zijn niet bereikt en dat komt vooral wegens gebrek aan tijd.
 
 
-
 \newpage
 \begin{center}
 {\LARGE \bfseries Deel 2 Informatie voor de ICT}\\[0.1cm]
@@ -192,7 +201,6 @@ zie Relatie.pdf
 {\LARGE \bfseries Structuur}\\[0.1cm]
 \HRule \\[0.5cm]
 \end{center}
-
 Bijna alle pagina’s maken gebruik van de connectie met de database. Alleen de FAQ-pagina maakt geen gebruik ervan. Er wordt een connectie gemaakt met de database door het bestand 'db\_con.php'. In die database staan drie tabellen beschreven: \\
 -	user\_data: alle gegevens van de geregistreerde gebruikers;\\
 -	subjects: alle berichten die geplaatst zijn door de gebruikers van het forum;\\
@@ -213,12 +221,13 @@ De gegevens van de gebruiker worden getoond in het profiel. Indien gewenst kan h
 {\bfseries Forum}\\
 Als een gebruiker een eigen bericht maakt of op andere berichten reageert, wordt dat opgeslagen in de tabellen subjects en posts. Met behulp van queries worden de berichten met de bijbehorende reacties getoond. Ook hier wordt al het invoer gecontroleerd voordat ze in de database worden ingevoerd.\\
 
-
-
 \newpage
 \begin{center}
 {\LARGE \bfseries Instructies}\\[0.1cm]
 \HRule \\[0.5cm]
 \end{center}
-instructies met betrekking tot bv. onderhoud aan de site.
+Voor het onderhouden van de website zijn een aantal dingen van belang. Als eerste is het van belang om ervoor te zorgen dat er voldoende administratoren aangewezen worden en om de activiteit van deze in de gaten te houden. Het is namelijk van belang dat er adequaat gereageerd kan worden op de activiteit in het forum. Voor gebruikers is het onprettig als het lang duurt wanneer berichten goedgekeurd worden en wanneer er lastige gebruikers zijn op het forum.\\
+Daarnaast is het van belang dat de database onderhouden wordt. Onderwerpen die verwijderd worden van de website, worden niet daadwerkelijk verwijderd uit het forum. Dit is gedaan, zodat fouten nog hersteld kunnen worden. Echter, onderwerpen die lang geïnactiveerd worden, kunnen het beste uit de database verwijderd worden, om deze van onnodige data te ontdoen.\\
+Ook is het van belang dat de werking van de website in de gaten wordt gehouden. De website moet in alle browsers goed kunnen werken, ook na updates. Het is van belang om dit te blijven controleren en de code zonodig aan te passen. \\
+Tenslotte zijn wij van mening dat er ten alle tijde gestreefd moet worden naar een optimale gebruikersvriendelijkheid en veiligheid. Zoals reeds besproken zijn er onder de tijdsdruk bepaalde keuzes hierin gemaakt. Dit neemt echter niet weg dat het eindproduct definitief moet blijven. Wanneer het website beheer ondervindt dat bepaalde onderdelen beter beveiligd kunnen worden, of bepaalde toevoegingen het gebruikersgemak kunnen vergroten, dan zullen wij dit enkel stimuleren.
 \end{document}
