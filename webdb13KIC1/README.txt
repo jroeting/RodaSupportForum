@@ -1,9 +1,9 @@
 Projectgroep: 	webdb13KIC1
 Projectnaam: 	Roda Support Forum
 Groepsleden:	Jennifer Roeting	10181733
-		Kyllian Broers		
+		Kyllian Broers		10343865
 		Max Bevelander
-		Michael Chen
+		Michael Chen		10411941
 Web adres:	http://webdb.science.uva.nl/webdb13KIC1
 De genoemde groepsleden (omschreven bij Groepsleden) onderschrijven dat zij allen een even groot deel
 hebben bijgedragen aan het eindresultaat van het eindresultaat van het project. Daaronder valt
