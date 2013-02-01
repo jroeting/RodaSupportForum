@@ -39,14 +39,14 @@ INHOUD GEWOON IN HET LATEX FILE!
 
 ONTWERPBESLISSING
 Inlogpagina - Max
-Registreerpagina - Kyllian
+Registreerpagina - Kyllian KLAAR
 
 DEEL 1 (OPDRACHTGEVER)
 Handleiding - Max
 Reflectie - Michael --> Done
 
 DEEL 2 (ICT AFDELING)
-Installatieprocedure - Kyllian
+Installatieprocedure - Kyllian KLAAR
 Datamodel en relaties - Jennifer
 Algemene structuur PHP code - Michael --> Done
 Instructies mbt onderhoud - Jennifer
